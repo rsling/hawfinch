@@ -8,7 +8,7 @@ Needed before M3 starts.
 
 Senses and lexical units need identifiers that stay the same across extraction runs. Wiktionary offers none: senses are numbered `[1]`, `[2a]`, … within an entry, and editors renumber them. Ways to identify senses across runs have to be explored.
 
-One option raised: send each sense description to a local language model (via Ollama) and have it match the description to a known abstract sense that comes with its own description. Possibly overkill, but as a by-product it would yield a GermaNet-like sense inventory. This would be the later abstraction layer foreseen in [the lexeme model decision](decisions/0002-lexeme-model.md); senses start word-specific.
+One option raised: send each sense description to a local language model (the optional server of [0006](decisions/0006-language-model.md)) and have it match the description to a known abstract sense that comes with its own description. Possibly overkill, but as a by-product it would yield a GermaNet-like sense inventory. This would be the later abstraction layer foreseen in [the lexeme model decision](decisions/0002-lexeme-model.md); senses start word-specific.
 
 ## Stable identifiers for lexemes
 
@@ -33,6 +33,18 @@ Wiktionary's transcriptions mark stress but not syllable boundaries. The boundar
 Needed in M1, which stores orthographic syllables and inflectional segmentation side by side.
 
 `Ge·sund·heit` versus `Gesund:heit`, `läuft` versus `läuf-t`. Presumably syllable segmentation and morphological segmentation are stored in separate fields. Not confirmed.
+
+## Coding of short words
+
+Needed in M1, which fills the `coding` field ([0005](decisions/0005-abbreviations.md)).
+
+The IPA test (`short` with a transcription, `abbreviation` without) applies only to sections labelled `Abkürzung`. It is decided for abbreviated names in capitals (`BT`, `CVJM`) and intended for capitalised abbreviations only. Open points:
+
+- **Spellings.** Is "capitalised" all capitals only (`KKW`, `UWG`: 1,871 sections), or also mixed case (`Lkw`, `GmbH`, `BeurkG`: 1,068)? What coding do single letters (63), lower-case spellings (`km`: 97) and spellings with spaces (332) get?
+- **Reliability.** 1,337 of the 1,871 all-capitals sections have no IPA transcription. Many are short stubs (`LPD`, `BBL`, `UWG`) that are probably spoken letter by letter. There, a missing transcription reflects unfinished entries more than pronunciation, so the test would code them `abbreviation`.
+- **Out of scope?** Vehicle registration codes (`MIL`, `RE`), unit symbols (`MHz`, `Lj`) and E numbers (`E 401`) are among these sections. Should they be lexemes at all?
+
+Survey: [feasibility results](feasibility.md#abbreviations).
 
 ## Other structured information in the dumps
 

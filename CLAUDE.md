@@ -14,7 +14,7 @@ Hawfinch builds a lexical database of German grammar from German Wiktionary dump
 
 A later phase will link the lexical data with usage data from web corpora. It will get its own top-level `corpus/` directory and join onto releases by lexeme ID.
 
-Most of the tree is scaffolding: the package modules are docstring-only stubs and every CLI subcommand exits with "not implemented yet".
+Most of the tree is scaffolding: the feature, model, validate and export modules are docstring-only stubs, and every CLI subcommand except `fetch` exits with "not implemented yet". Implemented so far: `dump/` (fetch, XML reader, Parquet page cache, SQL table reader), first versions of `wikitext/` (templates, sections and blocks, plain text) and `features/partofspeech.py` (proper-noun rule). The feasibility test is driven by `extract/scripts/feasibility.py`; its results are in `docs/feasibility.md`.
 
 ## Commands
 
@@ -46,7 +46,17 @@ Read `docs/schema/profile.md` (what the database must contain), `docs/decisions/
 - The extractor reads template arguments straight from the dump, without template or Lua expansion. Kaikki/wiktextract output is a validation baseline only.
 - Three levels (`docs/decisions/0002-lexeme-model.md`): a lexeme is a stem with all its form-side properties; a sense is a meaning (word-specific for now); a lexical unit pairs one lexeme with one sense. Any difference in a lexeme-level field means two lexemes; restrictions and syntactic properties that hold in one sense only go on the lexical unit. Never merge across Wiktionary part-of-speech sections.
 - Stems are stored, not citation forms: verbs lack the infinitive suffix (`kauf`).
-- Periphrastic forms are never stored; only single-word inflected forms go into the word-form table.
+- Periphrastic forms are never stored; only single-word inflected forms go into the word-form table. zu-infinitives and gerundives are not stored either. Partizip I (`-end`) is derivation: an `-end` word is a lexeme only if Wiktionary lists it with its own meaning. Partizip II is a verb word form, but its declined forms are stored only for adjective lexemes (`docs/decisions/0004-participles-and-zu-forms.md`).
+- Proper nouns are a part of speech of their own (`docs/decisions/0003-proper-nouns.md`).
+  - A noun sense is common if it has a conceptual plural or a mass use, and proper otherwise. Some classes are fixed by name: languages are proper, taxa are common.
+  - Sections mixing both are split into two lexemes.
+  - Detection uses an optional local language model (`llama-server`) when one is configured (`docs/decisions/0006-language-model.md`). Otherwise it uses Wiktionary's name labels plus a pattern for language names.
+  - A configured server that cannot be reached is an error, never a silent fallback. The manifest records the model, including its quantisation.
+- `Abkürzung` is not a part of speech (`docs/decisions/0005-abbreviations.md`).
+  - Short words and abbreviated names are ordinary lexemes with a `coding` field: `regular`, `short` or `abbreviation`.
+  - Within sections labelled `Abkürzung`, IPA in Wiktionary means `short` and no IPA means `abbreviation`. Never apply this test to other lexemes.
+  - Clippings (`Uni`, `Kita`) are `short`, recognised from the Herkunft in M2.
+  - Orthographic abbreviations (`Einw.`) go into a stub table.
 - Boundary symbols (`docs/features/segmentation.md`): `·` syllable (`An·zah·lung`), `-` inflection (`läuf-t`, `ge-koch-t`), `.` compound (`Haus.tür`), `+` linking element (`Kind+er.garten`), `:` derivation (`Gesund:heit`), `=` verb particle (`ab=kauf`).
 - Do not implement syllable boundaries in IPA without discussing it with the user first, and never derive them from the orthographic "Worttrennung".
 - Stable identifiers for senses and lexemes across extraction runs are required and unsolved; do not settle on a scheme without discussion.

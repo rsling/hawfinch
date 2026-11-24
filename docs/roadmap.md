@@ -20,7 +20,8 @@ The whole pipeline runs end to end on a narrow slice, so that every later milest
 
 - **Pipeline:** `fetch`, a streaming dump reader, selection of German entries, a wikitext parser for sections and templates, and working `extract`, `validate` and `export` subcommands.
 - **Release format:** Parquet tables, a DuckDB file and `MANIFEST.json`, with the CC BY-SA licence and attribution text shipped in the release.
-- **Lexeme table:** spelling, spelling variants, part of speech (German labels), gender, orthographic syllables, IPA as found, and lexeme-level quirks (no plural, only plural). Nouns, verbs and adjectives are covered in full; other parts of speech get the basic fields only.
+- **Lexeme table:** spelling, spelling variants, part of speech, coding, gender, orthographic syllables, IPA as found, and lexeme-level quirks (no plural, only plural). Nouns, verbs and adjectives are covered in full; other parts of speech get the basic fields only.
+- **Part of speech:** Wiktionary's labels, with proper nouns as a part of speech of their own ([0003](decisions/0003-proper-nouns.md)) and `Abkürzung` replaced by the part of speech the word is used as ([0005](decisions/0005-abbreviations.md)). The optional language-model classification ([0006](decisions/0006-language-model.md)) comes with the configuration file and the answer cache. Orthographic abbreviations go into a stub table.
 - **Verb stems:** read from `Flexion:` arguments and stored without the infinitive suffix.
 - **Word-form table:** forms from form entries and noun tables, with grammatical features, spelling variants, orthographic syllables, and IPA where present. Missing single-word forms are generated from stems and marked as generated.
 - **Derived fields:** plural type, adjective umlaut, inflectional segmentation (`läuf-t`).
@@ -41,6 +42,7 @@ Completes the form side. Lexemes are final after this milestone.
 - **Segmentation:** alignment of constituents with the surface string, and full segmentation with `.`, `+`, `:` and `=`.
 - **Lexeme split by segmentation** (`Wach.stube` versus `Wachs.tube`) and the distinction between simplex and complex lexemes.
 - **Containing-lexeme links:** obtained by inverting the segmentations and cross-checked against `Wortbildungen`.
+- **Clippings and syllable words** (`Uni`, `Kita`, `Sponti`) are recognised from the Herkunft and get `coding=short` ([0005](decisions/0005-abbreviations.md)).
 - **Homonym linking of constituents:** an [open question](open-questions.md) that needs a decision in this milestone.
 - **Affix table:** spelling, syllables, IPA, type, base class counted from our own segmentations, and the collected semantic descriptions.
 - **Phonology:** consistency check and normalisation of IPA, and syllable count. IPA syllabification, mora count and the trochaic flag follow once the syllabification method has been discussed; nothing is implemented before that. The discussion belongs at the start of M2.
@@ -69,6 +71,7 @@ After the freeze the schema does not change. Bug fixes and re-runs on newer dump
 - **Underlying phonological representation.** It is our own analysis, not extraction, and is expected to come out of the phonology study.
 - **Abstract senses shared across words.** Senses stay word-specific, as [the lexeme model](decisions/0002-lexeme-model.md) foresees.
 - **Generalisation over the semantic descriptions of affixes.** Release 1 only collects the descriptions.
+- **Separate categories for holidays, recurring events and language names.** In release 1 they are proper nouns, although they fit the proper-noun test poorly ([0003](decisions/0003-proper-nouns.md)).
 
 ## After release 1
 

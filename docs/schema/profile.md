@@ -9,6 +9,10 @@ What the database must contain. This is the requirements list that the release s
 - A **lexical unit** is the pairing of one lexeme with one sense. It carries everything that holds for that lexeme in that sense only.
 - The form of a lexeme is its **stem**, not its dictionary form. Verbs are stored without the infinitive suffix (`kauf`, not `kaufen`).
 - **Periphrastic forms are never stored** (for example "geglaubt haben würde"). They can be generated on the fly from the stored forms. Only single-word inflected forms go into the word-form table.
+- **zu-infinitives and gerundives are never stored either** (`aufzustocken`, `aufzuwärmende`), even where `zu` is written inside the word. The **Partizip I is derivation, not inflection**: an `-end` word is a lexeme only where Wiktionary lists it with its own meaning. The Partizip II is a word form of the verb; its declined forms are stored only for adjective lexemes. See [0004](../decisions/0004-participles-and-zu-forms.md).
+- **Proper nouns are a part of speech of their own**, separate from common nouns. A noun in a given sense is a common noun if it has a conceptual plural or a mass use, and otherwise a proper noun, with some classes fixed by name. Sections mixing both are split into two lexemes. See [0003](../decisions/0003-proper-nouns.md).
+- **`Abkürzung` is not a part of speech.** Short words and abbreviated names are ordinary lexemes with the part of speech they are used as, and their form is recorded in `coding`. Orthographic abbreviations (`Einw.`) are not lexemes. See [0005](../decisions/0005-abbreviations.md).
+- Where a distinction cannot be read off the markup, an optional local language model may make it. A release records whether one was used. See [0006](../decisions/0006-language-model.md).
 - All segmentation uses the symbols defined in [segmentation conventions](../features/segmentation.md).
 
 Lexeme or lexical unit? A different inventory of forms means a different lexeme (Wort with plural Wörter versus Worte). A restriction on the same forms, or a syntactic property, belongs to the lexical unit ("no plural in this sense", transitivity, choice of auxiliary).
@@ -24,7 +28,8 @@ Ideally two tables, one for simplex and one for complex lexemes.
 | Spelling | extracted | |
 | Spelling variants | extracted | |
 | Orthographic syllable segmentation | extracted | |
-| Part of speech | extracted | |
+| Part of speech | extracted/derived | German Wiktionary labels, with two exceptions. Proper nouns are a part of speech of their own, recognised from the labels or, if configured, by a language model ([0003](../decisions/0003-proper-nouns.md)). `Abkürzung` is replaced by the part of speech the word is used as ([0005](../decisions/0005-abbreviations.md)). Definitions in [part of speech](../features/part-of-speech.md). |
+| Coding | derived | `regular`, `short` (spoken as such: `KKW`, `CVJM`, `Uni`) or `abbreviation` (read as the full word: `BT`). Clippings such as `Uni` are recognised from the Herkunft in M2. See [0005](../decisions/0005-abbreviations.md). |
 | Grammatical gender (nouns) | extracted | |
 | Plural type (nouns) | derived | Regular case: umlaut yes/no plus suffix. Irregular cases must be representable too. |
 | Umlaut in comparative/superlative (adjectives) | derived | yes/no |
@@ -95,6 +100,15 @@ Preliminary; to be done if feasible.
 ## Examples
 
 A separate table: primary key plus the example text. Lexical units link into it.
+
+## Orthographic abbreviations
+
+A stub table in release 1 ([0005](../decisions/0005-abbreviations.md)). It holds written abbreviations that are not lexemes (`Einw.`, `kastil.`, `v. v.`) and is not analysed further.
+
+| Item | Origin | Notes |
+|---|---|---|
+| Spelling | extracted | |
+| Meaning lines | extracted | Raw, as in Wiktionary. |
 
 ## To do during extractor development
 

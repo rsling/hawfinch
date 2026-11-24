@@ -1,0 +1,154 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="de">
+  <siteinfo>
+    <sitename>Wiktionary</sitename>
+    <dbname>dewiktionary</dbname>
+    <base>https://de.wiktionary.org/wiki/Wiktionary:Hauptseite</base>
+    <generator>MediaWiki 1.48.0-wmf.1</generator>
+    <case>case-sensitive</case>
+    <namespaces>
+      <namespace key="-2" case="case-sensitive">Medium</namespace>
+      <namespace key="-1" case="first-letter">Spezial</namespace>
+      <namespace key="0" case="case-sensitive" />
+      <namespace key="1" case="case-sensitive">Diskussion</namespace>
+      <namespace key="2" case="first-letter">Benutzer</namespace>
+      <namespace key="3" case="first-letter">Benutzer Diskussion</namespace>
+      <namespace key="4" case="case-sensitive">Wiktionary</namespace>
+      <namespace key="5" case="case-sensitive">Wiktionary Diskussion</namespace>
+      <namespace key="6" case="case-sensitive">Datei</namespace>
+      <namespace key="7" case="case-sensitive">Datei Diskussion</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki Diskussion</namespace>
+      <namespace key="10" case="case-sensitive">Vorlage</namespace>
+      <namespace key="11" case="case-sensitive">Vorlage Diskussion</namespace>
+      <namespace key="12" case="case-sensitive">Hilfe</namespace>
+      <namespace key="13" case="case-sensitive">Hilfe Diskussion</namespace>
+      <namespace key="14" case="case-sensitive">Kategorie</namespace>
+      <namespace key="15" case="case-sensitive">Kategorie Diskussion</namespace>
+      <namespace key="102" case="case-sensitive">Verzeichnis</namespace>
+      <namespace key="103" case="case-sensitive">Verzeichnis Diskussion</namespace>
+      <namespace key="104" case="case-sensitive">Thesaurus</namespace>
+      <namespace key="105" case="case-sensitive">Thesaurus Diskussion</namespace>
+      <namespace key="106" case="case-sensitive">Reim</namespace>
+      <namespace key="107" case="case-sensitive">Reim Diskussion</namespace>
+      <namespace key="108" case="case-sensitive">Flexion</namespace>
+      <namespace key="109" case="case-sensitive">Flexion Diskussion</namespace>
+      <namespace key="110" case="case-sensitive">Rekonstruktion</namespace>
+      <namespace key="111" case="case-sensitive">Rekonstruktion Diskussion</namespace>
+      <namespace key="710" case="case-sensitive">TimedText</namespace>
+      <namespace key="711" case="case-sensitive">TimedText talk</namespace>
+      <namespace key="828" case="case-sensitive">Modul</namespace>
+      <namespace key="829" case="case-sensitive">Modul Diskussion</namespace>
+      <namespace key="1728" case="case-sensitive">Veranstaltung</namespace>
+      <namespace key="1729" case="case-sensitive">Veranstaltung Diskussion</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>µm</title>
+    <ns>0</ns>
+    <id>4074</id>
+    <redirect title="μm" />
+    <revision>
+      <id>6386436</id>
+      <parentid>6386426</parentid>
+      <timestamp>2018-06-08T17:56:21Z</timestamp>
+      <contributor>
+        <username>IvanP</username>
+        <id>45989</id>
+      </contributor>
+      <minor />
+      <origin>6386436</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="22" sha1="fuifsstjyjod5yy07tl2621nixkvvzz" xml:space="preserve">#WEITERLEITUNG [[μm]]</text>
+      <sha1>fuifsstjyjod5yy07tl2621nixkvvzz</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Fluß</title>
+    <ns>0</ns>
+    <id>9873</id>
+    <revision>
+      <id>9193078</id>
+      <parentid>5494376</parentid>
+      <timestamp>2022-05-31T08:02:19Z</timestamp>
+      <contributor>
+        <username>Dr. Karl-Heinz Best</username>
+        <id>5327</id>
+      </contributor>
+      <comment>+ beisp</comment>
+      <origin>9193078</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="444" sha1="k054k7aghrxuk1jjgneb2k5a92p0zyk" xml:space="preserve">== Fluß ({{Sprache|Deutsch}}) ==
+{{Alte Schreibweise|Fluss|Reform 1996}}
+
+{{Beispiele}}
+:[1] „Ein silbergrauer Streifen, in dem Robert den ''Fluß'' erkannte, zog sich in einer fernen Krümmung hin.“&lt;ref&gt;{{Literatur| Autor= Hermann Kasack |Titel= Die Stadt hinter dem Strom| TitelErg= Roman| Verlag= Suhrkamp |Ort= Frankfurt am Main | Jahr= 1996  | ISBN= 3-518-39061-9 | Seiten= 37.}} Entstanden in der Zeit 1942 - 1946.&lt;/ref&gt;
+
+{{Quellen}}</text>
+      <sha1>k054k7aghrxuk1jjgneb2k5a92p0zyk</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Häuser</title>
+    <ns>0</ns>
+    <id>95341</id>
+    <revision>
+      <id>9725954</id>
+      <parentid>8013283</parentid>
+      <timestamp>2023-02-02T10:11:17Z</timestamp>
+      <contributor>
+        <username>Jeuwre</username>
+        <id>91608</id>
+      </contributor>
+      <comment>+ Hörbsp. in Aussprache</comment>
+      <origin>9725954</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="616" sha1="hi3bjwznpltle1vccps824ytkb5j07a" xml:space="preserve">{{Siehe auch|[[Hauser]]}}
+== Häuser ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Deklinierte Form|Deutsch}} ===
+
+{{Worttrennung}}
+:Häu·ser
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|ˈhɔɪ̯zɐ}}
+:{{Hörbeispiele}} {{Audio|De-Häuser.ogg‎|Häuser‎}}, {{Audio|De-Häuser2.ogg}}, {{Audio|LL-Q188 (deu)-Sebastian Wallroth-Häuser.wav}}
+:{{Reime}} {{Reim|ɔɪ̯zɐ|Deutsch}}
+
+{{Grammatische Merkmale}}
+*Nominativ Plural des Substantivs '''[[Haus]]'''
+*Genitiv Plural des Substantivs '''[[Haus]]'''
+*Akkusativ Plural des Substantivs '''[[Haus]]'''
+
+{{Grundformverweis Dekl|Haus}}
+
+{{Ähnlichkeiten 1|Anagramme=[[Häuers]]}}</text>
+      <sha1>hi3bjwznpltle1vccps824ytkb5j07a</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Flexion:kaufen</title>
+    <ns>108</ns>
+    <id>158666</id>
+    <revision>
+      <id>9084170</id>
+      <parentid>9084167</parentid>
+      <timestamp>2022-02-15T17:08:49Z</timestamp>
+      <contributor>
+        <username>Udo T.</username>
+        <id>91150</id>
+      </contributor>
+      <minor />
+      <comment>lass das bitte, du kennst dich doch damit ziemlich sicher nicht aus</comment>
+      <origin>9084170</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="141" sha1="isowipcoe83yrdrbm4j57sder4ht03n" xml:space="preserve">== kaufen (Konjugation) ({{Verbkonjugation|Deutsch}}) ==
+
+{{Deutsch Verb regelmäßig|ka|u|f|e|n|gekauft|vp=|zp=|gerund=1|haben=|veraltet=0}}</text>
+      <sha1>isowipcoe83yrdrbm4j57sder4ht03n</sha1>
+    </revision>
+  </page>
+</mediawiki>

@@ -20,7 +20,7 @@ Read on 2026-11-24: the German extractor in wiktextract (`src/wiktextract/extrac
 ## What German Wiktionary offers
 
 - **`Wiktionary:Download` is outdated.** It recommends `pages-articles.xml.bz2`, describes importing into MySQL with MWDumper, and points to DBnary for RDF. It says nothing about wiktextract, HTML dumps, the API, or licences.
-- **The dump is small.** `dewiktionary-latest-pages-articles.xml.bz2` is 272 MB (dump of 2026-11-01) and contains the main namespace plus `Flexion:`, `Verzeichnis:`, `Vorlage:` and `Modul:`. `categorylinks.sql.gz` (89 MB) holds template-generated categories such as Singularetantum, with no expansion needed.
+- **The dump is small.** `dewiktionary-latest-pages-articles.xml.bz2` is 272 MB (dump of 2026-11-01) and contains the main namespace plus `Flexion:`, `Verzeichnis:`, `Vorlage:` and `Modul:`. `categorylinks.sql.gz` (89 MB) holds template-generated categories such as Singularetantum, with no expansion needed. It names each category only by `cl_target_id`; the category titles are in `linktarget.sql.gz` (35 MB), which is needed as well (checked on the dump of 2026-11-01).
 - **Other sources, not used as primary:** DBnary (RDF; its German etymology file is empty), Wikidata lexemes (a separate project, about 242,000 German lexemes), and HTML dumps (public copies frozen in March 2025).
 - **Licence:** the site footer states CC BY-SA 4.0; an older licence page still says CC BY-SA 3.0 plus GFDL.
 

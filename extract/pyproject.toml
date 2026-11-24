@@ -8,7 +8,10 @@ version = "0.0.1"
 description = "Extracts grammatical features of German words from Wiktionary dumps"
 license = "BSD-2-Clause"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "duckdb>=2.0.1",
+    "pyarrow>=26.0.1",
+]
 
 [project.scripts]
 hawfinch = "hawfinch.cli:main"

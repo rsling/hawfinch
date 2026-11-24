@@ -1,6 +1,6 @@
 import pytest
 
-from hawfinch.cli import SUBCOMMANDS, main
+from hawfinch.cli import HANDLERS, SUBCOMMANDS, main
 
 
 def test_help_lists_subcommands(capsys):
@@ -12,7 +12,7 @@ def test_help_lists_subcommands(capsys):
         assert name in out
 
 
-@pytest.mark.parametrize("name", SUBCOMMANDS)
+@pytest.mark.parametrize("name", [n for n in SUBCOMMANDS if n not in HANDLERS])
 def test_unimplemented_subcommand_fails(name, capsys):
     assert main([name]) == 1
     assert "not implemented" in capsys.readouterr().err
