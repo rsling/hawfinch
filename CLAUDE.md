@@ -2,15 +2,59 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Repository state
+## What this project is
 
-This repository currently contains only a `LICENSE` file (BSD 2-Clause). There is no source code, build system, test suite, or README yet, so there are no build, lint, or test commands and no architecture to describe.
+Hawfinch builds a lexical database of German grammar from German Wiktionary dumps (a modern successor to CELEX), plus tools and analyses on top of it. It has three parts, developed in this order:
 
-When the first code lands, update this file with:
+1. `extract/`: Python package `hawfinch` that extracts grammatical features of words (phonology, inflection, word formation, morphosyntax) from the dumps.
+2. `analysis/`: R and Python analyses for a publication on the "core" of German grammar; `paper/` holds the manuscript.
+3. `app/`: web interface with Shiny visualisations. Built last.
 
-- the commands to build, lint, and test (including how to run a single test)
-- the high-level architecture that spans multiple files
+A later phase will link the lexical data with usage data from web corpora. It will get its own top-level `corpus/` directory and join onto releases by lexeme ID.
+
+Most of the tree is scaffolding: the package modules are docstring-only stubs and every CLI subcommand exits with "not implemented yet".
+
+## Commands
+
+Python is managed with `uv`. The repository root is a uv workspace with `extract/` as its only member; dev tools are in the root `dev` dependency group, and `uv.lock` is committed.
+
+```sh
+make setup    # uv sync
+make test     # uv run pytest (configured in the root pyproject.toml, tests in extract/tests)
+make lint     # ruff check + ruff format --check
+make format   # ruff autofix + format
+```
+
+Single test: `uv run pytest extract/tests/test_cli.py::test_help_lists_subcommands`
+
+CLI: `uv run hawfinch {fetch,extract,validate,export}`
+
+## Architecture
+
+**The data release is the only interface between the parts.** The extractor writes a versioned release to `data/release/<version>/` (Parquet tables, a DuckDB file, and a `MANIFEST.json` with dump date, extractor commit and checksums). `analysis/` and `app/` read a release and must never import from `extract/`. `analysis/release.txt` pins the release the analyses run against.
+
+Extractor pipeline, in `extract/src/hawfinch/`: `dump/` (fetch and stream the XML, select German entries) → `wikitext/` (parse pages, sections, de.wiktionary templates) → `features/` (one module per linguistic domain) → `model/` (record types; the release schema) → `validate/` (consistency and coverage checks) → `export/` (release writers). `cli.py` exposes these stages as subcommands.
+
+Workspace and tool configuration (uv, pytest, ruff) lives in the root `pyproject.toml`; packaging metadata lives in `extract/pyproject.toml`.
+
+## Data model essentials
+
+Read `docs/schema/profile.md` (what the database must contain), `docs/decisions/0001-extraction-strategy.md` (where each item sits in Wiktionary markup, and why we do not build on wiktextract) and `docs/open-questions.md` before working on the extractor.
+
+- The extractor reads template arguments straight from the dump, without template or Lua expansion. Kaikki/wiktextract output is a validation baseline only.
+- Three levels (`docs/decisions/0002-lexeme-model.md`): a lexeme is a stem with all its form-side properties; a sense is a meaning (word-specific for now); a lexical unit pairs one lexeme with one sense. Any difference in a lexeme-level field means two lexemes; restrictions and syntactic properties that hold in one sense only go on the lexical unit. Never merge across Wiktionary part-of-speech sections.
+- Stems are stored, not citation forms: verbs lack the infinitive suffix (`kauf`).
+- Periphrastic forms are never stored; only single-word inflected forms go into the word-form table.
+- Boundary symbols (`docs/features/segmentation.md`): `·` syllable (`An·zah·lung`), `-` inflection (`läuf-t`, `ge-koch-t`), `.` compound (`Haus.tür`), `+` linking element (`Kind+er.garten`), `:` derivation (`Gesund:heit`), `=` verb particle (`ab=kauf`).
+- Do not implement syllable boundaries in IPA without discussing it with the user first, and never derive them from the orthographic "Worttrennung".
+- Stable identifiers for senses and lexemes across extraction runs are required and unsolved; do not settle on a scheme without discussion.
+
+## Conventions
+
+- Test fixtures in `extract/tests/fixtures/` are small real wikitext pages, one per parsing edge case.
+- A new or changed feature needs its linguistic definition in `docs/features/`, and schema changes need `docs/schema/` updated. Design decisions go in `docs/decisions/`.
+- Nothing under `data/` is tracked except READMEs, `.gitkeep` files and release manifests. Do not commit dumps or release tables.
 
 ## Licensing
 
-The project is BSD 2-Clause licensed. Dependencies and any vendored code must be compatible with that licence.
+Code is BSD 2-Clause. Data derived from Wiktionary is CC BY-SA and must be released under that licence with attribution, not under BSD. Dependencies must be compatible with BSD 2-Clause.

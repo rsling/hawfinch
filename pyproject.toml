@@ -1,0 +1,22 @@
+# uv workspace root and repository-wide Python tool configuration.
+# The installable package lives in extract/ and has its own pyproject.toml.
+
+[dependency-groups]
+dev = ["hawfinch", "pytest>=8", "ruff>=0.6"]
+
+[tool.uv.workspace]
+members = ["extract"]
+
+[tool.uv.sources]
+hawfinch = { workspace = true }
+
+[tool.pytest.ini_options]
+testpaths = ["extract/tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["extract/src"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
