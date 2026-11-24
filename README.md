@@ -10,6 +10,8 @@ The project has three parts:
 | `analysis/` | R and Python analyses of the extracted data, for a publication on the core of German grammar | not started |
 | `app/`      | Web interface with Shiny visualisations for browsing the data                          | not started |
 
+The first release covers the extractor only; see [the roadmap](docs/roadmap.md).
+
 Supporting directories: `data/` (dumps and releases, not in git), `docs/` (schema, feature definitions, design decisions) and `paper/` (manuscript).
 
 The parts communicate only through versioned data releases written by the extractor. The app and the analyses read a release; they do not import extractor code.

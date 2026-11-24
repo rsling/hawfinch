@@ -1,8 +1,10 @@
 # Open questions
 
-Points that need discussion before the affected part is implemented.
+Points that need discussion before the affected part is implemented. Each question names the milestone of [the roadmap](roadmap.md) that needs it answered.
 
 ## Stable identifiers for word senses (required)
+
+Needed before M3 starts.
 
 Senses and lexical units need identifiers that stay the same across extraction runs. Wiktionary offers none: senses are numbered `[1]`, `[2a]`, … within an entry, and editors renumber them. Ways to identify senses across runs have to be explored.
 
@@ -10,20 +12,30 @@ One option raised: send each sense description to a local language model (via Ol
 
 ## Stable identifiers for lexemes
 
+Needed in M2, when lexemes become final.
+
 Lexemes follow Wiktionary's part-of-speech sections, which editors can split or merge. A policy for keeping lexeme identifiers stable across runs is needed.
 
 ## Linking word formation to the right homonym
+
+Needed in M2.
 
 Wiktionary's word-formation descriptions link to pages, not to sections. When a page holds several lexemes (Bank), the constituent of a complex word has to be assigned to one of them.
 
 ## Syllable boundaries in IPA
 
+Needed at the start of M2.
+
 Wiktionary's transcriptions mark stress but not syllable boundaries. The boundaries must not be taken from the orthographic "Worttrennung". The method is undecided; nothing is to be implemented before it has been discussed.
 
 ## Syllable and morpheme boundaries that do not coincide
 
+Needed in M1, which stores orthographic syllables and inflectional segmentation side by side.
+
 `Ge·sund·heit` versus `Gesund:heit`, `läuft` versus `läuf-t`. Presumably syllable segmentation and morphological segmentation are stored in separate fields. Not confirmed.
 
 ## Other structured information in the dumps
+
+Collected throughout; decided in M3, before the freeze.
 
 During extractor development, examine what information beyond the [extraction profile](schema/profile.md) is present in structured form.

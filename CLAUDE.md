@@ -10,6 +10,8 @@ Hawfinch builds a lexical database of German grammar from German Wiktionary dump
 2. `analysis/`: R and Python analyses for a publication on the "core" of German grammar; `paper/` holds the manuscript.
 3. `app/`: web interface with Shiny visualisations. Built last.
 
+`docs/roadmap.md` holds the milestones of release 1, which is the extractor only (M1 inflection, M2 word formation and phonology, M3 senses and freeze). The extractor is feature-frozen after release 1; the app is release 2, and the analyses run on a pinned release without a roadmap.
+
 A later phase will link the lexical data with usage data from web corpora. It will get its own top-level `corpus/` directory and join onto releases by lexeme ID.
 
 Most of the tree is scaffolding: the package modules are docstring-only stubs and every CLI subcommand exits with "not implemented yet".
