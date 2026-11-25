@@ -63,7 +63,7 @@ Part-of-speech sections by their first label:
 | Partizip II | 14,637 | Wortverbindung | 1,245 |
 | Partizip I | 14,559 | Gebundenes Lexem | 511 |
 
-- **Several labels in one heading:** 24,292 sections, 170 combinations. Almost all are proper nouns as a second label after Substantiv: Toponym (11,366), Nachname (6,258), Vorname (1,659), Eigenname (536), plus Substantiv + Wortverbindung (1,546). Proper nouns are therefore inside the Substantiv counts.
+- **Several labels in one heading:** 24,292 sections, 170 combinations. Almost all are name labels as a second label after Substantiv: Toponym (11,366), Nachname (6,258), Vorname (1,659), Eigenname (536), plus Substantiv + Wortverbindung (1,546). Names are therefore inside the Substantiv counts.
 - **German entries without a part-of-speech section:** 31,794. They are spelling-variant stubs: `{{Schweizer und Liechtensteiner Schreibweise|…}}` (about 20,300) and `{{Alte Schreibweise|Fluss|Reform 1996}}` (about 11,300). A structured source for the spelling-variants item.
 - **Level-3 headings without `{{Wortart}}`:** 176, mostly "Schweizer und Liechtensteiner Schreibweise" and "Alte Schreibweise".
 - **Heading word different from the page title:** 3,397 entries: case variants of affixes (`auto-, Auto-`), links in multi-word headings, `{{(R)}}` trademark marks.
@@ -130,13 +130,15 @@ The parts of a part-of-speech section are lines holding one template. Sections c
 
 - Section and part-of-speech parsing is not a risk. It reproduces the categories exactly except for a handful of broken pages, which become fixtures.
 - **Verb stems** need the positional arguments of the four German verb templates decoded from their documentation. That is the first task of step 2, since the gate depends on it.
-- **Proper nouns share `Substantiv` sections** with a second label. Decided since: they are a part of speech of their own ([0003](decisions/0003-proper-nouns.md)). Detection is tested [below](#proper-nouns).
+- **Names share `Substantiv` sections** with a second label. Decided since: the name labels are not parts of speech, and they mark named entities on the lexical unit ([0003](decisions/0003-named-entities.md)). See [proper nouns](#proper-nouns) for the first approach and [named entities](#named-entities) for the current one.
 - **zu-infinitives and declined gerundives** are single words. Decided since: they are not stored, Partizip I is derivation, and declined Partizip II forms are stored only for adjective lexemes ([0004](decisions/0004-participles-and-zu-forms.md)).
 - The spelling-variant stubs and the variant blocks (`Alternative Schreibweisen`, `Nebenformen`, `Nicht mehr gültige Schreibweisen`) together cover the spelling-variants item.
 
 ## Proper nouns
 
-Can proper nouns ([0003](decisions/0003-proper-nouns.md)) be told from common nouns by Wiktionary's part-of-speech labels? Rule under test: a section is a proper noun if one of its labels is a name label (`Toponym`, `Nachname`, `Vorname`, `Eigenname`, `Göttername`, `Bauwerksname`, `Straßenname`), and a common noun if it is labelled `Substantiv` without one ([definition](features/part-of-speech.md)).
+**Superseded.** This tested the first version of [0003](decisions/0003-named-entities.md), in which proper nouns were a part of speech of their own. That version was revised on 2026-11-25; see [named entities](#named-entities). This section is kept as a record. The `proper-nouns` subcommand has been removed; the commands below run at commit `dcc2a95`.
+
+Can proper nouns be told from common nouns by Wiktionary's part-of-speech labels? Rule under test: a section is a proper noun if one of its labels is a name label (`Toponym`, `Nachname`, `Vorname`, `Eigenname`, `Göttername`, `Bauwerksname`, `Straßenname`), and a common noun if it is labelled `Substantiv` without one.
 
 ```sh
 uv run python extract/scripts/feasibility.py proper-nouns --date 20261101              # 10 s
@@ -150,11 +152,11 @@ The rule gives 21,264 proper-noun sections and 124,972 common-noun sections.
 - **Sample:** 500 sections drawn at random from each class (seed 20261124) and shuffled together.
 - **Blind annotation:** each item showed only the title and the senses, without labels, table or the rule's class. Four separate Claude agents annotated 250 items each, following a written guideline with the definition above and a list of borderline classes to flag rather than decide. The categories were proper, common, mixed, or unclear.
 - **Adjudication:** every item where the annotation disagreed with the rule, or that was flagged as borderline (40 of 1,000), was adjudicated by Claude in this session.
-- **Not yet checked by a human.** The sample, the annotation and the adjudication are in `data/interim/feasibility/proper_nouns/`: `sample.tsv`, `sample_key.tsv`, `annotation.tsv` and `adjudicated.tsv`.
+- **Human review:** after adjudication, the user reviewed `adjudicated.tsv` ([conclusion](#conclusion)). The sample, the annotation and the adjudication are in `data/interim/feasibility/proper_nouns/`: `sample.tsv`, `sample_key.tsv`, `annotation.tsv` and `adjudicated.tsv`.
 
 ### Results
 
-The adjudication left 11 items in borderline classes: language names, taxa, a cultivar and descriptive designations. These classes were then decided in [0003](decisions/0003-proper-nouns.md), and the table counts them accordingly. The `decided` column of `adjudicated.tsv` holds the class of each adjudicated item under 0003.
+The adjudication left 11 items in borderline classes: language names, taxa, a cultivar and descriptive designations. These classes were then decided in the first version of 0003, and the table counts them accordingly. The `decided` column of `adjudicated.tsv` holds the class of each adjudicated item under that version.
 
 | Rule says | Proper | Common | Mixed | No senses |
 |---|---|---|---|---|
@@ -173,9 +175,9 @@ The adjudication left 11 items in borderline classes: language names, taxa, a cu
 - **The misses carry almost no signal in the markup.**
   - Of the clear names, only Xetra has a name table, and only Trasimenischer See a name-shaped definition. Better rules on the markup will not close the gap.
   - Language names are the exception, since their first meaning line usually calls them a language.
-    - A pattern requiring that line to be headed by `Sprache`, `-sprache` or `Varietät` ([definition](features/part-of-speech.md)) finds 453 sections. In a check of 40 of them, 37 were language names.
+    - A pattern requiring that line to be headed by `Sprache`, `-sprache` or `Varietät` finds 453 sections. In a check of 40 of them, 37 were language names.
     - In the sample it catches 3 of the 4 language names and no common noun. It misses Inupiaq, `in Alaska gesprochene Varietät …`, because a capitalised word comes before the head noun.
-    - The pattern has since become part of the label rule ([0003](decisions/0003-proper-nouns.md)).
+    - The pattern became part of the label rule in the first version of 0003, and was dropped with the revision.
   - **With the pattern,** about 2,330 proper nouns are missed (1,120–4,450), for a recall of about 90 % (83–95 %). Precision stays at about 99 %. These figures count the pattern's hits in the whole class (453, about 92 % correct) rather than extrapolating its 3 hits in the sample.
 - **Mixed sections:**
   - 3 common-noun sections (0.6 %, about 750 in the class): Zwilling (the constellation), Goldenes Kalb (the biblical idol), Reformation (the historical movement).
@@ -186,11 +188,42 @@ The adjudication left 11 items in borderline classes: language names, taxa, a cu
 
 ### Conclusion
 
-The labels are a reliable base: what they mark as a proper noun is one. They do not reach high recall on their own: about 10 % of proper nouns end up among the common nouns even with the language pattern, and mixed sections cannot be found from the markup. Decided since ([0003](decisions/0003-proper-nouns.md), [0006](decisions/0006-language-model.md)):
+The labels are a reliable base: what they mark as a proper noun is one. They do not reach high recall on their own: about 10 % of proper nouns end up among the common nouns even with the language pattern, and mixed sections cannot be found from the markup.
 
-- The label rule with the language pattern is used, and its accuracy accepted, when no language model is configured.
-- With a model, senses are classified one by one and mixed sections are split.
-- The 1,000 annotated sections serve as the test set for the model.
+This led to the first version of 0003, with the label rule plus the language pattern, and to [0006](decisions/0006-language-model.md), an optional language model for the rest. On review of `adjudicated.tsv`, the user concluded that properness cannot be decided for a lemma without context. Both decisions were revised on 2026-11-25: 0003 now records [named entities](#named-entities), and 0006 is withdrawn.
+
+## Named entities
+
+The basis for the revised [0003](decisions/0003-named-entities.md): senses that Wiktionary marks as names get the head noun of their definition in the field `named_entity` ([definition](features/named-entities.md)).
+
+**This was an exploratory measurement,** made with ad-hoc scripts that are not part of the feasibility driver. Inflected heads were approximated by stripping endings and matching noun titles, since the word-form table does not exist yet. It is to be repeated with the definition parser of M3.
+
+**Marked sections:** 21,637, with 24,625 senses (meaning lines with a sense number).
+
+| Marked by | Sections |
+|---|---|
+| name label | 21,236 |
+| name table only | 396 (mostly language names) |
+| `{{K}}` name label only | 5 |
+
+- **Hypernyms are too sparse to serve as the value.** `Oberbegriffe` cover 40 % of the marked senses: 60 % of `Toponym` senses, 41 % of `Eigenname` senses, and almost no given or family names.
+- **Definition heads cover nearly everything:**
+  - the head is a noun lemma for 96.8 % of senses;
+  - an inflected form of one for 2.3 %;
+  - there is no head (`unspecified`) for 1.0 %.
+
+  Passing over "name" and "form" heads changed 1.9 % of senses. There are 1,254 different heads. The most frequent are Nachname 5,463, Stadt 3,850, Vorname 1,647, Ortsteil 1,083, Gemeinde 833, Familienname 807, Stadtteil 769, Ort 763, Hauptstadt 491 and Fluss 411.
+- **A check of 60 random senses found 4 wrong heads:**
+  - 3 came from a phrase before the head: `Landkreis` for `im Landkreis Konstanz … gelegene Gemeinde`, `Süden` for `den Süden Vietnams … umfassende Region`, and `Gode` for `eine 1951 von Alexander Gode geschaffene Plansprache`;
+  - 1 came from nested parentheses in a `{{K}}` label, a bug in the exploration script.
+
+  A fifth head, `Form` for `weibliche Form des Familiennamens Kostow`, led to adding `Form` and `Toponym` to the heads that give way to the next noun.
+- **Section labels do not hold for every sense,** which is why the head comes from each sense's own definition. The section of Venus is labelled `Göttername`, but its first sense is the planet. Freia, a given name, also has an asteroid sense. Danzig is a city and an asteroid.
+- **Sections with only name labels:** 88 (Englisch, Greenpeace, DDR, Miraculix). They are given `Substantiv`.
+- **Types were tried and are not needed.**
+  - A draft list of 472 head nouns, mapped to types, typed 95.1 % of marked senses without a language model. Compounds matched by their last part (Hafenstadt as Stadt).
+  - Where a sense had both a hypernym and a head (9,017 senses), the two gave the same type in 98.1 %.
+  - This showed that no language model is needed. Types are left to the analyses.
 
 ## Abbreviations
 

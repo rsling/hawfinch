@@ -3,8 +3,10 @@ lives in the ``hawfinch`` package.
 
     uv run python extract/scripts/feasibility.py cache --date 20261101
     uv run python extract/scripts/feasibility.py inventory --date 20261101
-    uv run python extract/scripts/feasibility.py proper-nouns --date 20261101
     uv run python extract/scripts/feasibility.py abbreviations --date 20261101
+
+The proper-noun test (``proper-nouns``) was removed with the revision of decision 0003; it
+runs at commit dcc2a95.
 """
 
 from __future__ import annotations
@@ -38,18 +40,6 @@ def cmd_inventory(args: argparse.Namespace) -> None:
     run_inventory(cache_path(args.date), out, workers=args.workers)
 
 
-def cmd_proper_nouns(args: argparse.Namespace) -> None:
-    from proper_nouns import run
-
-    out = DATA / "interim" / "feasibility" / "proper_nouns"
-    if args.evaluate:
-        from proper_nouns import evaluate
-
-        evaluate(out)
-    else:
-        run(cache_path(args.date), out, args.workers)
-
-
 def cmd_abbreviations(args: argparse.Namespace) -> None:
     from abbreviations import run
 
@@ -64,12 +54,6 @@ def main() -> None:
     inventory = sub.add_parser("inventory", help="step 1: inventory of markup in German entries")
     inventory.add_argument("--date", required=True)
     inventory.add_argument("--workers", type=int, default=8)
-    proper = sub.add_parser("proper-nouns", help="test proper-noun detection from Wortart labels")
-    proper.add_argument("--date", required=True)
-    proper.add_argument("--workers", type=int, default=8)
-    proper.add_argument(
-        "--evaluate", action="store_true", help="compare annotation.tsv with the rule's classes"
-    )
     abbreviations = sub.add_parser("abbreviations", help="survey sections labelled Abkürzung")
     abbreviations.add_argument("--date", required=True)
     abbreviations.add_argument("--workers", type=int, default=8)
@@ -77,7 +61,6 @@ def main() -> None:
     commands = {
         "cache": cmd_cache,
         "inventory": cmd_inventory,
-        "proper-nouns": cmd_proper_nouns,
         "abbreviations": cmd_abbreviations,
     }
     commands[args.command](args)

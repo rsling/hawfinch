@@ -10,9 +10,8 @@ What the database must contain. This is the requirements list that the release s
 - The form of a lexeme is its **stem**, not its dictionary form. Verbs are stored without the infinitive suffix (`kauf`, not `kaufen`).
 - **Periphrastic forms are never stored** (for example "geglaubt haben würde"). They can be generated on the fly from the stored forms. Only single-word inflected forms go into the word-form table.
 - **zu-infinitives and gerundives are never stored either** (`aufzustocken`, `aufzuwärmende`), even where `zu` is written inside the word. The **Partizip I is derivation, not inflection**: an `-end` word is a lexeme only where Wiktionary lists it with its own meaning. The Partizip II is a word form of the verb; its declined forms are stored only for adjective lexemes. See [0004](../decisions/0004-participles-and-zu-forms.md).
-- **Proper nouns are a part of speech of their own**, separate from common nouns. A noun in a given sense is a common noun if it has a conceptual plural or a mass use, and otherwise a proper noun, with some classes fixed by name. Sections mixing both are split into two lexemes. See [0003](../decisions/0003-proper-nouns.md).
+- **There is no proper-noun part of speech.** Lexemes keep Wiktionary's part of speech. Whether a lexical unit names something is recorded in `named_entity`. Where Wiktionary marks the entry as a name, it holds the head noun of the definition (`Stadt`, `Nachname`); otherwise it is `default`. See [0003](../decisions/0003-named-entities.md).
 - **`Abkürzung` is not a part of speech.** Short words and abbreviated names are ordinary lexemes with the part of speech they are used as, and their form is recorded in `coding`. Orthographic abbreviations (`Einw.`) are not lexemes. See [0005](../decisions/0005-abbreviations.md).
-- Where a distinction cannot be read off the markup, an optional local language model may make it. A release records whether one was used. See [0006](../decisions/0006-language-model.md).
 - All segmentation uses the symbols defined in [segmentation conventions](../features/segmentation.md).
 
 Lexeme or lexical unit? A different inventory of forms means a different lexeme (Wort with plural Wörter versus Worte). A restriction on the same forms, or a syntactic property, belongs to the lexical unit ("no plural in this sense", transitivity, choice of auxiliary).
@@ -28,7 +27,7 @@ Ideally two tables, one for simplex and one for complex lexemes.
 | Spelling | extracted | |
 | Spelling variants | extracted | |
 | Orthographic syllable segmentation | extracted | |
-| Part of speech | extracted/derived | German Wiktionary labels, with two exceptions. Proper nouns are a part of speech of their own, recognised from the labels or, if configured, by a language model ([0003](../decisions/0003-proper-nouns.md)). `Abkürzung` is replaced by the part of speech the word is used as ([0005](../decisions/0005-abbreviations.md)). Definitions in [part of speech](../features/part-of-speech.md). |
+| Part of speech | extracted/derived | German Wiktionary labels. `Abkürzung` is replaced by the part of speech the word is used as ([0005](../decisions/0005-abbreviations.md)). Name labels (`Toponym`, `Nachname`, …) are not parts of speech; they mark named entities ([0003](../decisions/0003-named-entities.md)). Definitions in [part of speech](../features/part-of-speech.md). |
 | Coding | derived | `regular`, `short` (spoken as such: `KKW`, `CVJM`, `Uni`) or `abbreviation` (read as the full word: `BT`). Clippings such as `Uni` are recognised from the Herkunft in M2. See [0005](../decisions/0005-abbreviations.md). |
 | Grammatical gender (nouns) | extracted | |
 | Plural type (nouns) | derived | Regular case: umlaut yes/no plus suffix. Irregular cases must be representable too. |
@@ -59,6 +58,7 @@ One row per pairing of a lexeme with a sense.
 |---|---|---|
 | Lexeme and sense | derived | |
 | Restrictions and syntactic properties in this sense | extracted | "No plural in this sense", transitivity, auxiliary, and similar labels. |
+| Named entity | derived | `default` where Wiktionary does not mark the entry as a name. Otherwise the head noun of the definition as a lemma (`Stadt`, `Nachname`), or `unspecified` if there is none. No types in release 1. See [0003](../decisions/0003-named-entities.md) and [named entities](../features/named-entities.md). |
 | Links to synonyms, hyponyms and other semantic relations | extracted | |
 | English translations | extracted | If possible. For later automatic word-by-word glossing. |
 | Link into the examples table | extracted | If possible. |

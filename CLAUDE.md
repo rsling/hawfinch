@@ -14,7 +14,7 @@ Hawfinch builds a lexical database of German grammar from German Wiktionary dump
 
 A later phase will link the lexical data with usage data from web corpora. It will get its own top-level `corpus/` directory and join onto releases by lexeme ID.
 
-Most of the tree is scaffolding: the feature, model, validate and export modules are docstring-only stubs, and every CLI subcommand except `fetch` exits with "not implemented yet". Implemented so far: `dump/` (fetch, XML reader, Parquet page cache, SQL table reader), first versions of `wikitext/` (templates, sections and blocks, plain text) and `features/partofspeech.py` (proper-noun rule). The feasibility test is driven by `extract/scripts/feasibility.py`; its results are in `docs/feasibility.md`.
+Most of the tree is scaffolding: the feature, model, validate and export modules are docstring-only stubs, and every CLI subcommand except `fetch` exits with "not implemented yet". Implemented so far: `dump/` (fetch, XML reader, Parquet page cache, SQL table reader), first versions of `wikitext/` (templates, sections and blocks, plain text), and the list of Wiktionary's name labels in `features/partofspeech.py`. The feasibility test is driven by `extract/scripts/feasibility.py`; its results are in `docs/feasibility.md`.
 
 ## Commands
 
@@ -47,11 +47,10 @@ Read `docs/schema/profile.md` (what the database must contain), `docs/decisions/
 - Three levels (`docs/decisions/0002-lexeme-model.md`): a lexeme is a stem with all its form-side properties; a sense is a meaning (word-specific for now); a lexical unit pairs one lexeme with one sense. Any difference in a lexeme-level field means two lexemes; restrictions and syntactic properties that hold in one sense only go on the lexical unit. Never merge across Wiktionary part-of-speech sections.
 - Stems are stored, not citation forms: verbs lack the infinitive suffix (`kauf`).
 - Periphrastic forms are never stored; only single-word inflected forms go into the word-form table. zu-infinitives and gerundives are not stored either. Partizip I (`-end`) is derivation: an `-end` word is a lexeme only if Wiktionary lists it with its own meaning. Partizip II is a verb word form, but its declined forms are stored only for adjective lexemes (`docs/decisions/0004-participles-and-zu-forms.md`).
-- Proper nouns are a part of speech of their own (`docs/decisions/0003-proper-nouns.md`).
-  - A noun sense is common if it has a conceptual plural or a mass use, and proper otherwise. Some classes are fixed by name: languages are proper, taxa are common.
-  - Sections mixing both are split into two lexemes.
-  - Detection uses an optional local language model (`llama-server`) when one is configured (`docs/decisions/0006-language-model.md`). Otherwise it uses Wiktionary's name labels plus a pattern for language names.
-  - A configured server that cannot be reached is an error, never a silent fallback. The manifest records the model, including its quantisation.
+- There is no proper-noun part of speech (`docs/decisions/0003-named-entities.md`). Lexemes keep Wiktionary's; name labels (`Toponym`, `Nachname`, …) are not parts of speech, and a section with only name labels is a `Substantiv`.
+  - Lexical units have a field `named_entity`. It is `default` where Wiktionary does not mark the entry as a name ("not that we know of", not "no"). Otherwise it is the head noun of the sense's definition as a lemma (`Stadt`, `Nachname`), or `unspecified` if there is none (`docs/features/named-entities.md`).
+  - Marked means a name label, a name table or a `{{K|…}}` name label, and nothing else. Release 1 takes Wiktionary's marking without heuristics and stores heads, not types; grouping heads into types is left to the analyses.
+  - The extractor uses no language model (0006 is withdrawn).
 - `Abkürzung` is not a part of speech (`docs/decisions/0005-abbreviations.md`).
   - Short words and abbreviated names are ordinary lexemes with a `coding` field: `regular`, `short` or `abbreviation`.
   - Within sections labelled `Abkürzung`, IPA in Wiktionary means `short` and no IPA means `abbreviation`. Never apply this test to other lexemes.

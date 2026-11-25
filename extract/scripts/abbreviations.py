@@ -15,7 +15,6 @@ from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 
 import pyarrow.parquet as pq
-from proper_nouns import GENDERS, sense_lines
 
 from hawfinch.features.partofspeech import NAME_LABELS
 from hawfinch.wikitext.plain import to_plain
@@ -24,6 +23,26 @@ from hawfinch.wikitext.templates import scan
 
 IPA_PLACEHOLDERS = {"", "…", "...", "-", "—"}
 FIELDS = ["page_id", "title", "labels", "signal", "genders", "shape", "ipa", "sense1"]
+GENDERS = {
+    "m",
+    "f",
+    "n",
+    "mf",
+    "nm",
+    "mn.",
+    "nf",
+    "fn",
+    "fm",
+    "mfn",
+    "nPl.",
+    "kPl.",
+    "fPl.",
+    "mPl.",
+}
+
+
+def sense_lines(lines: list[str]) -> list[str]:
+    return [line for line in lines if line.startswith(":")]
 
 
 def shape(title: str) -> str:

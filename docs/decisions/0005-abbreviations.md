@@ -19,7 +19,7 @@ The label covers three kinds of words:
 ## Decision
 
 1. **`Abkürzung` is not a part of speech.**
-   - Short words and abbreviated names are lexemes like any other. They have inflection, gender and pronunciation, and their part of speech is the one they are used as: `KKW` is a common noun, `BT` and `CVJM` are proper nouns ([0003](0003-proper-nouns.md)).
+   - Short words and abbreviated names are lexemes like any other. They have inflection, gender and pronunciation, and their part of speech is the one they are used as: `KKW`, `BT` and `CVJM` are nouns. Whether they name something is recorded like for any other word ([0003](0003-named-entities.md)).
    - `k. o.` is an adjective.
 2. **Lexemes get a field `coding`** with three values:
    - `short`: a short word that is spoken as such (`KKW`, `CVJM`).
@@ -35,6 +35,6 @@ The label covers three kinds of words:
 ## Consequences
 
 - `coding` is a lexeme-level field. By [0002](0002-lexeme-model.md), a difference in it makes two lexemes.
-- Almost no section labelled only `Abkürzung` shows a part of speech in its markup. Without a language model ([0006](0006-language-model.md)), their part of speech has to come from the meaning line or a default. How that is done is settled on the data in M1.
+- Almost no section labelled only `Abkürzung` shows a part of speech in its markup. Their part of speech has to come from the meaning line or a default. How that is done is settled on the data in M1.
 - Separating orthographic abbreviations from short words is also settled on the data in M1. The period in `Einw.` is the obvious signal, but not the only one: `MHz` is read as the full word and has no period.
 - `UFO` carries `Abkürzung` but its variant `Ufo` does not. Both are `short`: `UFO` by the IPA test, `Ufo` from its Herkunft in M2.

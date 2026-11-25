@@ -21,7 +21,7 @@ The whole pipeline runs end to end on a narrow slice, so that every later milest
 - **Pipeline:** `fetch`, a streaming dump reader, selection of German entries, a wikitext parser for sections and templates, and working `extract`, `validate` and `export` subcommands.
 - **Release format:** Parquet tables, a DuckDB file and `MANIFEST.json`, with the CC BY-SA licence and attribution text shipped in the release.
 - **Lexeme table:** spelling, spelling variants, part of speech, coding, gender, orthographic syllables, IPA as found, and lexeme-level quirks (no plural, only plural). Nouns, verbs and adjectives are covered in full; other parts of speech get the basic fields only.
-- **Part of speech:** Wiktionary's labels, with proper nouns as a part of speech of their own ([0003](decisions/0003-proper-nouns.md)) and `Abkürzung` replaced by the part of speech the word is used as ([0005](decisions/0005-abbreviations.md)). The optional language-model classification ([0006](decisions/0006-language-model.md)) comes with the configuration file and the answer cache. Orthographic abbreviations go into a stub table.
+- **Part of speech:** Wiktionary's labels, with `Abkürzung` replaced by the part of speech the word is used as ([0005](decisions/0005-abbreviations.md)). Name labels (`Toponym`, `Nachname`, …) are not parts of speech ([0003](decisions/0003-named-entities.md)). Orthographic abbreviations go into a stub table.
 - **Verb stems:** read from `Flexion:` arguments and stored without the infinitive suffix.
 - **Word-form table:** forms from form entries and noun tables, with grammatical features, spelling variants, orthographic syllables, and IPA where present. Missing single-word forms are generated from stems and marked as generated.
 - **Derived fields:** plural type, adjective umlaut, inflectional segmentation (`läuf-t`).
@@ -59,6 +59,7 @@ If the feasibility test shows Herkunft parsing to be hard, phonology is the part
 
 - **Senses and lexical units:** senses with their definitions, lexical units, and resolution of sense references (`[1, 2]`, `[1–3]`, `[2a]`, `[*]`).
 - **Lexical-unit properties:** restrictions, transitivity, auxiliary and similar labels.
+- **Named entities:** the `named_entity` field of lexical units. For senses Wiktionary marks as names, it is the head noun of the definition ([0003](decisions/0003-named-entities.md)).
 - **Semantic relations, English translations, and the examples table.**
 - **Stable sense identifiers:** the scheme must be decided before this milestone starts. It is the one unsolved requirement for the freeze.
 - **Other structured information:** a survey of what else the dump holds in structured form, with a decision per item to add it or leave it out.
@@ -71,7 +72,7 @@ After the freeze the schema does not change. Bug fixes and re-runs on newer dump
 - **Underlying phonological representation.** It is our own analysis, not extraction, and is expected to come out of the phonology study.
 - **Abstract senses shared across words.** Senses stay word-specific, as [the lexeme model](decisions/0002-lexeme-model.md) foresees.
 - **Generalisation over the semantic descriptions of affixes.** Release 1 only collects the descriptions.
-- **Separate categories for holidays, recurring events and language names.** In release 1 they are proper nouns, although they fit the proper-noun test poorly ([0003](decisions/0003-proper-nouns.md)).
+- **Types of named entities, and names Wiktionary does not mark.** Release 1 stores the heads as Wiktionary's definitions give them. Grouping them into types is left to the analyses, which will show what a later release should add ([0003](decisions/0003-named-entities.md)).
 
 ## After release 1
 
