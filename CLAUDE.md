@@ -52,10 +52,10 @@ Read `docs/schema/profile.md` (what the database must contain), `docs/decisions/
   - Marked means a name label, a name table or a `{{K|…}}` name label, and nothing else. Release 1 takes Wiktionary's marking without heuristics and stores heads, not types; grouping heads into types is left to the analyses.
   - The extractor uses no language model (0006 is withdrawn).
 - `Abkürzung` is not a part of speech (`docs/decisions/0005-abbreviations.md`).
-  - Short words and abbreviated names are ordinary lexemes with a `coding` field: `regular`, `short` or `abbreviation`.
-  - Within sections labelled `Abkürzung`, IPA in Wiktionary means `short` and no IPA means `abbreviation`. Never apply this test to other lexemes.
+  - Short words and abbreviated names are ordinary lexemes with a `coding` field: `regular` or `short`. There is no `abbreviation` value.
+  - A section labelled `Abkürzung` is a lexeme (and `short`) only if it is in all capitals or mixed case and has IPA, a noun table, a gender in the heading or a second part-of-speech label. Without a part-of-speech signal it is a `Substantiv`. Never apply these rules to other lexemes.
+  - All other `Abkürzung` sections go into the stub table: entries without a signal (`BBodSchG`, `BT`), orthographic abbreviations (`Einw.`), unit symbols, E numbers, vehicle registration codes, and every other spelling (lower case, single letters) whatever its markup.
   - Clippings (`Uni`, `Kita`) are `short`, recognised from the Herkunft in M2.
-  - Orthographic abbreviations (`Einw.`) go into a stub table.
 - Boundary symbols (`docs/features/segmentation.md`): `·` syllable (`An·zah·lung`), `-` inflection (`läuf-t`, `ge-koch-t`), `.` compound (`Haus.tür`), `+` linking element (`Kind+er.garten`), `:` derivation (`Gesund:heit`), `=` verb particle (`ab=kauf`).
 - Do not implement syllable boundaries in IPA without discussing it with the user first, and never derive them from the orthographic "Worttrennung".
 - Stable identifiers for senses and lexemes across extraction runs are required and unsolved; do not settle on a scheme without discussion.

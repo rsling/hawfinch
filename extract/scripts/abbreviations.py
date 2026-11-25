@@ -2,14 +2,19 @@
 
 For every German section with an ``Abkürzung`` label, records the shape of the spelling
 (abbreviation period, all capitals, mixed case, …), whether anything signals its part of
-speech (another Wortart label, a gender in the heading), and whether the Aussprache block has
-an IPA transcription. Writes ``abbreviations.tsv`` (one row per section) and
-``summary.tsv`` (counts by shape, signal and IPA).
+speech (another Wortart label, a gender in the heading), whether it has a noun table and
+whether the Aussprache block has an IPA transcription. From these it derives the status of
+the section under decision 0005: ``lexeme``, ``stub`` or ``code`` (a vehicle registration
+code, which is a stub too).
+
+Writes ``abbreviations.tsv`` (one row per section), ``summary.tsv`` (counts by shape, signal
+and IPA) and ``status.tsv`` (counts by shape and status).
 """
 
 from __future__ import annotations
 
 import csv
+import re
 from collections import Counter
 from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
@@ -22,7 +27,26 @@ from hawfinch.wikitext.sections import blocks, german_sections
 from hawfinch.wikitext.templates import scan
 
 IPA_PLACEHOLDERS = {"", "…", "...", "-", "—"}
-FIELDS = ["page_id", "title", "labels", "signal", "genders", "shape", "ipa", "sense1"]
+FIELDS = [
+    "page_id",
+    "title",
+    "labels",
+    "signal",
+    "genders",
+    "shape",
+    "table",
+    "ipa",
+    "audio",
+    "example",
+    "senses",
+    "code_senses",
+    "status",
+    "sense1",
+]
+# Only these spellings are tested for lexeme status; all others are stubs.
+LEXEME_SHAPES = {"all caps", "mixed case"}
+NOUN_TABLE = "Deutsch Substantiv Übersicht"
+REGISTRATION_CODE = re.compile(r"[Kk]ennzeichen|Unterscheidungszeichen")
 GENDERS = {
     "m",
     "f",
@@ -72,6 +96,31 @@ def has_ipa(lines: list[str]) -> bool:
     return False
 
 
+def has_audio(lines: list[str]) -> bool:
+    return any(
+        t.name == "Audio" and any(v.strip() for v in t.positional())
+        for line in lines
+        for t in scan(line).templates
+    )
+
+
+def has_example(lines: list[str]) -> bool:
+    return any(line.strip(": ") and "fehlen" not in line for line in lines)
+
+
+def status(record: dict) -> str:
+    """Lexeme, stub or code. A lexeme has all capitals or mixed case and at least one of: an
+    IPA transcription, a noun table, a gender in the heading, a second part-of-speech label.
+    A section whose senses are all vehicle registration codes is a code."""
+    if record["shape"] not in LEXEME_SHAPES:
+        return "stub"
+    if not (record["ipa"] or record["table"] or record["signal"] != "none"):
+        return "stub"
+    if record["senses"] and record["code_senses"] == record["senses"]:
+        return "code"
+    return "lexeme"
+
+
 def signal(labels: list[str], genders: list[str]) -> str:
     if set(labels) & NAME_LABELS:
         return "name label"
@@ -99,21 +148,27 @@ def process_row_group(args) -> list[dict]:
                 labels = [label for label, _ in pos.wortarten]
                 if "Abkürzung" not in labels:
                     continue
-                parts = blocks(pos.section.body(text))
+                body = pos.section.body(text)
+                parts = blocks(body)
                 senses = [to_plain(s) for s in sense_lines(parts.get("Bedeutungen", []))]
                 genders = sorted({t.name for t in pos.heading_templates if t.name in GENDERS})
-                records.append(
-                    {
-                        "page_id": row["page_id"],
-                        "title": row["title"],
-                        "labels": " + ".join(labels),
-                        "signal": signal(labels, genders),
-                        "genders": ",".join(genders),
-                        "shape": shape(row["title"]),
-                        "ipa": has_ipa(parts.get("Aussprache", [])),
-                        "sense1": senses[0][:200] if senses else "",
-                    }
-                )
+                record = {
+                    "page_id": row["page_id"],
+                    "title": row["title"],
+                    "labels": " + ".join(labels),
+                    "signal": signal(labels, genders),
+                    "genders": ",".join(genders),
+                    "shape": shape(row["title"]),
+                    "table": any(t.name == NOUN_TABLE for t in scan(body).templates),
+                    "ipa": has_ipa(parts.get("Aussprache", [])),
+                    "audio": has_audio(parts.get("Aussprache", [])),
+                    "example": has_example(parts.get("Beispiele", [])),
+                    "senses": len(senses),
+                    "code_senses": sum(bool(REGISTRATION_CODE.search(s)) for s in senses),
+                    "sense1": senses[0][:200] if senses else "",
+                }
+                record["status"] = status(record)
+                records.append(record)
     return records
 
 
@@ -133,4 +188,10 @@ def run(cache: Path, out: Path, workers: int) -> None:
         writer.writerow(["shape", "signal", "ipa", "n"])
         for (shape_, signal_, ipa), n in sorted(counts.items()):
             writer.writerow([shape_, signal_, ipa, n])
+    by_status = Counter((r["shape"], r["status"]) for r in records)
+    with (out / "status.tsv").open("w", encoding="utf-8", newline="") as fh:
+        writer = csv.writer(fh, delimiter="\t", lineterminator="\n")
+        writer.writerow(["shape", "status", "n"])
+        for (shape_, status_), n in sorted(by_status.items()):
+            writer.writerow([shape_, status_, n])
     print(f"{len(records):,} sections labelled Abkürzung -> {out}")

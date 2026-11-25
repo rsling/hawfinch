@@ -20,10 +20,14 @@ Wiktionary's `Abkürzung` label is replaced by the part of speech a word is used
 
 | `coding` | Meaning | Examples |
 |---|---|---|
-| `short` | short word spoken as such | `KKW`, `CVJM`, `Uni`, `Kita`, `Sponti` |
-| `abbreviation` | written abbreviation read as the full word | `BT` (read "Bundestag") |
+| `short` | short word spoken as such | `KKW`, `CVJM`, `Lkw`, `Uni`, `Kita`, `Sponti` |
 | `regular` | all other lexemes | |
 
-- **Sections labelled `Abkürzung`:** an IPA transcription in Wiktionary makes them `short`, and its absence makes them `abbreviation`. This is decided for abbreviated names in capitals (`BT`, `CVJM`); which other spellings it covers is [open](../open-questions.md#coding-of-short-words). The test is never applied to lexemes without the label: an ordinary noun without a transcription is `regular`.
+- **Sections labelled `Abkürzung`** are lexemes only if they are spelled in all capitals or mixed case and have an IPA transcription, a noun table, a gender in the heading or a second part-of-speech label. These lexemes are `short`. All other sections go into the stub table.
+- **Part of speech:** the other label in the heading if there is one. Without one, the lexeme is a `Substantiv`, and its gender is empty unless a noun table gives it.
+- **Vehicle registration codes** (`MIL`, `WL`) are recognised by `Kennzeichen` or `Unterscheidungszeichen` in the meaning line. A section with only such senses is a stub; elsewhere those senses are dropped.
+- **Other spellings are never lexemes.** Sections with a period, in lower case, with a single letter or with spaces are stubs even if they have a noun table, a gender or a second label (`k. o.`, `dpa`, `kcal`, the letter names).
+- **Abbreviations transcribed as the full word** (candidates: `Mio`, `Adm`, `Mt`) are not lexemes either. How they are recognised is settled when the first data release is built.
 - **Clippings and syllable words** (`Uni`, `Kita`, `Akku`, `Azubi`, `Sponti`, `Fundi`): Wiktionary labels them plain `Substantiv`. They are `short`, recognised from the Herkunft in M2.
-- **Orthographic abbreviations** (`Einw.`, `kastil.`, `v. v.`) are not lexemes. In release 1 they go into a stub table with their spelling and raw meaning lines.
+- **The stub table** holds what is not a lexeme: sections without a signal (`BBodSchG`, `BT`), orthographic abbreviations (`Einw.`, `kastil.`, `v. v.`), unit symbols (`km`, `MHz`), E numbers and registration codes. In release 1 it has their spelling and raw meaning lines.
+- A lexeme without the `Abkürzung` label is never coded by these rules: an ordinary noun without a transcription is `regular`.

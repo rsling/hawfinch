@@ -36,13 +36,12 @@ Needed in M1, which stores orthographic syllables and inflectional segmentation 
 
 ## Coding of short words
 
-Needed in M1, which fills the `coding` field ([0005](decisions/0005-abbreviations.md)).
+Needed for the first data release; M1 fills the `coding` field ([0005](decisions/0005-abbreviations.md)).
 
-The IPA test (`short` with a transcription, `abbreviation` without) applies only to sections labelled `Abkürzung`. It is decided for abbreviated names in capitals (`BT`, `CVJM`) and intended for capitalised abbreviations only. Open points:
+Which sections labelled `Abkürzung` are lexemes is decided. Two points are left for later:
 
-- **Spellings.** Is "capitalised" all capitals only (`KKW`, `UWG`: 1,871 sections), or also mixed case (`Lkw`, `GmbH`, `BeurkG`: 1,068)? What coding do single letters (63), lower-case spellings (`km`: 97) and spellings with spaces (332) get?
-- **Reliability.** 1,337 of the 1,871 all-capitals sections have no IPA transcription. Many are short stubs (`LPD`, `BBL`, `UWG`) that are probably spoken letter by letter. There, a missing transcription reflects unfinished entries more than pronunciation, so the test would code them `abbreviation`.
-- **Out of scope?** Vehicle registration codes (`MIL`, `RE`), unit symbols (`MHz`, `Lj`) and E numbers (`E 401`) are among these sections. Should they be lexemes at all?
+- **Transcriptions of the full word.** Among the lexemes in mixed case, some transcriptions may give the full word, as they do for period abbreviations (candidates: `Mio`, `Adm`, books of the Bible such as `Mt`). These are noise and are to be removed. Not measured yet; how they are recognised is re-evaluated when the first data release is built.
+- **Defaulted part of speech.** 295 lexemes are `Substantiv` by default alone. They are to be examined once a beta of the extractor exists.
 
 Survey: [feasibility results](feasibility.md#abbreviations).
 

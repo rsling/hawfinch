@@ -235,16 +235,25 @@ uv run python extract/scripts/feasibility.py abbreviations --date 20261101   # 5
 
 5,191 German sections carry the label. Results are in `data/interim/feasibility/abbreviations/`.
 
-| Spelling | Sections | With IPA |
-|---|---|---|
-| abbreviation period (`Einw.`, `e. V.`) | 1,760 | 170 |
-| all capitals (`KKW`, `UWG`) | 1,871 | 534 |
-| mixed case (`Lkw`, `GmbH`, `BeurkG`) | 1,068 | 112 |
-| spaces, no period (mostly E numbers: `E 401`) | 332 | 64 |
-| lower case (`km`) | 97 | 27 |
-| single letter | 63 | 34 |
+| Spelling | Sections | With IPA | Lexemes | Stubs |
+|---|---|---|---|---|
+| abbreviation period (`Einw.`, `e. V.`) | 1,760 | 170 | | 1,760 |
+| all capitals (`KKW`, `UWG`) | 1,871 | 534 | 691 | 1,180 |
+| mixed case (`Lkw`, `GmbH`, `BeurkG`) | 1,068 | 112 | 133 | 935 |
+| spaces, no period (mostly E numbers: `E 401`) | 332 | 64 | | 332 |
+| lower case (`km`) | 97 | 27 | | 97 |
+| single letter | 63 | 34 | | 63 |
+
+The last two columns apply the rule of 0005: a lexeme is in all capitals or mixed case and has an IPA transcription, a noun table, a gender in the heading or a second part-of-speech label. All other spellings are stubs whatever they contain; 22 of those sections have a noun table, a gender or a second label (`k. o.`, `dpa`, `kcal`, twelve letter names).
 
 - **Part of speech:** of the 4,878 sections labelled only `Abkürzung`, 157 have a gender in the heading. The other 4,721 have no signal of a part of speech in their markup at all.
-- **IPA on period abbreviations** transcribes the full word: `Temp.` has `tɛmpəʁaˈtuːɐ̯`, `preuß.` has `ˈpʁɔɪ̯sɪʃ`. The IPA test of 0005 cannot apply to them.
-- **All capitals:** 1,337 of the 1,871 sections have no IPA. Many are short stubs whose only content is the expansion (`LPD`, `BBL`, `UWG`), and probably spoken letter by letter. So a missing transcription is a weak sign that a word is read as the full word.
-- **Codes:** vehicle registration codes (`MIL`, `RE`), unit symbols (`MHz`, `Lj`) and E numbers are among the sections.
+- **IPA on period abbreviations** transcribes the full word: `Temp.` has `tɛmpəʁaˈtuːɐ̯`, `preuß.` has `ˈpʁɔɪ̯sɪʃ`. An IPA test cannot apply to them.
+- **A missing IPA says little.** 1,337 of the 1,871 sections in all capitals have none. Many are short entries whose only content is the expansion (`BBL`, `UWG`), and they are probably spoken letter by letter.
+- **Lexemes (824):**
+  - 643 have an IPA transcription. The other 181 have a noun table, a gender or a second label only (`BaFin`, `DIN`, `KMK`, `HJ`).
+  - 444 have a part-of-speech signal (a second label, a name label or a gender), and 85 more have a noun table. 295 have neither and are `Substantiv` by default.
+- **Stubs in all capitals or mixed case (2,108):**
+  - 872 have at most one sense, no audio file and no example. Many are abbreviations of laws (`BBodSchG`, `TabakStG`).
+  - 504 have an audio file and 754 an example. Real short words are among them: `DWD`, `ASB`, `THG`, `IgG`, `KKH`.
+- **Vehicle registration codes** are recognised by `Kennzeichen` or `Unterscheidungszeichen` in the meaning line. 7 sections with a signal consist of such senses only (`AS`, `WL`) and count as stubs above. 38 lexemes have such a sense beside others (`AU`, `MD`). Of the stubs, 95 are registration codes only.
+- **Other codes:** unit symbols (`MHz`, `Lj`, `km`) and E numbers are stubs by their spelling or for lack of a signal.

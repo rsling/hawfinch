@@ -11,7 +11,7 @@ What the database must contain. This is the requirements list that the release s
 - **Periphrastic forms are never stored** (for example "geglaubt haben würde"). They can be generated on the fly from the stored forms. Only single-word inflected forms go into the word-form table.
 - **zu-infinitives and gerundives are never stored either** (`aufzustocken`, `aufzuwärmende`), even where `zu` is written inside the word. The **Partizip I is derivation, not inflection**: an `-end` word is a lexeme only where Wiktionary lists it with its own meaning. The Partizip II is a word form of the verb; its declined forms are stored only for adjective lexemes. See [0004](../decisions/0004-participles-and-zu-forms.md).
 - **There is no proper-noun part of speech.** Lexemes keep Wiktionary's part of speech. Whether a lexical unit names something is recorded in `named_entity`. Where Wiktionary marks the entry as a name, it holds the head noun of the definition (`Stadt`, `Nachname`); otherwise it is `default`. See [0003](../decisions/0003-named-entities.md).
-- **`Abkürzung` is not a part of speech.** Short words and abbreviated names are ordinary lexemes with the part of speech they are used as, and their form is recorded in `coding`. Orthographic abbreviations (`Einw.`) are not lexemes. See [0005](../decisions/0005-abbreviations.md).
+- **`Abkürzung` is not a part of speech.** Short words and abbreviated names are ordinary lexemes with the part of speech they are used as, and their form is recorded in `coding`. Sections labelled `Abkürzung` without a signal of word status, orthographic abbreviations (`Einw.`) and codes are not lexemes. See [0005](../decisions/0005-abbreviations.md).
 - All segmentation uses the symbols defined in [segmentation conventions](../features/segmentation.md).
 
 Lexeme or lexical unit? A different inventory of forms means a different lexeme (Wort with plural Wörter versus Worte). A restriction on the same forms, or a syntactic property, belongs to the lexical unit ("no plural in this sense", transitivity, choice of auxiliary).
@@ -28,7 +28,7 @@ Ideally two tables, one for simplex and one for complex lexemes.
 | Spelling variants | extracted | |
 | Orthographic syllable segmentation | extracted | |
 | Part of speech | extracted/derived | German Wiktionary labels. `Abkürzung` is replaced by the part of speech the word is used as ([0005](../decisions/0005-abbreviations.md)). Name labels (`Toponym`, `Nachname`, …) are not parts of speech; they mark named entities ([0003](../decisions/0003-named-entities.md)). Definitions in [part of speech](../features/part-of-speech.md). |
-| Coding | derived | `regular`, `short` (spoken as such: `KKW`, `CVJM`, `Uni`) or `abbreviation` (read as the full word: `BT`). Clippings such as `Uni` are recognised from the Herkunft in M2. See [0005](../decisions/0005-abbreviations.md). |
+| Coding | derived | `regular` or `short` (a short word spoken as such: `KKW`, `CVJM`, `Uni`). Clippings such as `Uni` are recognised from the Herkunft in M2. See [0005](../decisions/0005-abbreviations.md). |
 | Grammatical gender (nouns) | extracted | |
 | Plural type (nouns) | derived | Regular case: umlaut yes/no plus suffix. Irregular cases must be representable too. |
 | Umlaut in comparative/superlative (adjectives) | derived | yes/no |
@@ -101,9 +101,9 @@ Preliminary; to be done if feasible.
 
 A separate table: primary key plus the example text. Lexical units link into it.
 
-## Orthographic abbreviations
+## Abbreviation stubs
 
-A stub table in release 1 ([0005](../decisions/0005-abbreviations.md)). It holds written abbreviations that are not lexemes (`Einw.`, `kastil.`, `v. v.`) and is not analysed further.
+A stub table in release 1 ([0005](../decisions/0005-abbreviations.md)). It holds the sections labelled `Abkürzung` that are not lexemes: orthographic abbreviations (`Einw.`, `kastil.`, `v. v.`), sections without a signal of word status (`BBodSchG`, `BT`), unit symbols, E numbers and vehicle registration codes. It is not analysed further; it shows what was left out of the main tables.
 
 | Item | Origin | Notes |
 |---|---|---|

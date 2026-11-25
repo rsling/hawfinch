@@ -21,7 +21,7 @@ The whole pipeline runs end to end on a narrow slice, so that every later milest
 - **Pipeline:** `fetch`, a streaming dump reader, selection of German entries, a wikitext parser for sections and templates, and working `extract`, `validate` and `export` subcommands.
 - **Release format:** Parquet tables, a DuckDB file and `MANIFEST.json`, with the CC BY-SA licence and attribution text shipped in the release.
 - **Lexeme table:** spelling, spelling variants, part of speech, coding, gender, orthographic syllables, IPA as found, and lexeme-level quirks (no plural, only plural). Nouns, verbs and adjectives are covered in full; other parts of speech get the basic fields only.
-- **Part of speech:** Wiktionary's labels, with `Abkürzung` replaced by the part of speech the word is used as ([0005](decisions/0005-abbreviations.md)). Name labels (`Toponym`, `Nachname`, …) are not parts of speech ([0003](decisions/0003-named-entities.md)). Orthographic abbreviations go into a stub table.
+- **Part of speech:** Wiktionary's labels, with `Abkürzung` replaced by the part of speech the word is used as ([0005](decisions/0005-abbreviations.md)). Name labels (`Toponym`, `Nachname`, …) are not parts of speech ([0003](decisions/0003-named-entities.md)). `Abkürzung` sections that are not lexemes go into a stub table.
 - **Verb stems:** read from `Flexion:` arguments and stored without the infinitive suffix.
 - **Word-form table:** forms from form entries and noun tables, with grammatical features, spelling variants, orthographic syllables, and IPA where present. Missing single-word forms are generated from stems and marked as generated.
 - **Derived fields:** plural type, adjective umlaut, inflectional segmentation (`läuf-t`).

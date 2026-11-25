@@ -1,6 +1,6 @@
 # 0005: Abbreviations and short words
 
-Date: 2026-11-24
+Date: 2026-11-24, revised 2026-11-25
 
 ## Context
 
@@ -20,21 +20,36 @@ The label covers three kinds of words:
 
 1. **`Abkürzung` is not a part of speech.**
    - Short words and abbreviated names are lexemes like any other. They have inflection, gender and pronunciation, and their part of speech is the one they are used as: `KKW`, `BT` and `CVJM` are nouns. Whether they name something is recorded like for any other word ([0003](0003-named-entities.md)).
-   - `k. o.` is an adjective.
-2. **Lexemes get a field `coding`** with three values:
-   - `short`: a short word that is spoken as such (`KKW`, `CVJM`).
-   - `abbreviation`: a written abbreviation that is read as the full word (`BT` is read "Bundestag").
+2. **Lexemes get a field `coding`** with two values:
+   - `short`: a short word that is spoken as such (`KKW`, `CVJM`, `Lkw`).
    - `regular`: all other lexemes.
-3. **`short` or `abbreviation` is decided by pronunciation.**
-   - If Wiktionary gives an IPA transcription, the coding is `short`; if not, it is `abbreviation`. This follows the usual pattern that an abbreviation read as the full word has no transcription of its own.
-   - **The test applies only to sections labelled `Abkürzung`.** An ordinary noun that happens to lack an IPA transcription is never coded `abbreviation`.
-   - It is decided for abbreviated names written in capitals (`BT`, `CVJM`). Which other spellings it covers is open ([open questions](../open-questions.md#coding-of-short-words)).
-4. **Clippings and syllable words are `short` too:** `Uni`, `Kita`, `Akku`, `Azubi`, `Sponti`, `Fundi`. They share their phonotactic and morphological properties with words like `LKW`. Wiktionary labels them plain `Substantiv`, so they are recognised from the Herkunft in M2; until then they are `regular`.
-5. **Orthographic abbreviations get a stub in release 1.** `Einw.` and `kastil.` are not lexemes. They are written to a table of their own with their spelling and the raw meaning lines, and they are not analysed further.
+3. **Only sections with a signal of word status become lexemes.** A section labelled `Abkürzung` is a lexeme if it is spelled in all capitals or mixed case (`KKW`, `Lkw`, `GmbH`) and has at least one of:
+   - an IPA transcription;
+   - a noun table (`Deutsch Substantiv Übersicht`);
+   - a gender in the heading;
+   - a second part-of-speech label.
+
+   All such lexemes are `short`. In the dump of 2026-11-01 these are 824 of the 2,939 sections in all capitals or mixed case.
+4. **Everything else is a stub.** Sections without any of these signals are mostly unfinished entries whose only content is the expansion (`BBodSchG`, `UWG`), and they are not lexemes. They go into the stub table, so that what was left out of the main tables can be examined. This includes:
+   - sections in all capitals or mixed case without a signal (2,108), among them written abbreviations read as the full word (`BT`);
+   - orthographic abbreviations with a period (`Einw.`, `kastil.`, `v. v.`);
+   - codes: vehicle registration codes (`MIL`, `WL`), unit symbols (`km`, `MHz`) and E numbers (`E 401`);
+   - all sections in other spellings (lower case, single letters, spaces), whatever they contain. A noun table, a gender or a second label does not make them lexemes: `dpa`, `kcal`, `k. o.` and the letter names (`a`, `b`, …) are stubs.
+5. **Vehicle registration codes are removed by a pattern on the meaning line** (`Kennzeichen`, `Unterscheidungszeichen`). Wiktionary does not mark them in the markup. A section whose senses are all registration codes is a stub; in other sections, only those senses are dropped.
+6. **A section without a part-of-speech signal is a `Substantiv`**, with the gender left empty unless a noun table gives one.
+7. **Clippings and syllable words are `short` too:** `Uni`, `Kita`, `Akku`, `Azubi`, `Sponti`, `Fundi`. They share their phonotactic and morphological properties with words like `LKW`. Wiktionary labels them plain `Substantiv`, so they are recognised from the Herkunft in M2; until then they are `regular`.
+8. **A lexeme without an IPA transcription is `short` like the others.** 181 lexemes have a noun table, a gender or a second label, but no transcription (`BaFin`, `DIN`, `KMK`). They are short words that Wiktionary has not transcribed, and they need no separate list.
+9. **Abbreviations whose transcription gives the full word are not lexemes.** Some sections in mixed case may be transcribed as the full word, as period abbreviations are (candidates: `Mio`, `Adm`, books of the Bible such as `Mt`). They are to be removed. How they are recognised is not settled; it is re-evaluated when the first data release is built.
+
+## Rejected: coding by IPA alone
+
+The first version of this decision had a third value, `abbreviation`, for written abbreviations read as the full word, and assigned it to every section without an IPA transcription. The [survey](../feasibility.md#abbreviations) showed that a missing transcription mostly means an unfinished entry: 1,337 of the 1,871 sections in all capitals have none, and most of them are spoken letter by letter. The value is dropped for lexemes.
 
 ## Consequences
 
 - `coding` is a lexeme-level field. By [0002](0002-lexeme-model.md), a difference in it makes two lexemes.
-- Almost no section labelled only `Abkürzung` shows a part of speech in its markup. Their part of speech has to come from the meaning line or a default. How that is done is settled on the data in M1.
-- Separating orthographic abbreviations from short words is also settled on the data in M1. The period in `Einw.` is the obvious signal, but not the only one: `MHz` is read as the full word and has no period.
-- `UFO` carries `Abkürzung` but its variant `Ufo` does not. Both are `short`: `UFO` by the IPA test, `Ufo` from its Herkunft in M2.
+- The cut between lexeme and stub follows how complete the Wiktionary entry is, not a linguistic class. Real short words with unfinished entries are stubs (`DWD`, `ASB`, `THG`). Of the 2,108 stubs in all capitals or mixed case, 504 have an audio file and 754 have an example.
+- 295 lexemes get their part of speech by default alone (no label, gender or noun table). They are to be examined once a beta of the extractor exists.
+- The stub table holds more than orthographic abbreviations.
+- `UFO` carries `Abkürzung` but its variant `Ufo` does not. Both are `short`: `UFO` by this decision, `Ufo` from its Herkunft in M2.
+- `k. o.` is a stub, although it is used as an adjective.
