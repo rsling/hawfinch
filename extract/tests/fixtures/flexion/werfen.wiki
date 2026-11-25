@@ -1,0 +1,4 @@
+== werfen (Konjugation) ({{Verbkonjugation|Deutsch}}) ==
+{{Abgeleitete Verben|[[abwerfen]], [[anwerfen]], [[bewerfen]], [[einwerfen]], [[hinwerfen]], [[hineinwerfen]], [[rauswerfen]], [[überwerfen]], [[unterwerfen]], [[verwerfen]], [[wegwerfen]], [[zuwerfen]]}}
+
+{{Deutsch Verb unregelmäßig||2=werf|3=warf|4=würf|5=geworfen|6=wirf|8=i|vp=ja|zp=ja|gerund=ja}}

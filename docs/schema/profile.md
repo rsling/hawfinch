@@ -32,7 +32,9 @@ Ideally two tables, one for simplex and one for complex lexemes.
 | Grammatical gender (nouns) | extracted | |
 | Plural type (nouns) | derived | Regular case: umlaut yes/no plus suffix. Irregular cases must be representable too. |
 | Umlaut in comparative/superlative (adjectives) | derived | yes/no |
-| Stem allomorphs (verbs) | extracted/derived | Four stems; identical for weak verbs. |
+| Stem allomorphs (verbs) | extracted/derived | Four stems: present, present of the second and third person singular, preterite, participle. Identical for weak verbs. |
+| Variant stems (verbs) | extracted | A table of its own: lexeme, stem field, stem, conjugation class. Holds second stems (`frug`, `hub`, `gebär`) and subjunctive II stems that do not follow from a preterite stem by umlaut (`würf`, `stünd`); for these, sole stem and variant are not distinguished. |
+| Conjugation class (verbs) | extracted | `weak`, `strong`, `mixed`, `irregular`. |
 | IPA transcription with syllable segmentation | extracted + ours | Transcriptions need a consistency check and possibly normalisation. Syllable boundaries are not in Wiktionary; see the open question before implementing anything. |
 | Underlying phonological representation | ours | Not in Wiktionary. |
 | Syllable count | derived | |

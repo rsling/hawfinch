@@ -14,7 +14,7 @@ Hawfinch builds a lexical database of German grammar from German Wiktionary dump
 
 A later phase will link the lexical data with usage data from web corpora. It will get its own top-level `corpus/` directory and join onto releases by lexeme ID.
 
-Most of the tree is scaffolding: the feature, model, validate and export modules are docstring-only stubs, and every CLI subcommand except `fetch` exits with "not implemented yet". Implemented so far: `dump/` (fetch, XML reader, Parquet page cache, SQL table reader), first versions of `wikitext/` (templates, sections and blocks, plain text), and the list of Wiktionary's name labels in `features/partofspeech.py`. The feasibility test is driven by `extract/scripts/feasibility.py`; its results are in `docs/feasibility.md`.
+Most of the tree is scaffolding: the feature, model, validate and export modules are docstring-only stubs, and every CLI subcommand except `fetch` exits with "not implemented yet". Implemented so far: `dump/` (fetch, XML reader, Parquet page cache, SQL table reader), first versions of `wikitext/` (templates, sections and blocks, plain text), the list of Wiktionary's name labels in `features/partofspeech.py`, and a first version of verb stems in `features/inflection.py` (reads the four verb templates of `Flexion:` pages and generates the principal forms). The feasibility test is driven by `extract/scripts/feasibility.py`; its results are in `docs/feasibility.md`.
 
 ## Commands
 

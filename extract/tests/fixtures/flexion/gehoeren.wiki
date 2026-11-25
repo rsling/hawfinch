@@ -1,0 +1,3 @@
+== gehören (Konjugation) ({{Verbkonjugation|Deutsch}}) ==
+
+{{Deutsch Verb regelmäßig|geh|ö|r|e|n|gehört|vp=0|zp=0|gerund=0|veraltet=0|VA Partizip II=0}}

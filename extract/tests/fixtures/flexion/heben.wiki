@@ -1,0 +1,4 @@
+== heben (Konjugation) ({{Verbkonjugation|Deutsch}}) ==
+{{Abgeleitete Verben|[[anheben]], [[abheben]], [[aufheben]], [[beheben]], [[erheben]], [[rüberheben]], [[unterheben]], [[verheben]]}}
+
+{{Deutsch Verb unregelmäßig|2=heb|3=hob|4=höb|5=gehoben|9=hüb|11=hub|vp=ja|zp=ja|gerund=ja|Indikativ Präteritum Aktiv Alternativform (du)=hubst,<br />du hubest}}

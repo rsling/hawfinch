@@ -1,0 +1,3 @@
+== halten (Konjugation) ({{Verbkonjugation|Deutsch}}) ==
+{{Abgeleitete Verben|[[behalten]], [[enthalten]]}}
+{{Deutsch Verb unregelmäßig|2=halt|3=hielt|4=hielt|5=gehalten|6=hält|7=e|vp=ja|zp=ja|gerund=ja}}

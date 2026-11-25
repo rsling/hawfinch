@@ -1,0 +1,2 @@
+== denken (Konjugation) ({{Verbkonjugation|Deutsch}}) ==
+{{Deutsch Verb unregelmäßig|2=denk|3=dachte|4=dächt|5=gedacht|8=n|vp=es_wird|zp=es_ist|gerund=0|Hilfsverb=haben}}

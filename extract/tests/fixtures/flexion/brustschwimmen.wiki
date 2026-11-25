@@ -1,0 +1,7 @@
+== brustschwimmen (Konjugation) ({{Verbkonjugation|Deutsch}}) ==
+=== Hilfsverb sein ===
+{{Deutsch Verb unregelmäßig |brust|ViD=Brust|2=schwimm|3=schwamm|4=schwämm|5=geschwommen|9=schwömm|11=schwomm|vp=es_wird|zp=nein|gerund=1|Hilfsverb=sein
+}}
+=== Hilfsverb haben ===
+{{Deutsch Verb unregelmäßig |brust|ViD=Brust|2=schwimm|3=schwamm|4=schwämm|5=geschwommen|9=schwömm|11=schwomm|vp=es_wird|zp=nein|gerund=1|Hilfsverb=haben
+}}

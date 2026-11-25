@@ -1,0 +1,3 @@
+== reisen (Konjugation) ({{Verbkonjugation|Deutsch}}) ==
+
+{{Deutsch Verb regelmäßig|re|i|s|e|n|gereist|vp=uvp|zp=0|gerund=0|haben=0}}

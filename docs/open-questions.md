@@ -45,6 +45,35 @@ Which sections labelled `Abkürzung` are lexemes is decided. Two points are left
 
 Survey: [feasibility results](feasibility.md#abbreviations).
 
+## Verb stems
+
+Raised by the [feasibility test](feasibility.md#verb-stems).
+
+Settled on 2026-11-25:
+
+- **Stems stored:** present, present of the second and third person singular, preterite, participle.
+- **Variant stems** are stored in a table of their own (lexeme, stem field, stem, conjugation class), not in doubled columns. A second Partizip II with the same stem (`gesalzt`, `viergeteilt`) is stored as a word form only.
+- **Subjunctive II** follows from the preterite stem and is not stored, except for stems that do not follow (`würf`, `stünd`). These go into the table of variant stems. It does not distinguish a sole stem (`würfe`) from a variant (`stünde` besides `stände`): grammars make that distinction, and only usage data can show whether it is real.
+- **Conjugation class** (weak, strong, mixed, irregular) is a field of the lexeme. Mixed verbs store the stem without the weak suffix (`dach`).
+- **Parallel conjugations** (`fragen`: `fragte` and `frug`; 151 conjugations): one lexeme with variant stems.
+- **Auxiliary:** 699 conjugations repeat another one on the same page with the other auxiliary (`heimfahren`: `ist heimgefahren`, `hat ihn heimgefahren`). They are not lexemes of their own; the auxiliary is a property of the lexical unit.
+- **Reflexive verbs:** in release 1, every reflexive conjugation in Wiktionary is a lexeme of its own, whether the verb is only reflexive (299 pages) or also has a non-reflexive conjugation (383 pages: `merken`, `sich merken`). Wiktionary's marking is noisy here; corpus data is expected to improve it later.
+- **Verbs written as several words** (`Rad fahren`, `ab sein`) are lexemes.
+- **`sein`** has the stems `s` (also for `ist`), `b`, `w` and the participle stem `wes`.
+- **`gebären`:** `gebär` is a variant stem of the second and third person singular (`gebärst` besides `gebierst`), like `frug` for the preterite. The rule: a form given without the vowel change makes the present stem a variant; other single forms (`beutst`) are not stems.
+- **Inseparable prefixes** are marked in the lexeme stem (`ver:bleib`), by the rule described in the [feasibility test](feasibility.md#stems). The stem fields hold bare stems (`geh`, `ging`, `gang` for `ver:geh`).
+- **Combinations with `sein`** written as several words (`ab sein`, `dabei sein`; 8 conjugations) are not lexemes and are removed.
+- **Single forms given besides the stems** (11 conjugations):
+  - Archaic variants (`beutst`, `ward`) are alternative forms, not stems.
+  - Forms that follow from the stems are not stored separately: `sieh`/`siehe` from the stem of the second and third person singular, `werd`/`werde` and `berstet` from the present stem.
+  - `schwären` gets no special treatment.
+
+Open:
+
+- **Spelling variants of one verb** (`zutage fördern`, `zu Tage fördern`) are one lexeme. Wiktionary links them in the block `Alternative Schreibweisen`; how reliable that block is will be measured together with the nouns. Among verbs written as several words there are 7 such pairs, and 30 that also exist written as one word (`bekanntgeben`, `bekannt geben`).
+- **Prefixes of loan verbs** (`de:mobilisier`, `prä:disponier`) cannot be told from stems that merely begin alike (`dekorier`, `regier`). Left to the Herkunft analysis in M2.
+- **`ge` as a prefix.** It is split only where the rest is a verb in Wiktionary, which leaves `gewinn`, `gescheh`, `geling`, `genes` and `gebär` whole and still splits `ge:sund`, `ge:wicht` and `ge:witter` wrongly. To be corrected with the Herkunft analysis in M2.
+
 ## Other structured information in the dumps
 
 Collected throughout; decided in M3, before the freeze.

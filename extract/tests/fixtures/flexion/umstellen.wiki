@@ -1,0 +1,13 @@
+{{Anker|untrennbar}}
+== umstellen (Konjugation), untrennbar ({{Verbkonjugation|Deutsch}}) ==
+
+{{Deutsch Verb regelmäßig|umste|l|l|e|n|umstellt|vp=|zp=|gerund=1|haben=|veraltet=0}}
+
+{{Anker|trennbar}}
+== umstellen (Konjugation), trennbar ({{Verbkonjugation|Deutsch}}) ==
+
+{{Deutsch Verb regelmäßig|Teil 1=um|ste|l|l|e|n|umgestellt|Infinitiv=einteilig|Nebensatzkonjugation=einteilig|vp=vp3|zp=zp3|gerund=1|haben=|veraltet=0}}
+
+== umstellen (Konjugation), reflexiv ({{Verbkonjugation|Deutsch}}) ==
+
+{{Deutsch Verb schwach trennbar reflexiv|um|ste|l|l|e|n|umgestellt|VA Partizip II=0}}

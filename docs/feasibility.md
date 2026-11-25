@@ -257,3 +257,109 @@ The last two columns apply the rule of 0005: a lexeme is in all capitals or mixe
   - 504 have an audio file and 754 an example. Real short words are among them: `DWD`, `ASB`, `THG`, `IgG`, `KKH`.
 - **Vehicle registration codes** are recognised by `Kennzeichen` or `Unterscheidungszeichen` in the meaning line. 7 sections with a signal consist of such senses only (`AS`, `WL`) and count as stubs above. 38 lexemes have such a sense beside others (`AU`, `MD`). Of the stubs, 95 are registration codes only.
 - **Other codes:** unit symbols (`MHz`, `Lj`, `km`) and E numbers are stubs by their spelling or for lack of a signal.
+
+## Step 2: coverage
+
+Whether each item of the [profile](schema/profile.md) can be read from the dump, measured item by item. So far: verb stems.
+
+### Verb stems
+
+Can the stems of a verb be read from the template arguments on its `Flexion:` page, without expanding the template? The test reads every conjugation, derives the stems, generates the principal forms from them and compares these with `Deutsch Verb Übersicht` on the lemma page. The two sources are written independently by Wiktionary's editors.
+
+```sh
+uv run python extract/scripts/feasibility.py verbs --date 20261101   # 2 s
+```
+
+The reader and the generator are in `hawfinch.features.inflection`; results are in `data/interim/feasibility/verbs/`.
+
+#### What the arguments mean
+
+Read from the documentation pages of the templates (`Vorlage:Deutsch Verb …/Doku`) and, for the rules that build the forms, from the template code.
+
+| Template | Conjugations | Arguments |
+|---|---|---|
+| `Deutsch Verb regelmäßig` | 12,039 | `1`–`5`: the infinitive cut into five pieces, the last four letters separately (`ka\|u\|f\|e\|n`; `ch` counts as one letter). `6`: Partizip II. `Teil 1`, `Teil 2`: separable parts. `haben`: any value means `sein`. |
+| `Deutsch Verb schwach untrennbar reflexiv` | 283 | The same six positions. |
+| `Deutsch Verb schwach trennbar reflexiv` | 301 | The particle first, then the same six. |
+| `Deutsch Verb unregelmäßig` | 3,245 | `1`: particle. `2`: present stem. `3`: preterite, first person singular. `4`: subjunctive II stem. `5`: Partizip II without the particle. `6`: present stem of the second and third person singular. `7`: stem-final behaviour (`e`, `e-`, `e2`, `em`, `-s`). `8`: `i` for the e/i change, `n` for mixed inflection. `9`, `11`: alternative subjunctive II stem and preterite. `10`: infinitive of a modal verb, `tun` or `wissen`. `T2`: second particle. `ViD`: spelling of the particle when separated (`Brust`). `Wv`: written as several words (`Rad fahren`). |
+
+- Single forms can be replaced by named arguments. In the templates for weak verbs the value is the whole form with its pronoun and particle (`du rutschst ab,<br />du rutscht ab`); in `unregelmäßig` it is the bare verb.
+- Switches remove groups of forms: `unpersönlich`, `Imperativ=0`, `Präsens Aktiv=0`, and `Hauptsatzkonjugation=0` for verbs without finite forms in main clauses (`bausparen`).
+- All 15,868 template calls could be read. Positional and numbered arguments are mixed freely (`aus|2=kenn`), which the template scanner handles as MediaWiki does.
+
+#### Stems
+
+- **Weak verbs** have one stem: the infinitive without `-en`, or without `-n` after `el`, `er`, `ie` and `ee` (`sammel`, `wander`, `knie`, `tee`).
+- **Strong and irregular verbs** give four stems directly: present (`geb`), present of the second and third person singular (`gib`), preterite (`gab`) and subjunctive II (`gäb`).
+  - Of the 3,245 conjugations, 13 have one distinct value among the four, 810 two, 1,602 three and 820 four.
+  - The Partizip II is given as a word. A participle stem (`ge-sung-en` → `sung`) is derived by removing the particle, `ge-` and the suffix. It differs from all four other stems in 840 conjugations.
+  - Mixed verbs give the preterite with the weak suffix (`dachte`); the stem `dach` is derived by removing it (203 conjugations).
+- **Stems stored** (decided on 2026-11-25): present, present of the second and third person singular, preterite and participle. The subjunctive II stem is not one of them, because it mostly follows from the preterite stem: it is the same or differs only by umlaut (`gäb` from `gab`).
+- **Variant stems** go into a table of their own, one row per stem, with the lexeme, the stem field, the stem and the conjugation class. `variants.tsv` has 712 rows for 490 conjugations:
+
+  | Source | Field | Rows | Examples |
+  |---|---|---|---|
+  | Same conjugation | subjunctive | 275 | `würf` (`warf`), `stünd` (`stand`), `renn` (`rann`, for `rennte`) |
+  | Same conjugation | preterite | 45 | `hub` besides `hob`, `schwomm` besides `schwamm` |
+  | Same conjugation | 2nd/3rd singular | 1 | `gebär` (`gebärst` besides `gebierst`) |
+  | Parallel conjugation | preterite | 190 | `frug`, weak `back` besides `buk` |
+  | Parallel conjugation | participle | 142 | `sog`, `schrock` |
+  | Parallel conjugation | 2nd/3rd singular | 44 | `back` besides `bäck` |
+  | Parallel conjugation | subjunctive | 15 | `send` |
+
+  - Subjunctive stems are listed only if they follow from none of the preterite stems: `hüb` follows from `hub` and is not listed. The table does not say whether such a stem is the only one (`würfe`) or a variant (`stünde` besides `stände`). This is intended.
+  - A parallel conjugation is a later conjugation on the same page with the same particles and reflexivity. Its stems are listed where they differ from the first one's. 166 of these rows come from a weak conjugation beside a strong one, where the stem is the present stem and the difference is the class.
+  - A second Partizip II with the same stem is not a variant stem (`gesalzt` besides `gesalzen`, `viergeteilt` besides `gevierteilt`). Such forms are stored as word forms only.
+  - Single forms that are not built on a stem of the verb (`beutst`, `ward`) are not stems either.
+- **Conjugation class** is read from the template and its arguments: 12,623 weak, 2,929 strong, 203 mixed, 113 irregular (the modal verbs, `wissen`, `tun`, `sein`, with their prefixed and particle verbs). Mixed stems need it: `dach` gives `dachte` only with the class.
+- **Particles** are explicit in every template, so `ab=kauf` needs no list of particles. 7,230 conjugations are separable.
+- **Inseparable prefixes** are not arguments of the templates, so they are split off by rule: `ver:bleib`, `ent:mann`, `an=er:kenn`.
+  - A stem has a prefix if it begins with `be`, `emp`, `ent`, `er`, `ge`, `miss`, `ver`, `zer`, `durch`, `hinter`, `über`, `um`, `unter` or `wider`, the rest contains a vowel, and the Partizip II has no `ge-` (`verblieben`; but `gebettelt`, `geerbt`, `gegeben`).
+  - Weak verbs in `-ieren` never have `ge-`. They are split only if the rest is the stem of a verb without prefix and particle (`ver:barrikadier`, but `verifizier`, `zertifizier`, `erodier`). This misses verbs whose base is not in Wiktionary (`entstalinisier`, `verabsolutier`).
+  - The same condition holds for `ge`, which often belongs to the base (`gestalt`, `geduld`). So `ge:hör` and `ge:fall` are split, and opaque verbs are not (`gewinn`, `gescheh`, `gebär`). A few are still split wrongly, because the rest happens to be a verb: `ge:sund`, `ge:wicht`, `ge:witter`, `ge:fährd`.
+  - 3,475 conjugations get a prefix: `ver` 1,174, `be` 916, `er` 383, `ent` 284, `über` 195, `zer` 147, `um` 112, `durch` 81, `unter` 77, `ge` 62, others 44. In 547 of them the rest is not itself a verb (`ver:gold`, `be:auftrag`, `ent:larv`).
+  - The stem fields hold the stems without the prefix, as they do without particles: `geh`, `ging`, `gang` for `ver:geh` as for `ab=geh`. The 3,237 strong, mixed and irregular conjugations then share 224 sets of stems; the most frequent are those of `gehen` (97 conjugations), `stehen` (92), `ziehen` (91) and `kommen` (91).
+  - Only one prefix is split off, and only native ones. Prefixes of loan verbs (`de:mobilisier`) cannot be recognised by form (`dekorier`, `regier`); they are left to the Herkunft analysis of M2.
+- **`sein`** has placeholder stems in the template, because its present forms are all given one by one (9 conjugations with its combinations `ab sein`, `dabei sein`). It gets the stems `s` (`sind`, `seid`, `sei`, `ist`), `b` (`bin`, `bist`), `w` and the participle stem `wes`.
+- A further 11 conjugations have real stems and give single forms besides them, as variants (`gebären`: `gebierst` and `gebärst`; `bieten`: `beutst`; `werden`: `ward`) or as gaps (`schwären` has no imperative).
+
+#### Agreement with the overview tables
+
+A lemma page can hold several verb sections and a `Flexion:` page several conjugations (trennbar and untrennbar, weak and strong, reflexive, `haben` and `sein`). Each overview table is paired with the conjugation of the same page name that reproduces most of its forms. Of the 14,977 overview tables, 205 have no `Flexion:` page with a German verb template; the other 14,772 are compared.
+
+| | Tables | Share |
+|---|---|---|
+| All eight main forms generated, variants identical | 9,785 | 66.2 % |
+| All eight main forms generated, variants differ | 4,768 | 32.3 % |
+| At least one main form not generated | 219 | 1.5 % |
+
+- **98.5 % of the tables are reproduced** from the stems in their main forms.
+- **Variants differ** mostly because the conjugation lists more of them than the overview table: `sammle`, `sammele` and `sammel`, or both imperatives `kauf` and `kaufe`. Variants are not a test of the stems.
+- **The 219 tables that differ** contain 404 differing forms; they are listed in `mismatches.tsv`.
+  - In 151 forms the table has a dash where the conjugation has a form, and in 30 the reverse. These are verbs restricted to the third person or without an imperative, marked on one side only (`killen`, `reifen`, `verölen`).
+  - In 223 forms both sides have a form. They have not been adjudicated one by one. About 70 were read; most are slips in the overview table (`holzte herum` as present, `fahre kaputt` as subjunctive II, a form in the wrong cell). A few are loan words where the template's rule and the editors disagree (`designest` or `designst`, `tiltet` or `tilt`).
+  - No class of verbs stands out: the share of differing tables is between 0 and 2.7 % in every class except two. Mixed verbs have 8 of 180 (`rannte` entered where the table should have `rennte`, `wandte` beside `wendete`). Modal verbs, `tun` and `wissen` have 14 of 103, mostly the variant `tu` beside `tue` and imperatives of modal verbs.
+- **The auxiliary differs in 115 tables** (0.8 %).
+- **Conjugations without a table of their own:** 1,245 of the 15,868 are not the best match of any overview table.
+  - 1,094 have the same stems as a paired conjugation on the same page. They are the reflexive conjugation or the second auxiliary of the same verb.
+  - 151 have other stems. These are parallel weak and strong conjugations (`fragen` with `frug`, `saugen` with `sog`) which the lemma page shows as starred variants in one table.
+
+#### Sample for checking
+
+`sample.tsv` holds 117 conjugations: nine drawn at random (seed 20261125) from each of thirteen classes, with the lexeme stem, the stems as they were then, the participles and the auxiliary, one conjugation per line. The columns `correct` and `comment` are filled in by hand.
+
+Checked by the user on 2026-11-25, before the changes it led to:
+
+- **111 of 117 conjugations are correct.** The six wrong ones are all combinations with `sein` (`ab sein`, `dafür sein`), which showed the template's placeholder stems. They now have `s`, `b`, `w`, `wes`.
+- **19 lexeme stems lacked the boundary after an inseparable prefix** (`verbleib` for `ver:bleib`). The rule above now marks 18 of them; `de:mobilisier` is left to M2.
+- **Class labels** called strong verbs with single forms given (`gebären`) and mixed verbs irregular. The labels are now `strong, single forms given` and `mixed`.
+- **Spelling variants** are separate conjugations: `zutage fördern` and `zu Tage fördern`, `zugrunde richten` and `zu Grunde richten`. Of 70 verbs written as several words, 7 pairs differ only in spaces or capitals, and 30 also have a page written as one word (`bekanntgeben`). See the open questions.
+- **Combinations with `sein`** (`ab sein`, `dabei sein`) are a copula with a predicative element, not verbs. The 8 conjugations written as several words whose verb is `sein` are left out of the stem table; the sample then has 111 rows.
+
+A rerun keeps the annotated rows (`sample.annotated.tsv`) and shows them with their current values.
+
+#### Consequences
+
+- **The gate is passed for verb stems.** They are read directly from the arguments, and the forms generated from them agree with an independent source in 98.5 % of the tables. The remaining tables are inconsistencies between two Wiktionary pages more often than faults of the reader, and become a validation report.
+- **The generator is needed anyway:** M1 generates missing single-word forms from stems. The present version covers the eight principal forms; the full paradigm follows the same rules.
+- **Open points** are recorded in [open questions](open-questions.md#verb-stems): spelling variants of verbs written as several words, combinations with `sein`, prefixes of loan verbs.

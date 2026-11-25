@@ -1,0 +1,7 @@
+== abrutschen (Konjugation) ({{Verbkonjugation|Deutsch}}) ==
+
+{{Anmerkung scht|A=@|Verbform=rutscht ab|Verbform_n=abrutscht}}
+{{Deutsch Verb regelmäßig|Infinitiv=einteilig|Nebensatzkonjugation=einteilig|Teil 1=ab|ruts|c|h|e|n|abgerutscht|vp=uvp|zp=0|gerund=0|veraltet=0|haben=sein
+|2. Singular Indikativ Präsens Aktiv=rutschst ab,<br />du rutscht ab
+|2. Singular Indikativ Präsens Aktiv Nebensatzkonjugation=du abrutschst,<br />du abrutscht}}
+{{Quellen}}

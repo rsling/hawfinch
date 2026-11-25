@@ -1,0 +1,3 @@
+== finden (Konjugation) ({{Verbkonjugation|Deutsch}}) ==
+
+{{Deutsch Verb unregelmäßig|2=find|3=fand|4=fänd|5=gefunden|7=e|vp=ja|zp=ja|gerund=ja}}

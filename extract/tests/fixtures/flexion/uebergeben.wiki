@@ -1,0 +1,15 @@
+== übergeben (Deklination) ({{Adjektivdeklination|Deutsch}}) ==
+
+{{Deklinationsseite Adjektiv
+|Positiv-Stamm=übergeben
+|Positiv=übergeben
+}}
+
+== {{Anker|untrennbar}}übergeben (Konjugation), untrennbar ({{Verbkonjugation|Deutsch}}) ==
+{{Deutsch Verb unregelmäßig|2=übergeb|3=übergab|4=übergäb|5=übergeben|6=übergib|8=i|vp=ja|zp=ja|gerund=ja}}
+
+== {{Anker|reflexiv}}übergeben (Konjugation), reflexiv ({{Verbkonjugation|Deutsch}}) ==
+{{Deutsch Verb unregelmäßig|2=übergeb|3=übergab|4=übergäb|5=übergeben|6=übergib|8=i|reflexiv=ja|gerund=nein|VA Partizip II=0}}
+
+== {{Anker|trennbar}}übergeben (Konjugation), trennbar ({{Verbkonjugation|Deutsch}}) ==
+{{Deutsch Verb unregelmäßig|über|2=geb|3=gab|4=gäb|5=gegeben|6=gib|8=i|vp=sie_werden|zp=sie_sind|gerund=ja}}

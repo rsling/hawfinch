@@ -4,6 +4,7 @@ lives in the ``hawfinch`` package.
     uv run python extract/scripts/feasibility.py cache --date 20261101
     uv run python extract/scripts/feasibility.py inventory --date 20261101
     uv run python extract/scripts/feasibility.py abbreviations --date 20261101
+    uv run python extract/scripts/feasibility.py verbs --date 20261101
 
 The proper-noun test (``proper-nouns``) was removed with the revision of decision 0003; it
 runs at commit dcc2a95.
@@ -46,6 +47,12 @@ def cmd_abbreviations(args: argparse.Namespace) -> None:
     run(cache_path(args.date), DATA / "interim" / "feasibility" / "abbreviations", args.workers)
 
 
+def cmd_verbs(args: argparse.Namespace) -> None:
+    from verbs import run
+
+    run(cache_path(args.date), DATA / "interim" / "feasibility" / "verbs", args.workers)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     sub = parser.add_subparsers(dest="command", required=True)
@@ -57,11 +64,15 @@ def main() -> None:
     abbreviations = sub.add_parser("abbreviations", help="survey sections labelled Abkürzung")
     abbreviations.add_argument("--date", required=True)
     abbreviations.add_argument("--workers", type=int, default=8)
+    verbs = sub.add_parser("verbs", help="step 2: verb stems against the overview tables")
+    verbs.add_argument("--date", required=True)
+    verbs.add_argument("--workers", type=int, default=8)
     args = parser.parse_args()
     commands = {
         "cache": cmd_cache,
         "inventory": cmd_inventory,
         "abbreviations": cmd_abbreviations,
+        "verbs": cmd_verbs,
     }
     commands[args.command](args)
 

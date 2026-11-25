@@ -1,0 +1,2 @@
+== bausparen ({{Verbkonjugation|Deutsch}}) ==
+{{Deutsch Verb regelmäßig|sp|a|r|e|n|baugespart|vp=uvp|zp=uzp|Infinitiv=einteilig|Teil 1=bau|Nebensatzkonjugation=einteilig|Hauptsatzkonjugation=0|veraltet=0|VA Partizip II=0|gerund=0|2. Singular Imperativ Präsens Aktiv=bauspar!</br>bauspare!|2. Plural Imperativ Präsens Aktiv=bauspart!|Imperativ Präsens Aktiv Höflichkeitsform=bausparen Sie!}}

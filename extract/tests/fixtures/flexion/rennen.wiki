@@ -1,0 +1,2 @@
+==  rennen (Konjugation) ({{Verbkonjugation|Deutsch}}) ==
+{{Deutsch Verb unregelmäßig|2=renn|3=rannte|4=rennt|5=gerannt|8=n|Hilfsverb=sein|vp=nein|zp=nein|gerund=nein|VA Partizip II=0}}
