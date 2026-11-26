@@ -364,15 +364,19 @@ Added on 2026-11-26. Verb sections whose senses are all marked as archaic, regio
 
 | | Before | Now |
 |---|---|---|
-| Conjugations | 15,868 | 14,922 |
+| Conjugations | 15,868 | 14,902 |
 | Overview tables compared | 14,772 | 13,785 |
 | All main forms generated | 14,553 (98.5 %) | 13,590 (98.6 %) |
 | At least one main form not generated | 219 | 195 |
 | Forms that differ | 404 | 337 |
-| Variant stems | 712 | 685 |
+| Variant stems | 712 | 668 |
 
-- **946 conjugations are left out.** A `Flexion:` page does not say which verb section of the lemma page a conjugation belongs to, so its conjugations are left out only if all verb sections of the lemma page are.
-- **51 lemma pages have some verb sections left out and others kept.** Their overview tables are left out section by section, but all their conjugations are kept.
+- **966 conjugations are left out.** A `Flexion:` page does not say which verb section of the lemma page a conjugation belongs to. 948 are on pages where all verb sections of the lemma page are left out. Sections that only point to another spelling do not count ([part of speech](features/part-of-speech.md#spelling-variants)); this decides `verrussen`, whose only other verb section is the Swiss spelling of `verrußen`.
+- **50 lemma pages have some verb sections left out and others kept,** with 75 conjugations. Each conjugation goes with the sections whose overview table it reproduces, in all main forms and in the auxiliary ([rule](features/usage-labels.md#verbs)). They are listed in `mixed.tsv`.
+  - **56 are kept.** On 28 pages a conjugation serves a section that stays and one that is left out (`snacken`, `haschen`). On 5 pages no conjugation reproduces the section that is left out (`kollern`, `kiffen`), so nothing is removed for it.
+  - **18 are left out,** on 17 pages. They are the other auxiliary (`ist gejuckt`, `ist angepickt`), the other of a separable and an inseparable verb (`ging hinter`, `umtrat`, `überbriet`), or the other of a weak and a strong verb (`kor`, `windete`, `verhebte`, `schwoll auf`).
+  - **1 cannot be assigned** (`undecided.tsv`): the one conjugation of `tauen` has `haben` and reproduces only the regional verb (to tow). The verb that stays (to thaw) is defective, has `sein`, and has no conjugation of its own. The [patch](decisions/0007-patches.md) `flexion-sections.tsv` keeps it: the stems are the same, and the thaw verb takes `haben` in its weather sense (`es hat getaut`). The patch covers every undecided case of this dump (`patch.tsv`).
+  - **The variant stems lose 17 rows.** Before, the weak and the strong verb of such a page counted as parallel conjugations of one lexeme (`kies`: `kor` beside `kieste`).
 - **3 of the 111 checked sample rows** are no longer in the data.
 
 #### Consequences
@@ -397,7 +401,7 @@ The reader and the classifier are in `hawfinch.features.declension`; results are
 |---|---|
 | `Substantiv`: one singular and one plural | 98,501 |
 | `Substantiv`: no plural | 17,006 |
-| `Substantiv`: several plurals | 2,658 |
+| `Substantiv`: several plurals | 2,657 |
 | `Substantiv`: several genders | 1,346 |
 | `Substantiv`: plural only | 791 |
 | `adjektivisch`: with a plural | 2,247 |
@@ -405,10 +409,11 @@ The reader and the classifier are in `hawfinch.features.declension`; results are
 | Name tables with a plural | 7,037 |
 | Name tables without a plural | 11,590 |
 | Left out: all senses archaic or regional | 3,509 |
+| Left out: spelling variant without senses (`Flußbett`) | 1 |
 | All | 145,462 |
 
 - All cells could be read. They hold plain forms; a line break separates variants in a few cells.
-- A table with several genders or plurals gives one result per combination of singular and plural, 117,569 in all. Each plural is a lexeme of its own.
+- A table with several genders or plurals gives one result per combination of singular and plural, 117,567 in all. Each plural is a lexeme of its own.
 - A plural without a suffix after a full syllable is dropped if the same singular has another plural (`Keks` beside `Kekse`, `KKW` beside `KKWs`, `Pkw` beside `Pkws`): 462 combinations in 417 tables, 77 of them tables of abbreviations in capitals.
 - `Deutsch adjektivisch Übersicht` is used for two things: 1,265 nouns declined like adjectives, given as `Stamm` (`Beigeordnete`), and 982 nouns with an attributive adjective, given as full forms (`grauer Star`, `fahrlässige Tötung`).
 - The name tables are `Nachname`, `Vorname`, `Toponym`, `Eigenname` and `Name`. `Nachname` gives no forms; the template builds genitive and plural in `-s`, except after a sibilant. `Toponym` and `Eigenname` have no plural as a rule.
@@ -422,11 +427,11 @@ Combinations of one singular and one plural. Gender `nd` is that of nouns withou
 |---|---|---|---|---|---|---|---|---|---|---|
 | m | 31,431 | 1,391 | 3,255 | 514 | 4,439 | 1,265 | 74 | 868 | 483 | 43,720 |
 | f | 40,477 | 1,364 | | 2 | 1,832 | 871 | 9 | 343 | 279 | 45,177 |
-| n | 13,091 | 506 | | 3,312 | 2,949 | 2,099 | 15 | 20 | 17 | 22,009 |
+| n | 13,090 | 505 | | 3,312 | 2,949 | 2,099 | 15 | 20 | 17 | 22,007 |
 | mf | | | | | 5,760 | | | | 1 | 5,761 |
 | nd | 613 | | | | 133 | 109 | | 34 | 6 | 895 |
 | None | | | | | | | | | 7 | 7 |
-| All | 85,612 | 3,261 | 3,255 | 3,828 | 15,113 | 4,344 | 98 | 1,265 | 793 | 117,569 |
+| All | 85,611 | 3,260 | 3,255 | 3,828 | 15,113 | 4,344 | 98 | 1,265 | 793 | 117,567 |
 
 - **Without a class** (793): 759 plurals of names that are not in `-s` (`Volker`, `Annaliesen`), 27 abbreviations in capitals whose only plural has no suffix (`VWL`, `POS`, `USA`, `ÖBB`), and 7 combinations without gender.
 - **Masculine `primary`:** 10,999 `-e` with the stem of the singular, 7,360 `-e` with umlaut, and the rest without suffix (`Lehrer-`, `Väter-`).

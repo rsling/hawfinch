@@ -1,0 +1,3 @@
+== tauen (Konjugation) ({{Verbkonjugation|Deutsch}}) ==
+{{Abgeleitete Verben|[[auftauen]], [[abtauen]], [[wegtauen]]}}
+{{Deutsch Verb regelmäßig|t|a|u|e|n|getaut|zp=zp3|vp=vp3|gerund=ja|veraltet=0}}

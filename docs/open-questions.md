@@ -99,14 +99,14 @@ Settled on 2026-11-26:
 - **Plurals of names that are not in `-s`** (759: `Volker`, `Annaliesen`) have no class.
 - **Several genders and several plurals in one table** (291 tables): every singular is combined with every plural, because the table does not say which belong together. Some of the combinations are not words of German. Accepted for release 1; to be looked at during the analyses and fixed in a later version, possibly by patch lists that correct deficiencies of Wiktionary.
 - **Marked senses in sections that stay** (2,921 sections) are kept with their label.
-- **Regional and archaic forms in unmarked entries** (`Smokinge`, `Wägen`, `Stäte`) cannot be recognised from sense labels. They stay in release 1 and are candidates for a patch list; they need inspection by hand during the analyses.
+- **Regional and archaic forms in unmarked entries** (`Smokinge`, `Wägen`, `Stäte`) cannot be recognised from sense labels. They stay in release 1 and are candidates for a [patch](decisions/0007-patches.md); they need inspection by hand during the analyses.
 - **Qualified labels** (`besonders österreichisch`, `sonst veraltet`; 608 sections with only such labels) do not count as marks.
 - **The rule for archaic and regional entries holds for every part of speech.** The feasibility scripts for plurals and verb stems apply it.
+- **The rule for archaic and regional entries is applied in one place,** `hawfinch.features.selection`, where the part-of-speech sections of a page are selected; feature readers take their sections from there. Sections that only point to another spelling are not lexemes either ([part of speech](features/part-of-speech.md#spelling-variants)).
+- **Verb sections of one lemma page of which only some are left out** (50 pages): each conjugation goes with the sections whose overview table it reproduces ([usage labels](features/usage-labels.md#verbs)). The one conjugation that cannot be assigned (`tauen`) is decided by a [patch](decisions/0007-patches.md).
 
 Open:
 
-- **Where the rule for archaic and regional entries is applied.** At present each feasibility script calls it. It belongs in one place, where the part-of-speech sections of a page are selected, so that every feature reader sees only the sections that stay; the link from a `Flexion:` page to the verb sections of its lemma page belongs there as well. To be refactored.
-- **Verb sections of one lemma page of which only some are left out** (51 pages): their conjugations are all kept, because a `Flexion:` page does not say which section a conjugation belongs to.
 - **Nouns without gender** (7 combinations, `Radionachricht`): neither the table nor the heading gives one. For compounds it could be taken from the head noun in M2.
 - **Nouns without a singular in `-er`** are `primary` without a suffix, also where the form is an `-er` plural (`Seevölker`, `Stadtväter`); without a singular the two cannot be told apart.
 - **Nouns written as several words in which two words inflect** (`Agent-s Provocateurs`, `Persona-e gratae`) have the boundary in the first one only.

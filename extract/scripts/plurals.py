@@ -136,6 +136,9 @@ def process_row_group(args) -> tuple[list[dict], Counter]:
             if section.left_out:
                 sections["left out: all senses archaic or regional"] += len(tables)
                 continue
+            if section.spelling_variant:
+                sections["left out: spelling variant"] += len(tables)
+                continue
             genders_given = [t.name for t in section.pos.heading_templates if t.name in GENDERS]
             heading = genders_given[0] if len(genders_given) == 1 else ""
             for template in tables:

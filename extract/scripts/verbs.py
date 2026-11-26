@@ -2,9 +2,14 @@
 
 Reads every German verb conjugation from the ``Flexion:`` pages, derives its stems, generates
 the principal forms from them and compares these with ``Deutsch Verb Übersicht`` on the lemma
-page. A lemma page can hold several verb sections and a ``Flexion:`` page several
-conjugations (trennbar and untrennbar, weak and strong, reflexive); each overview table is
-paired with the conjugation on the page of the same name that reproduces most of its forms.
+page. Verb sections that are left out as archaic or regional take their conjugations with
+them; where only some verb sections of a lemma page are left out, each conjugation goes with
+the sections whose overview table it reproduces. Where that leaves a conjugation undecided,
+the patch ``extract/patches/flexion-sections.tsv`` decides.
+
+A lemma page can hold several verb sections and a ``Flexion:`` page several conjugations
+(trennbar and untrennbar, weak and strong, reflexive); each overview table is paired with
+the conjugation on the page of the same name that reproduces most of its forms.
 
 A form agrees if the main form of the overview table is among the generated variants
 (``main``), and agrees fully if the two sets of variants are the same (``full``).
@@ -16,6 +21,13 @@ Writes to ``data/interim/feasibility/verbs/``:
   agreement of each form;
 - ``mismatches.tsv``: one row per form whose main form is not generated;
 - ``summary.tsv``: agreement by template class and form;
+- ``mixed.tsv``: the conjugations of lemma pages on which only some verb sections are left
+  out, with the sections they reproduce, the decision of the rule and that of the patch;
+- ``undecided.tsv``: those of them that the rule could not assign to a section, the cases
+  of the patch. Without a row in the patch they are kept;
+- ``patch.tsv``: how the patch fits the dump: cases without a row (``missing``), rows that
+  match no conjugation (``unmatched``) and rows for conjugations the rule decides
+  (``pinned``);
 - ``sample.tsv``: a stratified sample of conjugations for checking by hand. If
   ``sample.annotated.tsv`` exists, its rows are kept with their annotation and shown with
   their current values instead of drawing a new sample.
@@ -47,7 +59,16 @@ from hawfinch.features.inflection import (
     stem_variants,
     stems,
 )
-from hawfinch.features.selection import MIXED, keeps_flexion, lemma_sections, verb_selection
+from hawfinch.features.selection import (
+    FLEXION_PATCH,
+    LEFT_OUT,
+    UNDECIDED,
+    conjugation_key,
+    flexion_selection,
+    lemma_sections,
+    verb_sections,
+)
+from hawfinch.patches import Coverage, check, read_patch
 from hawfinch.wikitext.templates import scan
 
 FLEXION_NS = 108
@@ -84,9 +105,10 @@ def stratum(verb: Verb) -> str:
     return "strong, separable" if verb.separable else "strong, other"
 
 
-def process_row_group(args) -> tuple[list[dict], list[dict], Counter, dict[str, str]]:
-    """Conjugations, overview tables, unread templates, and for every lemma page with verb
-    sections whether they are kept, left out as archaic or regional, or mixed."""
+def process_row_group(args) -> tuple[list[dict], list[dict], Counter, dict[str, dict]]:
+    """Conjugations, overview tables (also those of sections that are left out), unread
+    templates, and for every lemma page its verb sections by number, with whether they are
+    left out as archaic or regional."""
     path, index = args
     table = pq.ParquetFile(path).read_row_group(index, columns=["ns", "title", "text", "redirect"])
     conjugations, overviews, unread, selections = [], [], Counter(), {}
@@ -106,12 +128,9 @@ def process_row_group(args) -> tuple[list[dict], list[dict], Counter, dict[str, 
                 conjugations.append({"title": title, "verb": verb, "start": template.start})
         elif row["ns"] == 0 and OVERVIEW in text:
             sections = list(lemma_sections(row["title"], text))
-            selection = verb_selection(sections)
-            if selection is not None:
-                selections[row["title"]] = selection
+            if found := verb_sections(sections):
+                selections[row["title"]] = found
             for section in sections:
-                if section.left_out:
-                    continue
                 for template in scan(section.body).templates:
                     if template.name == OVERVIEW:
                         overviews.append(
@@ -119,6 +138,7 @@ def process_row_group(args) -> tuple[list[dict], list[dict], Counter, dict[str, 
                                 "title": row["title"],
                                 "section": section.number,
                                 "labels": "+".join(section.labels),
+                                "left_out": section.left_out,
                                 "forms": overview_forms(template),
                             }
                         )
@@ -137,6 +157,86 @@ def agreement(generated: dict[str, list[str]], listed: dict[str, list[str]]) -> 
         else:
             result[key] = "no"
     return result
+
+
+def reproduces(conjugation: dict, overview: dict) -> bool:
+    """Whether a conjugation gives all main forms of an overview table and its auxiliary."""
+    result = agreement(conjugation["forms"], overview["forms"])
+    return (
+        all(value != "no" for value in result.values())
+        and conjugation["verb"].auxiliary in overview["forms"]["Hilfsverb"]
+    )
+
+
+def select(conjugations: list[dict], overviews: list[dict], selections: dict[str, dict]) -> None:
+    """Set ``selection`` on every conjugation: kept, left out or undecided
+    (:func:`hawfinch.features.selection.flexion_selection`), and ``fits``, the verb sections
+    of the lemma page that it reproduces."""
+    tables = defaultdict(list)
+    for overview in overviews:
+        tables[overview["title"]].append(overview)
+    by_title = defaultdict(list)
+    for conjugation in conjugations:
+        by_title[conjugation["title"]].append(conjugation)
+    for title, group in by_title.items():
+        left_out = selections.get(title, {})
+        for conjugation in group:
+            fits: dict[int, bool] = {}
+            for overview in tables[title]:
+                if overview["section"] in left_out:
+                    fits[overview["section"]] = fits.get(overview["section"], False) or (
+                        reproduces(conjugation, overview)
+                    )
+            conjugation["fits"] = fits
+        decisions = flexion_selection(left_out, [c["fits"] for c in group])
+        for conjugation, decision in zip(group, decisions, strict=True):
+            conjugation["selection"] = decision
+
+
+def apply_patch(conjugations: list[dict]) -> Coverage:
+    """Set ``key``, ``rule`` (the decision of the rule) and ``patch`` (that of the patch, or
+    empty) on every conjugation, and let the patch decide ``selection`` where it has a row."""
+    rows = read_patch(FLEXION_PATCH)
+    for conjugation in conjugations:
+        conjugation["key"] = conjugation_key(conjugation["title"], conjugation["verb"])
+        conjugation["rule"] = conjugation["selection"]
+        row = rows.get(conjugation["key"])
+        conjugation["patch"] = row["decision"] if row else ""
+        if row:
+            conjugation["selection"] = row["decision"]
+    return check(
+        rows,
+        present=[c["key"] for c in conjugations],
+        relevant=[c["key"] for c in conjugations if c["rule"] == UNDECIDED],
+    )
+
+
+def _mixed(conjugations: list[dict], selections: dict[str, dict]) -> list[dict]:
+    """The conjugations of lemma pages with verb sections of both kinds."""
+    rows = []
+    for conjugation in conjugations:
+        left_out = selections.get(conjugation["title"], {})
+        if len(set(left_out.values())) < 2:
+            continue
+        fits = [number for number, fit in conjugation["fits"].items() if fit]
+        rows.append(
+            {
+                **dict(zip(FLEXION_PATCH.key, conjugation["key"], strict=True)),
+                "sections kept": _numbers(n for n, out in left_out.items() if not out),
+                "sections left out": _numbers(n for n, out in left_out.items() if out),
+                "sections without table": _numbers(
+                    n for n in left_out if n not in conjugation["fits"]
+                ),
+                "reproduces": _numbers(fits),
+                "rule": conjugation["rule"],
+                "patch": conjugation["patch"],
+            }
+        )
+    return rows
+
+
+def _numbers(numbers) -> str:
+    return " ".join(str(number) for number in sorted(numbers))
 
 
 def pair(overview: dict, candidates: list[dict]) -> tuple[dict, dict[str, str]] | None:
@@ -237,11 +337,18 @@ def run(cache: Path, out: Path, workers: int) -> None:
             unread += u
             selections.update(x)
     read = len(conjugations)
-    conjugations = [c for c in conjugations if keeps_flexion(selections.get(c["title"]))]
-    dropped = read - len(conjugations)
-    mixed = sum(selection == MIXED for selection in selections.values())
     conjugations.sort(key=lambda c: (c["title"], c["start"]))
     overviews.sort(key=lambda o: (o["title"], o["section"]))
+    for conjugation in conjugations:
+        conjugation["forms"] = principal_forms(conjugation["verb"])
+    select(conjugations, overviews, selections)
+    coverage = apply_patch(conjugations)
+    patched = sum(bool(c["patch"]) for c in conjugations)
+    mixed_rows = _mixed(conjugations, selections)
+    undecided_rows = [row for row in mixed_rows if row["rule"] == UNDECIDED]
+    conjugations = [c for c in conjugations if c["selection"] != LEFT_OUT]
+    overviews = [o for o in overviews if not o["left_out"]]
+    dropped = read - len(conjugations)
 
     simplex = {
         c["verb"].present
@@ -253,7 +360,6 @@ def run(cache: Path, out: Path, workers: int) -> None:
         verb = conjugation["verb"]
         conjugation.update(
             id=number,
-            forms=principal_forms(verb),
             stems=stems(verb, simplex),
             stratum=stratum(verb),
         )
@@ -325,6 +431,17 @@ def run(cache: Path, out: Path, workers: int) -> None:
                 **{key: _join(conjugation["forms"][key]) for key in PRINCIPAL_FORMS[:-1]},
             }
         )
+    _write(out / "mixed.tsv", list(mixed_rows[0]), mixed_rows)
+    _write(out / "undecided.tsv", list(mixed_rows[0]), undecided_rows)
+    _write(
+        out / "patch.tsv",
+        ["status", *FLEXION_PATCH.key],
+        [
+            {"status": status, **dict(zip(FLEXION_PATCH.key, key, strict=True))}
+            for status in ("missing", "unmatched", "pinned")
+            for key in getattr(coverage, status)
+        ],
+    )
     variant_rows = _variants(conjugations, simplex)
     _write(out / "variants.tsv", list(variant_rows[0]), variant_rows)
     stem_fields = list(stem_rows[0])
@@ -392,7 +509,14 @@ def run(cache: Path, out: Path, workers: int) -> None:
     status = Counter(r["status"] for r in comparison)
     matched = Counter(c["matched"] for c in conjugations)
     print(f"{dropped:,} of {read:,} conjugations left out as archaic or regional")
-    print(f"{mixed} lemma pages with some verb sections left out, conjugations kept")
+    pages = len({row["title"] for row in mixed_rows})
+    by_rule = dict(Counter(row["rule"] for row in mixed_rows))
+    print(f"{pages} lemma pages with some verb sections left out: {by_rule}")
+    print(
+        f"patch {FLEXION_PATCH.name}: {patched} "
+        f"conjugations decided; {len(coverage.missing)} missing, "
+        f"{len(coverage.unmatched)} unmatched, {len(coverage.pinned)} pinned"
+    )
     print(f"{len(variant_rows):,} variant stems")
     print(f"{len(conjugations) - len(stem_rows)} combinations with sein left out of stems.tsv")
     print(f"{len(conjugations):,} conjugations read, {sum(unread.values())} not readable")

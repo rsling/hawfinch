@@ -13,6 +13,7 @@ What the database must contain. This is the requirements list that the release s
 - **There is no proper-noun part of speech.** Lexemes keep Wiktionary's part of speech. Whether a lexical unit names something is recorded in `named_entity`. Where Wiktionary marks the entry as a name, it holds the head noun of the definition (`Stadt`, `Nachname`); otherwise it is `default`. See [0003](../decisions/0003-named-entities.md).
 - **`Abkürzung` is not a part of speech.** Short words and abbreviated names are ordinary lexemes with the part of speech they are used as, and their form is recorded in `coding`. Sections labelled `Abkürzung` without a signal of word status, orthographic abbreviations (`Einw.`) and codes are not lexemes. See [0005](../decisions/0005-abbreviations.md).
 - **Archaic and regional entries are left out.** A part-of-speech section whose senses are all marked as archaic, regional, Austrian or Swiss gives no lexeme. See [usage labels](../features/usage-labels.md).
+- **A section that only points to another spelling is not a lexeme** (`verrussen`, the Swiss spelling of `verrußen`). See [part of speech](../features/part-of-speech.md#spelling-variants).
 - All segmentation uses the symbols defined in [segmentation conventions](../features/segmentation.md).
 
 Lexeme or lexical unit? A different inventory of forms means a different lexeme (Wort with plural Wörter versus Worte). A restriction on the same forms, or a syntactic property, belongs to the lexical unit ("no plural in this sense", transitivity, choice of auxiliary).

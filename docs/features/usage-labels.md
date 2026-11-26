@@ -39,11 +39,20 @@ The rule is applied in one place, `hawfinch.features.selection`, and not in the 
 
 ## Verbs
 
-Verb stems are read from `Flexion:` pages, the senses are on the lemma page, and a `Flexion:` page does not say which verb section of the lemma page a conjugation belongs to. The conjugations of a page are therefore left out only if all verb sections of the lemma page are. Where some verb sections are left out and others stay (51 lemma pages), all conjugations are kept for now.
+Verb stems are read from `Flexion:` pages, the senses are on the lemma page, and a `Flexion:` page does not say which verb section of the lemma page a conjugation belongs to.
+
+- **Only verb sections that are lexemes count.** A section that only points to another spelling is not one ([part of speech](part-of-speech.md#spelling-variants)): `verrussen` has an Austrian verb section, which is left out, and a Swiss spelling of `verrußen`, which does not count.
+- **If all verb sections of the lemma page are left out,** so are all conjugations of the `Flexion:` page. If none is, all are kept.
+- **If some verb sections are left out and others stay** (50 lemma pages), each conjugation goes with the sections it reproduces. A conjugation reproduces a section if it generates the main forms of the section's overview table (`Deutsch Verb Übersicht`) and has an auxiliary that the table names.
+  - A conjugation that reproduces a section that stays is kept, also if it reproduces a section that is left out as well: one conjugation serves both verbs (`snacken`).
+  - A conjugation that reproduces only sections that are left out is left out (`juckte`, `ist gejuckt`; `kor`, `gekoren`). This holds only if every section that stays has an overview table and a conjugation that reproduces it.
+  - Everything else is undecided and is decided by the [patch](../decisions/0007-patches.md) `extract/patches/flexion-sections.tsv`. In the dump of 2026-11-01 this is one conjugation (`tauen`, kept). An undecided conjugation without a row is kept, and stops a release.
+
+The rule is `flexion_selection` in `hawfinch.features.selection`.
 
 ## Limits
 
-- **Regional and archaic forms in unmarked entries are not found.** `Wägen` beside `Wagen`, `Smokinge` beside `Smokings` and `Stäte` beside `Staaten` are plurals in the noun table of an entry without a mark; if anything, a note in prose says where or when they are used. They are taken as they stand in release 1, and are candidates for a patch list. They need inspection by hand during the analyses.
+- **Regional and archaic forms in unmarked entries are not found.** `Wägen` beside `Wagen`, `Smokinge` beside `Smokings` and `Stäte` beside `Staaten` are plurals in the noun table of an entry without a mark; if anything, a note in prose says where or when they are used. They are taken as they stand in release 1, and are candidates for a [patch](../decisions/0007-patches.md). They need inspection by hand during the analyses.
 - **Entries that Wiktionary does not mark are not found** either: the rule takes Wiktionary's marking without heuristics.
 
 ## Numbers

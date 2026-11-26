@@ -6,9 +6,11 @@ from hawfinch.features.selection import (
     KEPT,
     LEFT_OUT,
     MIXED,
-    keeps_flexion,
+    UNDECIDED,
+    flexion_selection,
     kept_sections,
     lemma_sections,
+    verb_sections,
     verb_selection,
 )
 
@@ -50,16 +52,70 @@ def test_kept_sections_skips_sections_left_out():
 
 
 @pytest.mark.parametrize(
-    ("name", "selection", "kept"),
+    ("name", "selection"),
     [
-        ("snacken", MIXED, True),  # one verb section of two left out: conjugations stay
-        ("poldern", LEFT_OUT, False),
-        ("aalfett", None, True),  # no verb section
+        ("snacken", MIXED),  # one verb section of two left out
+        ("poldern", LEFT_OUT),
+        ("aalfett", None),  # no verb section
     ],
 )
-def test_verb_selection_decides_for_the_flexion_page(name, selection, kept):
+def test_verb_selection(name, selection):
     assert verb_selection(sections(name)) == selection
-    assert keeps_flexion(selection) is kept
+
+
+def left_out(name: str) -> dict[int, bool]:
+    return verb_sections(sections(name))
+
+
+def test_a_section_that_points_to_another_spelling_is_not_a_lexeme():
+    austrian, swiss = sections("verrussen")
+    assert austrian.left_out and not austrian.spelling_variant
+    assert swiss.labels == ["Verb"] and not swiss.senses
+    assert swiss.spelling_variant and not swiss.left_out
+    assert sections("verrussen", kept_sections) == []
+    assert verb_sections(sections("verrussen")) == {1: True}
+    assert verb_selection(sections("verrussen")) == LEFT_OUT
+    assert not any(s.spelling_variant for s in sections("snacken"))
+
+
+def test_flexion_selection_follows_the_sections_where_they_agree():
+    assert flexion_selection(left_out("poldern"), [{1: True}]) == [LEFT_OUT]
+    assert flexion_selection({1: False}, [{1: False}]) == [KEPT]  # also if it differs
+    assert flexion_selection({}, [{}, {}]) == [KEPT, KEPT]  # no verb section, no lemma page
+
+
+# The fits below are those of the pages named, in the dump of 2026-11-01.
+@pytest.mark.parametrize(
+    ("sections_left_out", "fits", "expected"),
+    [
+        # snacken: one conjugation serves both sections
+        ({1: False, 2: True}, [{1: True, 2: True}], [KEPT]),
+        # jucken: the conjugation with sein reproduces only the section left out
+        (
+            {1: False, 2: True},
+            [{1: True, 2: False}, {1: False, 2: True}],
+            [KEPT, LEFT_OUT],
+        ),
+        # tauen: the only conjugation reproduces the section left out, but the section
+        # that stays would be left without one
+        ({1: False, 2: True}, [{1: False, 2: True}], [UNDECIDED]),
+        # the section that stays has no overview table
+        ({1: True, 2: False}, [{1: True}, {1: False}], [UNDECIDED, UNDECIDED]),
+        # a conjugation that reproduces no section
+        (
+            {1: False, 2: True},
+            [{1: True, 2: False}, {1: False, 2: False}],
+            [KEPT, UNDECIDED],
+        ),
+    ],
+)
+def test_flexion_selection_on_pages_with_sections_of_both_kinds(sections_left_out, fits, expected):
+    assert flexion_selection(sections_left_out, fits) == expected
+
+
+def test_flexion_selection_with_real_sections():
+    assert left_out("snacken") == {1: False, 2: True}
+    assert flexion_selection(left_out("snacken"), [{1: True, 2: True}]) == [KEPT]
 
 
 def test_kept_verb_sections():

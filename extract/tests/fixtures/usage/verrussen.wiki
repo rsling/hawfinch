@@ -1,0 +1,42 @@
+__TOC__
+== verrussen ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Verb|Deutsch}}, Österreich ===
+
+{{Deutsch Verb Übersicht
+|Präsens_ich=verrusse
+|Präsens_du=verrusst
+|Präsens_er, sie, es=verrusst
+|Präteritum_ich=verrusste
+|Konjunktiv II_ich=verrusste
+|Imperativ Singular=verruss
+|Imperativ Singular*=verrusse
+|Imperativ Plural=verrusst
+|Partizip II=verrusst
+|Hilfsverb=haben
+}}
+
+{{Worttrennung}}
+:ver·rus·sen, {{Prät.}} ver·russ·te, {{Part.}} ver·russt
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|fɛɐ̯ˈʁʊsn̩}}
+:{{Hörbeispiele}} {{Audio|De-verrussen.ogg}}
+:{{Reime}} {{Reim|ʊsn̩|Deutsch}}
+
+{{Bedeutungen}}
+:[1] {{K|Österreich|sein}} mit [[Kohlenstoff]]/[[Russ]] verschmutzen, [[russig]] werden
+:[2] {{K|Österreich|haben}} mit Kohlenstoff/Russ verschmutzen, [[russig]] machen
+
+{{Beispiele}}
+:[1] „Die Zündkerze etwa neigte zum ''Verrussen''.“<ref>{{Per-Presse (Onlineausgabe) | Online=https://diepresse.com/home/zeitgeschichte/5239689/Erinnern-Sie-sich_Ein-Puch-ohne-Siegel | Autor=Benedikt Kommenda  | Titel=Ein Puch ohne Siegel  | Tag=27 | Monat=06| Jahr=2017 | Zugriff=2018-06-30}}</ref>
+:[2] „Das Kinderzimmer brannte jedoch fast zur Gänze aus, die übrige Wohnung ''wurde'' stark ''verrusst''.“<ref>{{Per-Standard Online | Online= https://derstandard.at/431695/OOe-Dreijaehriger-zuendelte-Wohnhaus-musste-evakuiert-werden|  Titel=OÖ.: Dreijähriger zündelte, Wohnhaus musste evakuiert werden | Tag=30 | Monat=12| Jahr=2000 | Zugriff=2018-07-01}}</ref>
+
+{{Lemmaverweis|verrußen}}
+
+{{Referenzen}}
+:[1] {{Lit-ÖBV: Österreichisches Wörterbuch|A=38 (Schulausgabe)}}
+
+{{Quellen}}
+
+=== {{Wortart|Verb|Deutsch}}, Schweiz und Liechtenstein ===
+{{Schweizer und Liechtensteiner Schreibweise|verrußen|Worttrennung=ver·rus·sen}}
