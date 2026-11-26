@@ -1,0 +1,31 @@
+{{Siehe auch|[[UFO]]}}
+== Ufo ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{n}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=n
+|Nominativ Singular=Ufo
+|Nominativ Plural=Ufos
+|Genitiv Singular=Ufos
+|Genitiv Singular*=Ufo
+|Genitiv Plural=Ufos
+|Dativ Singular=Ufo
+|Dativ Plural=Ufos
+|Akkusativ Singular=Ufo
+|Akkusativ Plural=Ufos
+}}
+
+{{Worttrennung}}
+:Ufo, {{Pl.}} Ufos
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|ˈuːfo}}
+:{{Hörbeispiele}} {{Audio|De-Ufo.ogg}}
+
+{{Lemmaverweis|UFO}}
+
+{{Referenzen}}
+:[1] {{Ref-DWDS|UFO}}
+:[*] {{Ref-OWID|Ufo}}
+:[1] {{Ref-FreeDictionary|Ufo}}
+:[1] {{Ref-Duden|Ufo}}

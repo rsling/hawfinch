@@ -1,0 +1,39 @@
+== Darmnaht ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{f}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=f
+|Nominativ Singular=Darmnaht
+|Nominativ Plural=Darmnähte
+|Genitiv Singular=Darmnaht
+|Genitiv Plural=Darmnähte
+|Dativ Singular=Darmnaht
+|Dativ Plural=Darmnähten
+|Akkusativ Singular=Darmnaht
+|Akkusativ Plural=Darmnähte
+}}
+
+{{Worttrennung}}
+:Darm·naht, {{Pl.}} Darm·näh·te
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|ˈdaʁmˌnaːt}}
+:{{Hörbeispiele}} {{Audio|De-Darmnaht.ogg}}
+
+{{Bedeutungen}}
+:[1] ''[[Medizin]]:'' die Naht am operierten Darm
+
+{{Herkunft}}
+:[[Determinativkompositum]] aus den Substantiven ''[[Darm]]'' und ''[[Naht]]''
+
+{{Beispiele}}
+:[1] {{Beispiele fehlen|spr=de}}
+
+==== {{Übersetzungen}} ====
+{{Ü-Tabelle|1|G=Medizin: die Naht am operierten Darm|Ü-Liste=
+*{{en}}: {{Ü|en|}}
+*{{la}}: {{Ü|la|enterorrhaphia}}
+}}
+
+{{Referenzen}}
+:[1] {{Ref-Grimm|Darmnaht}}

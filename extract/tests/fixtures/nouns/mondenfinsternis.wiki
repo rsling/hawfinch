@@ -1,0 +1,32 @@
+== Mondenfinsternis ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{f}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=f
+|Nominativ Singular=Mondenfinsternis
+|Nominativ Plural=Mondenfinsternisse
+|Genitiv Singular=Mondenfinsternis
+|Genitiv Plural=Mondenfinsternisse
+|Dativ Singular=Mondenfinsternis
+|Dativ Plural=Mondenfinsternissen
+|Akkusativ Singular=Mondenfinsternis
+|Akkusativ Plural=Mondenfinsternisse
+}}
+
+{{Nebenformen}}
+:[[Mondfinsternis]], [[Mondesfinsternis]]
+
+{{Worttrennung}}
+:Mon·den·fins·ter·nis, {{Pl.}} Mon·den·fins·ter·nis·se
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|ˈmoːndn̩ˌfɪnstɐnɪs}}
+:{{Hörbeispiele}} {{Audio|De-Mondenfinsternis.ogg}}
+
+{{Bedeutungen}}
+:[1] {{K|Astronomie|va.}} [[Ereignis]], bei dem der [[Mond]] durch den [[Kernschatten]] der [[Erde]] [[wandern|wandert]]
+
+{{Lemmaverweis|Mondfinsternis}}
+
+{{Referenzen}}
+:[1] {{Ref-Grimm}}

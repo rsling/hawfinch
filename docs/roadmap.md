@@ -24,7 +24,7 @@ The whole pipeline runs end to end on a narrow slice, so that every later milest
 - **Part of speech:** Wiktionary's labels, with `Abkürzung` replaced by the part of speech the word is used as ([0005](decisions/0005-abbreviations.md)). Name labels (`Toponym`, `Nachname`, …) are not parts of speech ([0003](decisions/0003-named-entities.md)). `Abkürzung` sections that are not lexemes go into a stub table.
 - **Verb stems:** read from `Flexion:` arguments and stored without the infinitive suffix.
 - **Word-form table:** forms from form entries and noun tables, with grammatical features, spelling variants, orthographic syllables, and IPA where present. Missing single-word forms are generated from stems and marked as generated.
-- **Derived fields:** plural type, adjective umlaut, inflectional segmentation (`läuf-t`).
+- **Derived fields:** plural class with plural stem and segmented plural ([plural classes](features/plural-classes.md)), adjective umlaut, inflectional segmentation (`läuf-t`).
 - **Validation:** consistency checks, a coverage report per profile item, and a count comparison against Kaikki.
 - **Identifiers:** provisional, and documented as unstable.
 

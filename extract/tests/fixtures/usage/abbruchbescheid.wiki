@@ -1,0 +1,57 @@
+== Abbruchbescheid ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{m}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=m
+|Nominativ Singular=Abbruchbescheid
+|Nominativ Plural=Abbruchbescheide
+|Genitiv Singular=Abbruchbescheides
+|Genitiv Singular*=Abbruchbescheids
+|Genitiv Plural=Abbruchbescheide
+|Dativ Singular=Abbruchbescheid
+|Dativ Singular*=Abbruchbescheide
+|Dativ Plural=Abbruchbescheiden
+|Akkusativ Singular=Abbruchbescheid
+|Akkusativ Plural=Abbruchbescheide
+}}
+
+{{Alternative Schreibweisen}}
+:[[Abbruchsbescheid]]
+
+{{Worttrennung}}
+:Ab·bruch·be·scheid, {{Pl.}} Ab·bruch·be·schei·de
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|ˈapbʁʊxbəˌʃaɪ̯t}}
+:{{Hörbeispiele}} {{Audio|De-Abbruchbescheid.ogg}}
+
+{{Bedeutungen}}
+:[1] ''Österreich:'' behördliche Anordnung zum Abbruch eines Gebäudes
+
+{{Herkunft}}
+:[[Determinativkompositum]] ([[Zusammensetzung]]) der [[Substantive]] ''[[Abbruch]]'' und ''[[Bescheid]],'' wobei das [[Determinans]] „Abbruch“ das [[Determinatum]] „Bescheid“ näher bestimmt
+
+{{Sinnverwandte Wörter}}
+:[1] [[Abbruchgebot]], [[Abbruchverfügung]], [[Abrissverfügung]]
+
+{{Beispiele}}
+:[1] Das Ehepaar Düringer hält den ''Abbruchbescheid'' in der Hand. Sie haben bis „spätestens 31. Juli 2008“ ihr Haus abzureißen.<ref>{{Internetquelle | url=http://www.vol.at/news/vorarlberg/artikel/familie-muss-ihr-haus-abreissen/cn/news-20070508-07054730 | titel=Familie muss ihr Haus abreißen | hrsg=VORARLBERG ONLINE | datum=8. Mai 2007 | zugriff=2012-01-09}}</ref>
+:[1] In erster Instanz erließ die Behörde auf Basis der Vermessungen des Geometers einen ''Abbruchbescheid.''<ref>{{Per-Presse (Onlineausgabe) | Online=https://diepresse.com/home/immobilien/markt/oesterreich/714274/Raecht-Wien-Kritik-mit-Hausabbruch?from=suche.intern.portal | Autor=Andreas Wetz | Titel=„Rächt“ Wien Kritik mit Hausabbruch? | Tag=4 | Monat=12 | Jahr=2011 | Zugriff=2012-01-09}}</ref>
+:[1] Das Gebäude verwahrloste immer mehr, 1972 richtete ein Erdbeben weitere Schäden an und Mitte der 1970er Jahre beantragte der Eigentümer den ''Abbruchbescheid.''<ref>{{Wikipedia|Schloss Hagenberg}}, abgerufen am 9. Januar 2012.</ref>
+
+{{Charakteristische Wortkombinationen}}
+:[1] [[baupolizeilich]]er, [[behördlich]]er, [[vollstreckt]]er ''Abbruchbescheid''
+
+==== {{Übersetzungen}} ====
+{{Ü-Tabelle|1|G=Österreich: behördliche Anordnung zum Abbruch eines Gebäudes|Ü-Liste=
+*{{en}}: {{Ü|en|demolition order}}, {{Ü|en|demolition ruling}}
+*{{fr}}: {{Ü|fr|}}
+*{{it}}: {{Ü|it|}}
+*{{es}}: {{Ü|es|}}
+}}
+
+{{Referenzen}}
+:[1] {{Ref-UniLeipzig|Abbruchbescheid}}
+:[1] {{Lit-ÖBV: Österreichisches Wörterbuch|A=41}}, Seite 20, Eintrag „Abbruchbescheid“
+
+{{Quellen}}

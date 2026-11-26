@@ -1,0 +1,45 @@
+== Bazi ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{m}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=m
+|Nominativ Singular=Bazi
+|Nominativ Plural=Bazis
+|Genitiv Singular=Bazis
+|Genitiv Plural=Bazis
+|Dativ Singular=Bazi
+|Dativ Plural=Bazis
+|Akkusativ Singular=Bazi
+|Akkusativ Plural=Bazis
+}}
+
+{{Worttrennung}}
+:Ba·zi, {{Pl.}} Ba·zis
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|ˈbaːt͡si}}
+:{{Hörbeispiele}} {{Audio|De-Bazi.ogg}}, {{Audio|De-at-Bazi.ogg|spr=at}}
+:{{Reime}} {{Reim|aːt͡si|Deutsch}}
+
+{{Bedeutungen}}
+:[1] ''[[bairisch-österreichisch]], [[salopp]]:'' pfiffiger, durchtriebener Bursche
+:[2] ''abwertend:'' Bayer
+
+{{Beispiele}}
+:[1] {{Beispiele fehlen}}
+
+==== {{Übersetzungen}} ====
+{{Ü-Tabelle|1|G=bairisch-österreichisch, salopp: pfiffiger, durchtriebener Bursche|Ü-Liste=
+*{{en}}: {{Ü|en|}}
+*{{fr}}: {{Ü|fr|filou}} {{m}}
+}}
+
+{{Ü-Tabelle|2|G=abwertend: Bayer|Ü-Liste=
+*{{en}}: {{Ü|en|}}
+*{{fr}}: {{Ü|fr|}}
+}}
+
+{{Referenzen}}
+:[1] {{Ref-DWDS|Bazi}}
+:[1] {{Ref-FreeDictionary|Bazi}}
+:[1, 2] {{Ref-Duden|Bazi}}

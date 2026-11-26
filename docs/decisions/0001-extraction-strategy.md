@@ -65,7 +65,7 @@ Whichever input we use, we must build our own sense identifiers and resolve sens
 | Orthographic syllables | `Worttrennung` line with `·`, covering lemma plus plural, preterite, participle, comparative, superlative | lemma only; nothing for pluralia tantum | direct |
 | Part of speech | `{{Wortart\|…}}` in the heading | yes, mapped to coarse English labels | direct, keep German labels |
 | Gender | heading template and `Genus` argument of the noun table | heading only | direct, from `Genus` |
-| Plural type | all 8 case/number forms are explicit arguments; parallel plurals numbered (`Nominativ Plural 1/2`); `—` for none | forms present, parallel plurals merged | derive umlaut and suffix by comparing singular and plural; unclassifiable cases keep the explicit forms |
+| Plural type | all 8 case/number forms are explicit arguments; parallel plurals numbered (`Nominativ Plural 1/2`); `—` for none | forms present, parallel plurals merged | derive class, umlaut and suffix by comparing singular and plural ([plural classes](../features/plural-classes.md)); unclassifiable cases keep the explicit forms |
 | Adjective umlaut | `Positiv`, `Komparativ`, `Superlativ` arguments | yes | derive |
 | Verb stem allomorphs | `Deutsch Verb Übersicht` gives 9–10 principal forms; `Flexion:` pages give stems as arguments (present, past, subjunctive II, participle, 2nd/3rd singular) | forms as strings with pronouns, no stems | direct from `Flexion:` arguments |
 | IPA | `{{Lautschrift}}`; stress marked, no syllable boundaries | IPA string | direct for the transcription; syllable boundaries undecided |

@@ -12,6 +12,7 @@ What the database must contain. This is the requirements list that the release s
 - **zu-infinitives and gerundives are never stored either** (`aufzustocken`, `aufzuwärmende`), even where `zu` is written inside the word. The **Partizip I is derivation, not inflection**: an `-end` word is a lexeme only where Wiktionary lists it with its own meaning. The Partizip II is a word form of the verb; its declined forms are stored only for adjective lexemes. See [0004](../decisions/0004-participles-and-zu-forms.md).
 - **There is no proper-noun part of speech.** Lexemes keep Wiktionary's part of speech. Whether a lexical unit names something is recorded in `named_entity`. Where Wiktionary marks the entry as a name, it holds the head noun of the definition (`Stadt`, `Nachname`); otherwise it is `default`. See [0003](../decisions/0003-named-entities.md).
 - **`Abkürzung` is not a part of speech.** Short words and abbreviated names are ordinary lexemes with the part of speech they are used as, and their form is recorded in `coding`. Sections labelled `Abkürzung` without a signal of word status, orthographic abbreviations (`Einw.`) and codes are not lexemes. See [0005](../decisions/0005-abbreviations.md).
+- **Archaic and regional entries are left out.** A part-of-speech section whose senses are all marked as archaic, regional, Austrian or Swiss gives no lexeme. See [usage labels](../features/usage-labels.md).
 - All segmentation uses the symbols defined in [segmentation conventions](../features/segmentation.md).
 
 Lexeme or lexical unit? A different inventory of forms means a different lexeme (Wort with plural Wörter versus Worte). A restriction on the same forms, or a syntactic property, belongs to the lexical unit ("no plural in this sense", transitivity, choice of auxiliary).
@@ -29,8 +30,11 @@ Ideally two tables, one for simplex and one for complex lexemes.
 | Orthographic syllable segmentation | extracted | |
 | Part of speech | extracted/derived | German Wiktionary labels. `Abkürzung` is replaced by the part of speech the word is used as ([0005](../decisions/0005-abbreviations.md)). Name labels (`Toponym`, `Nachname`, …) are not parts of speech; they mark named entities ([0003](../decisions/0003-named-entities.md)). Definitions in [part of speech](../features/part-of-speech.md). |
 | Coding | derived | `regular` or `short` (a short word spoken as such: `KKW`, `CVJM`, `Uni`). Clippings such as `Uni` are recognised from the Herkunft in M2. See [0005](../decisions/0005-abbreviations.md). |
-| Grammatical gender (nouns) | extracted | |
-| Plural type (nouns) | derived | Regular case: umlaut yes/no plus suffix. Irregular cases must be representable too. |
+| Grammatical gender (nouns) | extracted | `m`, `f`, `n`; `nd` for nouns without a singular. |
+| Plural class (nouns) | derived | `primary`, `secondary`, `marked-n`, `marked-r`, `default`, `loan`, `irregular` or `adjectival`, from the suffix type, the gender and the genitive singular. Empty for plurals of names that are not in `-s`, for abbreviations in capitals whose only plural has no suffix (`VWL`), and where no gender is given. See [plural classes](../features/plural-classes.md). |
+| Plural stem (nouns) | derived | The stem as it appears in the plural (`Stühl`, `Baut`, `Finit`). Shows the umlaut. |
+| Segmented plural (nouns) | derived | The literal nominative plural with the boundary before the suffix, also where there is none (`Stühl-e`, `Finit-a`, `Lehrer-`). |
+| Variant forms (nouns) | extracted | A table of its own: lexeme, field, form. Holds genitives singular that do not fit the class (`des Elbs` for `marked-n`, `des Magneten` for `primary`). The variation between `-s` and `-es` is not stored: where Wiktionary gives both, the lexeme has the form in `-es`. |
 | Umlaut in comparative/superlative (adjectives) | derived | yes/no |
 | Stem allomorphs (verbs) | extracted/derived | Four stems: present, present of the second and third person singular, preterite, participle. Identical for weak verbs. |
 | Variant stems (verbs) | extracted | A table of its own: lexeme, stem field, stem, conjugation class. Holds second stems (`frug`, `hub`, `gebär`) and subjunctive II stems that do not follow from a preterite stem by umlaut (`würf`, `stünd`); for these, sole stem and variant are not distinguished. |
@@ -60,6 +64,7 @@ One row per pairing of a lexeme with a sense.
 |---|---|---|
 | Lexeme and sense | derived | |
 | Restrictions and syntactic properties in this sense | extracted | "No plural in this sense", transitivity, auxiliary, and similar labels. |
+| Usage labels | extracted | Whether the sense is marked as archaic, regional, Austrian or Swiss. A section in which all senses are marked is left out altogether. See [usage labels](../features/usage-labels.md). |
 | Named entity | derived | `default` where Wiktionary does not mark the entry as a name. Otherwise the head noun of the definition as a lemma (`Stadt`, `Nachname`), or `unspecified` if there is none. No types in release 1. See [0003](../decisions/0003-named-entities.md) and [named entities](../features/named-entities.md). |
 | Links to synonyms, hyponyms and other semantic relations | extracted | |
 | English translations | extracted | If possible. For later automatic word-by-word glossing. |

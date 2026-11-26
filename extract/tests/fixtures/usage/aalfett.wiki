@@ -1,0 +1,52 @@
+== Aalfett ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{n}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=n
+|Nominativ Singular=Aalfett
+|Nominativ Plural=Aalfette
+|Genitiv Singular=Aalfetts
+|Genitiv Singular*=Aalfettes
+|Genitiv Plural=Aalfette
+|Dativ Singular=Aalfett
+|Dativ Singular*=Aalfette
+|Dativ Plural=Aalfetten
+|Akkusativ Singular=Aalfett
+|Akkusativ Plural=Aalfette
+|Bild=<!--füge hier dein Bild ein!-->|mini|1|<!--füge hier deine Beschreibung ein!-->
+}}
+
+{{Worttrennung}}
+:Aal·fett, {{Pl.}} Aal·fet·te
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|ˈaːlˌfɛt}}
+:{{Hörbeispiele}} {{Audio|De-Aalfett.ogg}}
+:{{Reime}} {{Reim|aːlfɛt|Deutsch}}
+
+{{Bedeutungen}}
+:[1] ''veraltet:'' in der Medizin eingesetztes, aus dem Aal gewonnenes Fett
+
+{{Herkunft}}
+:[[Determinativkompositum]] aus den Substantiven [[Aal]] und [[Fett]]
+
+{{Beispiele}}
+:[1] „Es solle auch das frische Kraut mit ''Aalfett'' angebrüht, und in die Sonne gestellt, ein trefliches Mittel wider die Schwierigkeiten des Gehörs seyn.“<ref>{{Literatur | Autor= | Titel=Onomatologia medica completa oder Medicinisches Lexicon | Auflage= | Verlag= | Ort= | Jahr=1755 | ISBN= | Online={{GBS|iCQHAAAAcAAJ|PA1187}} }}</ref>
+:[1] „Es werden 4 Loth ''Aalfett'', das nicht ausgebraten, sondern nach dem Schlachten aus dem Aal genommen ist, in einem glasirten Gefäße mit 2 Lth. Rosmarinöl und 1 Lth. Thymianöl unter gelinder Wärme zerlassen.“<ref>{{Literatur | Autor= | Sammelwerk=Allgemeiner Bayerischer National-Korrespondent | Titel=Oel zur Beförderung des Haar-Wuchses | Nummer=39 | Verlag= | Ort= | Jahr=1831 | ISBN= | Seiten=328 | Online={{GBS|lYREAAAAcAAJ|PA40-IA4}} }}</ref>
+:[1] „Das reine ''Aalfett'', äusserlich gegen Gicht empfohlen.“<ref>{{Literatur | Autor=Dr. Röttger | Titel=Die neueren Arzneimittel und Arzneibereitungsformen | Auflage= | Verlag=Dr. C. Wolf'sche Buchdruckerei | Ort=München | Jahr=1847 | ISBN= | Seiten=202 |Online={{GBS|MQU9AAAAcAAJ|PA202}} }}</ref>
+:[1] „''Aalfett'' wird in der Medicin verbraucht als Adeps Anguillarum.“<ref>{{Literatur | Autor=Alexander Jacob Schem | Titel=Deutsch-amerikanisches Conversations-Lexicon | Band=1 | Verlag=Friedr. Gerhard | Ort=New York | Jahr=1869 | ISBN= | Seiten=11 }}</ref>
+:[1] „Dann soll er Betonienkraut, dreimal so viel Liebstöckel und etwas ''Aalfett'' nehmen, in Wein kochen und durch ein Tuch seihen, in diesen Wein das erwähnte Pulver hineingiessen und so trinken“<ref>{{Literatur | Autor=Herbert Reier | Titel=Leben, Krankheiten und Heilungen im Mittelalter | Auflage= | Verlag=Selbstverl. | Ort= | Jahr=1987 | ISBN= | Seiten=209 }}</ref>
+:[1] „Um Neermoor träufelte man gegen Schwerhörigkeit ''Aalfett'' in die Ohren.“<ref>{{Literatur | Autor=Dirk Faß | Titel=Volksmedizin | Auflage= | Verlag=Isensee Verlag | Ort= | Jahr=2006 | ISBN= | Seiten= }}</ref>
+
+==== {{Übersetzungen}} ====
+{{Ü-Tabelle|1|G=veraltet: in der Medizin eingesetztes, aus dem Aal gewonnenes Fett|Ü-Liste=
+*{{en}}: {{Ü|en|eel fat}}
+*{{fr}}: {{Ü|fr|}}
+*{{it}}: {{Ü|it|}}
+*{{es}}: {{Ü|es|}}
+}}
+
+{{Referenzen}}
+:[1] 
+
+{{Quellen}}

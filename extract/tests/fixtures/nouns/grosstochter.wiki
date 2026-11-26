@@ -1,0 +1,48 @@
+{{Siehe auch|[[Großtöchter]]}}
+== Großtochter ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{f}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=f
+|Nominativ Singular=Großtochter
+|Nominativ Plural=Großtöchter
+|Genitiv Singular=Großtochter
+|Genitiv Plural=Großtöchter
+|Dativ Singular=Großtochter
+|Dativ Plural=Großtöchtern
+|Akkusativ Singular=Großtochter
+|Akkusativ Plural=Großtöchter
+}}
+
+{{Alternative Schreibweisen}}
+:{{CH&LI}} [[Grosstochter]]
+
+{{Worttrennung}}
+:Groß·toch·ter, {{Pl.}} Groß·töch·ter
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|ˈɡʁoːsˌtɔxtɐ}}
+:{{Hörbeispiele}} {{Audio|De-Großtochter.ogg}}
+
+{{Bedeutungen}}
+:[1] {{K|va.}} [[Enkelin]], [[Enkeltochter]]
+
+{{Männliche Wortformen}}
+:[1] [[Großsohn]]
+
+{{Beispiele}}
+:[1] „Seine zweite Ehe hatte er mit einer ''Großtochter'' des sächsischen Hofpredigers Salomon Winter geschlossen.“<ref>{{Wikipedia|Johann von Geldern|oldid=134994284}}</ref>
+
+==== {{Übersetzungen}} ====
+{{Ü-Tabelle|1|G=veraltet: Enkelin, Enkeltochter|Ü-Liste=
+*{{en}}: {{Ü|en|}}
+*{{fr}}: {{Ü|fr|}}
+*{{it}}: {{Ü|it|nipote}}
+*{{es}}: {{Ü|es|}}
+}}
+
+{{Referenzen}}
+:[1] {{Ref-Grimm|Grosztochter}}
+:[1] {{Ref-Rheinisch|Großtochter}}
+
+{{Quellen}}

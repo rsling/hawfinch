@@ -1,0 +1,58 @@
+== Aaser ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{m}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=m
+|Nominativ Singular=Aaser
+|Nominativ Plural=Aaser
+|Genitiv Singular=Aasers
+|Genitiv Plural=Aaser
+|Dativ Singular=Aaser
+|Dativ Plural=Aasern
+|Akkusativ Singular=Aaser
+|Akkusativ Plural=Aaser
+}}
+
+{{Alternative Schreibweisen}}
+:[[Aser]]
+
+{{Worttrennung}}
+:Aa·ser, {{Pl.}} Aa·ser
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|ˈaːzɐ}}
+:{{Hörbeispiele}} {{Audio|LL-Q188 (deu)-Frank C. Müller-Aaser.wav}}, {{Audio|De-Aaser.ogg}}
+:{{Reime}} {{Reim|aːzɐ|Deutsch}}
+
+{{Bedeutungen}}
+:[1] {{K|Jägersprache|süddeutsch}} [[Jagdtasche]]
+:[2] {{K|Jägersprache|schweizerisch}} im Freien eingenommene Mahlzeit
+
+{{Synonyme}}
+:[1] [[Holster]], [[Jagdtasche]], [[Waidtasche]]
+
+{{Beispiele}}
+:[1] Die Jäger nahmen Proviant in ihrem ''Aaser'' mit.
+:[2] Die Jäger pausierten bei einem kräftigenden ''Aaser.''
+
+==== {{Übersetzungen}} ====
+{{Ü-Tabelle|1|G=Jägersprache, süddeutsch: Jagdtasche|Ü-Liste=
+*{{en}}: {{Ü|en|hunting bag}}, {{Ü|en|game bag}}
+*{{fr}}: {{Ü|fr|}}
+*{{it}}: {{Ü|it|}}
+*{{es}}: {{Ü|es|}}
+}}
+
+{{Ü-Tabelle|2|G=Jägersprache, schweizerisch: im Freien eingenommene Mahlzeit|Ü-Liste=
+*{{en}}: {{Ü|en|}}
+*{{fr}}: {{Ü|fr|}}
+}}
+
+{{Referenzen}}
+:[1] {{Ref-Grimm|Aser}}, auch „Aaser“ (Speisesack der Jäger)
+:[1, 2] {{Ref-DWDS|Aaser}}
+:[*] {{Ref-OWID|elexiko|14938|Aser}} (andere Schreibweise für „Aaser“)
+:[1] {{Lit-Frevert: Jagdliches Brauchtum und Jägersprache|A=2011}}, „Aaser“, Seite 155.
+:[1] {{Lit-Zeiß: Lexikon der Waidmannssprache|V=Hubertusverlag}}, „Aaser“, Seite 7.
+
+{{Ähnlichkeiten 1|Anagramme=[[Aares]]}}

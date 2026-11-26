@@ -1,0 +1,32 @@
+{{Siehe auch|[[foton]]}}
+== Foton ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{n}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=n
+|Nominativ Singular=Foton
+|Nominativ Plural=Fotonen
+|Genitiv Singular=Fotons
+|Genitiv Plural=Fotonen
+|Dativ Singular=Foton
+|Dativ Plural=Fotonen
+|Akkusativ Singular=Foton
+|Akkusativ Plural=Fotonen
+}}
+
+{{Alternative Schreibweisen}}
+:[[Photon]]
+
+{{Worttrennung}}
+:Fo·ton, {{Pl.}} Fo·to·nen
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|ˈfoːtɔn}}, auch: {{Lautschrift|ˌfoˈtoːn}}
+:{{Hörbeispiele}} {{Audio|De-Foton.ogg}}, {{Audio|De-Foton2.ogg}}
+:{{Reime}} {{Reim|oːn|Deutsch}}, {{Reim|oːtɔn|Deutsch}}
+
+{{Lemmaverweis|Photon}}
+
+{{Referenzen}}
+:[1] {{Ref-UniLeipzig|Foton}}
+:[1] {{Ref-FreeDictionary|Foton}}

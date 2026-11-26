@@ -1,0 +1,29 @@
+== Apokarpium ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{n}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=n
+|Nominativ Singular=Apokarpium
+|Nominativ Plural=Apokarpien
+|Genitiv Singular=Apokarpiums
+|Genitiv Plural=Apokarpien
+|Dativ Singular=Apokarpium
+|Dativ Plural=Apokarpien
+|Akkusativ Singular=Apokarpium
+|Akkusativ Plural=Apokarpien
+}}
+
+{{Nebenformen}}
+:[[Apokarp]]
+
+{{Worttrennung}}
+:Apo·kar·pi·um, {{Pl.}} Apo·kar·pi·en
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|apoˈkaʁpi̯ʊm}}
+:{{Hörbeispiele}} {{Audio|De-Apokarpium.ogg}}
+
+{{Bedeutungen}}
+:[1] {{K|spr=de|Botanik}} aus einzelnen Früchten zusammengesetzter Fruchtstand
+
+{{Lemmaverweis|Apokarp}}

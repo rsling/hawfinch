@@ -1,0 +1,26 @@
+== Einzugschacht ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{m}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=m
+|Nominativ Singular=Einzugschacht
+|Nominativ Plural=Einzugschächte
+|Genitiv Singular=Einzugschachts
+|Genitiv Singular*=Einzugschachtes
+|Genitiv Plural=Einzugschächte
+|Dativ Singular=Einzugschacht
+|Dativ Plural=Einzugschächten
+|Akkusativ Singular=Einzugschacht
+|Akkusativ Plural=Einzugschächte
+}}
+
+{{Alternative Schreibweisen}}
+:[[Einzugsschacht]]
+
+{{Worttrennung}}
+:Ein·zug·schacht, {{Pl.}} Ein·zug·schäch·te
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|}}
+:{{Hörbeispiele}} {{Audio|De-Einzugschacht.ogg}}
+{{Lemmaverweis|Einzugsschacht}}

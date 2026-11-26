@@ -1,0 +1,48 @@
+== KKW ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Abkürzung|Deutsch}}, {{n}}, {{Wortart|Substantiv|Deutsch}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=n
+|Nominativ Singular=KKW
+|Nominativ Plural 1=KKW
+|Nominativ Plural 2=KKWs
+|Genitiv Singular=KKW
+|Genitiv Singular*=KKWs
+|Genitiv Plural 1=KKW
+|Genitiv Plural 2=KKWs
+|Dativ Singular=KKW
+|Dativ Plural 1=KKW
+|Dativ Plural 2=KKWs
+|Akkusativ Singular=KKW
+|Akkusativ Plural 1=KKW
+|Akkusativ Plural 2=KKWs
+}}
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|kaːkaːˈveː}}
+:{{Hörbeispiele}} {{Audio|De-KKW.ogg}}
+
+{{Bedeutungen}}
+:[1] [[Kernkraftwerk|'''K'''ern'''k'''raft'''w'''erk]]
+
+{{Synonyme}}
+:[1] [[AKW]]
+
+{{Beispiele}}
+:[1] {{Beispiele fehlen|spr=de}}
+
+==== {{Übersetzungen}} ====
+{{Ü-Tabelle|1|G=Kernkraftwerk|Ü-Liste=
+*{{en}}: {{Ü|en|}}
+*{{fr}}: {{Ü|fr|}}
+*{{it}}: {{Ü|it|}}
+*{{ru}}: {{Üt|ru|АЭС}} {{f}}
+*{{es}}: {{Ü|es|}}
+}}
+
+{{Referenzen}}
+:[1] {{Wikipedia}}
+:[1] {{Ref-Abkürzungen}}
+:[1] {{Ref-Duden}}
+:[*] {{Ref-UniLeipzig}}
+:[1] {{Lit-Duden: Abkürzungen|A=5}}, Seite 244.

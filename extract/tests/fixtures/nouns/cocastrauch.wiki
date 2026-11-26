@@ -1,0 +1,36 @@
+== Cocastrauch ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{m}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=m
+|Nominativ Singular=Cocastrauch
+|Nominativ Plural=Cocasträucher
+|Genitiv Singular=Cocastrauchs
+|Genitiv Singular*=Cocastrauches
+|Genitiv Plural=Cocasträucher
+|Dativ Singular=Cocastrauch
+|Dativ Singular*=Cocastrauche
+|Dativ Plural=Cocasträuchern
+|Akkusativ Singular=Cocastrauch
+|Akkusativ Plural=Cocasträucher
+}}
+
+{{Alternative Schreibweisen}}
+:[[Kokastrauch]]
+
+{{Worttrennung}}
+:Co·ca·strauch, {{Pl.}} Co·ca·sträu·cher
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|ˈkoːkaˌʃtʁaʊ̯x}}
+:{{Hörbeispiele}} {{Audio|De-Cocastrauch.ogg}}
+
+{{Bedeutungen}}
+:[1] Pflanzenart aus der Familie der Rotholzgewächse, die als Medizin, Genussmittel und als Grundlage für [[Kokain]] dient
+
+{{Lemmaverweis|Kokastrauch}}
+
+{{Referenzen}}
+:[1] {{Wikipedia}}
+:[*] {{Ref-OWID}}
+:[1] {{Ref-wissen.de|Lexikon}}

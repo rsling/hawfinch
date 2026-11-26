@@ -47,6 +47,7 @@ from hawfinch.features.inflection import (
     stem_variants,
     stems,
 )
+from hawfinch.features.usage import restricted
 from hawfinch.wikitext.sections import german_sections
 from hawfinch.wikitext.templates import scan
 
@@ -84,10 +85,12 @@ def stratum(verb: Verb) -> str:
     return "strong, separable" if verb.separable else "strong, other"
 
 
-def process_row_group(args) -> tuple[list[dict], list[dict], Counter]:
+def process_row_group(args) -> tuple[list[dict], list[dict], Counter, dict[str, list[bool]]]:
+    """Conjugations, overview tables, unread templates, and for every lemma page with verb
+    sections whether each of them is left out as archaic or regional."""
     path, index = args
     table = pq.ParquetFile(path).read_row_group(index, columns=["ns", "title", "text", "redirect"])
-    conjugations, overviews, unread = [], [], Counter()
+    conjugations, overviews, unread, left_out = [], [], Counter(), {}
     for row in table.to_pylist():
         if row["redirect"] is not None:
             continue
@@ -105,7 +108,12 @@ def process_row_group(args) -> tuple[list[dict], list[dict], Counter]:
         elif row["ns"] == 0 and OVERVIEW in text:
             for entry in german_sections(text):
                 for number, pos in enumerate(entry.pos_sections, 1):
-                    for template in scan(pos.section.body(text)).templates:
+                    body = pos.section.body(text)
+                    if any(label == "Verb" for label, _ in pos.wortarten):
+                        left_out.setdefault(row["title"], []).append(restricted(body))
+                    if restricted(body):
+                        continue
+                    for template in scan(body).templates:
                         if template.name == OVERVIEW:
                             overviews.append(
                                 {
@@ -115,7 +123,7 @@ def process_row_group(args) -> tuple[list[dict], list[dict], Counter]:
                                     "forms": overview_forms(template),
                                 }
                             )
-    return conjugations, overviews, unread
+    return conjugations, overviews, unread, left_out
 
 
 def agreement(generated: dict[str, list[str]], listed: dict[str, list[str]]) -> dict[str, str]:
@@ -222,12 +230,19 @@ def _annotated_sample(path: Path, stem_rows: list[dict]) -> list[dict] | None:
 def run(cache: Path, out: Path, workers: int) -> None:
     out.mkdir(parents=True, exist_ok=True)
     groups = pq.ParquetFile(cache).num_row_groups
-    conjugations, overviews, unread = [], [], Counter()
+    conjugations, overviews, unread, left_out = [], [], Counter(), {}
     with ProcessPoolExecutor(workers) as pool:
-        for c, o, u in pool.map(process_row_group, [(cache, i) for i in range(groups)]):
+        for c, o, u, x in pool.map(process_row_group, [(cache, i) for i in range(groups)]):
             conjugations += c
             overviews += o
             unread += u
+            left_out.update(x)
+    # A Flexion page does not say which verb section of the lemma page a conjugation belongs
+    # to. Its conjugations are left out if all verb sections of the lemma page are.
+    read = len(conjugations)
+    conjugations = [c for c in conjugations if not all(left_out.get(c["title"], [False]))]
+    dropped = read - len(conjugations)
+    mixed = sum(any(flags) and not all(flags) for flags in left_out.values())
     conjugations.sort(key=lambda c: (c["title"], c["start"]))
     overviews.sort(key=lambda o: (o["title"], o["section"]))
 
@@ -379,6 +394,8 @@ def run(cache: Path, out: Path, workers: int) -> None:
 
     status = Counter(r["status"] for r in comparison)
     matched = Counter(c["matched"] for c in conjugations)
+    print(f"{dropped:,} of {read:,} conjugations left out as archaic or regional")
+    print(f"{mixed} lemma pages with some verb sections left out, conjugations kept")
     print(f"{len(variant_rows):,} variant stems")
     print(f"{len(conjugations) - len(stem_rows)} combinations with sein left out of stems.tsv")
     print(f"{len(conjugations):,} conjugations read, {sum(unread.values())} not readable")

@@ -1,0 +1,56 @@
+== Dattelkeks ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{m}}, {{n}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus 1=m
+|Genus 2=n
+|Nominativ Singular 1=Dattelkeks
+|Nominativ Singular 2=Dattelkeks
+|Nominativ Plural 1=Dattelkeks
+|Nominativ Plural 2=Dattelkekse
+|Genitiv Singular 1=Dattelkeks
+|Genitiv Singular 1*=Dattelkekses
+|Genitiv Singular 2=Dattelkeks
+|Genitiv Singular 2*=Dattelkekses
+|Genitiv Plural 1=Dattelkeks
+|Genitiv Plural 2=Dattelkekse
+|Dativ Singular 1=Dattelkeks
+|Dativ Singular 1*=Dattelkekse
+|Dativ Singular 2=Dattelkeks
+|Dativ Singular 2*=Dattelkekse
+|Dativ Plural 1=Dattelkeks
+|Dativ Plural 2=Dattelkeksen
+|Akkusativ Singular 1=Dattelkeks
+|Akkusativ Singular 2=Dattelkeks
+|Akkusativ Plural 1=Dattelkeks
+|Akkusativ Plural 2=Dattelkekse
+}}
+
+{{Worttrennung}}
+:Dat·tel·keks, {{Pl.}} Dat·tel·kek·se
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|ˈdatl̩ˌkeːks}}
+:{{Hörbeispiele}} {{Audio|De-Dattelkeks.ogg}}
+
+{{Bedeutungen}}
+:[1] Keks mit eingebackenen Datteln
+
+{{Herkunft}}
+:[[Determinativkompositum]] aus den Substantiven ''[[Dattel]]'' und ''[[Keks]]''
+
+{{Oberbegriffe}}
+:[1] [[Keks]]
+
+{{Beispiele}}
+:[1] „Court dagegen bediente sich schamlos und verschlang die ''Dattelkekse'', denn er hatte den ganzen Tag noch nichts gegessen.“<ref>{{Literatur|Autor=Mark Greaney|Titel=The Gray Man - Undercover in Syrien|Verlag=Festa|Ort=Leipzig|Jahr=2024|ISBN=978-3-98676-132-5|Seiten=441}}.</ref>
+
+==== {{Übersetzungen}} ====
+{{Ü-Tabelle|1|G=Keks mit eingebackenen Datteln|Ü-Liste=
+*{{en}}: {{Ü|en|date cookie}}
+}}
+
+{{Referenzen}}
+:[*] {{Ref-DWDS-Korpus}}
+
+{{Quellen}}

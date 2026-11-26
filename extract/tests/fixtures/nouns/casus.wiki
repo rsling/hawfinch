@@ -1,0 +1,33 @@
+{{Siehe auch|[[casus]], [[ĉasus]]}}
+== Casus ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{m}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=m
+|Nominativ Singular=Casus
+|Nominativ Plural=Casus
+|Genitiv Singular=Casus
+|Genitiv Plural=Casus
+|Dativ Singular=Casus
+|Dativ Plural=Casus
+|Akkusativ Singular=Casus
+|Akkusativ Plural=Casus
+}}
+
+{{Alternative Schreibweisen}}
+:[[Kasus]]
+
+{{Worttrennung}}
+:Ca·sus
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|ˈkaːzʊs}}, <!-- Spezialfall, NICHT löschen -->{{Pl.}} {{Lautschrift|ˈkaːzuːs}}
+:{{Hörbeispiele}} {{Audio|De-Casus.ogg}}, {{Pl.}} {{Audio|De-Casus2.ogg}}
+:{{Reime}} {{Reim|aːzʊs|Deutsch}}
+
+{{Lemmaverweis|Kasus}}
+
+{{Referenzen}}
+:[1] {{Ref-Duden|Casus}}
+
+{{Ähnlichkeiten 1|Anagramme=[[Ascus]]}}

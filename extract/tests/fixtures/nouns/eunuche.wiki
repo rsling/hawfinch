@@ -1,0 +1,27 @@
+== Eunuche ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{m}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=m
+|Nominativ Singular=Eunuche
+|Nominativ Plural=Eunuchen
+|Genitiv Singular=Eunuchen
+|Genitiv Plural=Eunuchen
+|Dativ Singular=Eunuchen
+|Dativ Plural=Eunuchen
+|Akkusativ Singular=Eunuchen
+|Akkusativ Plural=Eunuchen
+}}
+
+{{Worttrennung}}
+:Eu·nu·che, {{Pl.}} Eu·nu·chen
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|ɔɪ̯ˈnuːxə}}
+:{{Hörbeispiele}} {{Audio|De-Eunuche.ogg}}
+:{{Reime}} {{Reim|uːxə|Deutsch}}
+
+{{Grammatische Merkmale}}
+*Alternative Schreibweise des Substantivs '''[[Eunuch]]'''
+
+{{Lemmaverweis|Eunuch}}

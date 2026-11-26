@@ -1,0 +1,27 @@
+{{Siehe auch|[[hot pants]], [[Hotpants]], [[Hot-Pants]]}}
+== Hot Pants ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Wortverbindung|Deutsch}}, {{Wortart|Substantiv|Deutsch}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=0
+|Nominativ Singular=—
+|Nominativ Plural=Hot Pants
+|Genitiv Singular=—
+|Genitiv Plural=Hot Pants
+|Dativ Singular=—
+|Dativ Plural=Hot Pants
+|Akkusativ Singular=—
+|Akkusativ Plural=Hot Pants
+}}
+
+{{Alternative Schreibweisen}}
+:{{kSg.}}, [[Hotpants]]
+
+{{Worttrennung}}
+:Hot Pants
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|ˈhɔtˌpɛnt͡s}}
+:{{Hörbeispiele}} {{Audio|De-Hot Pants.ogg}}
+
+{{Lemmaverweis|Hotpants}}

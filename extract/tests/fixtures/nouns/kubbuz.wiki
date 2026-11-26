@@ -1,0 +1,38 @@
+== Kubbuz ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{n}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=n
+|Nominativ Singular=Kubbuz
+|Nominativ Plural 1=Kubbuzim
+|Nominativ Plural 2=Kubbuze
+|Genitiv Singular=Kubbuz
+|Genitiv Plural 1=Kubbuzim
+|Genitiv Plural 2=Kubbuze
+|Dativ Singular=Kubbuz
+|Dativ Plural 1=Kubbuzim
+|Dativ Plural 2=Kubbuzen
+|Akkusativ Singular=Kubbuz
+|Akkusativ Plural 1=Kubbuzim
+|Akkusativ Plural 2=Kubbuze
+}}
+
+{{Worttrennung}}
+:Kub·buz, {{Pl.1}} Kub·bu·zim, {{Pl.2}} Kub·bu·ze
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|kʊˈbuːt͡s}}
+:{{Hörbeispiele}} {{Audio|De-Kubbuz.ogg}}
+:{{Reime}} {{Reim|uːt͡s|Deutsch}}
+
+{{Bedeutungen}}
+:[1] ''Nebenform von'' [[Kibbuz#Substantiv, n|Kibbuz]]
+
+{{Lemmaverweis|Kibbuz}}
+
+{{Referenzen}}
+:[1] {{Lit-Duden: Großes Fremdwörterbuch|A=4}}, Seite 779
+
+{{Ähnlichkeiten 1|[[Kubus]]}}
+
+[[Kategorie:Entlehnung aus dem Hebräischen (Deutsch)]]

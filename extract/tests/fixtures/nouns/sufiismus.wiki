@@ -1,0 +1,24 @@
+== Sufiismus ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{m}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=m
+|Nominativ Singular=Sufiismus
+|Nominativ Plural=—
+|Genitiv Singular=Sufiismus
+|Genitiv Plural=—
+|Dativ Singular=Sufiismus
+|Dativ Plural=—
+|Akkusativ Singular=Sufiismus
+|Akkusativ Plural=—
+}}
+
+{{Worttrennung}}
+:Su·fi·is·mus, {{kPl.}}
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|}}
+:{{Hörbeispiele}} {{Audio|De-Sufiismus.ogg}}
+:{{Reime}} {{Reim|ɪsmʊs|Deutsch}}
+
+{{Lemmaverweis|Sufismus}}

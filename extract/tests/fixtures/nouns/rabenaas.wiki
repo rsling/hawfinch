@@ -1,0 +1,52 @@
+== Rabenaas ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{n}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=n
+|Nominativ Singular=Rabenaas
+|Nominativ Plural 1=Rabenaase
+|Nominativ Plural 2=Rabenäser
+|Genitiv Singular=Rabenaases
+|Genitiv Plural 1=Rabenaase
+|Genitiv Plural 2=Rabenäser
+|Dativ Singular=Rabenaas
+|Dativ Singular*=Rabenaase
+|Dativ Plural 1=Rabenaasen
+|Dativ Plural 2=Rabenäsern
+|Akkusativ Singular=Rabenaas
+|Akkusativ Plural 1=Rabenaase
+|Akkusativ Plural 2=Rabenäser
+}}
+
+{{Worttrennung}}
+:Ra·ben·aas, {{Pl.1}} Ra·ben·aa·se, {{Pl.2}} Ra·ben·äser
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|ˈʁaːbn̩ˌʔaːs}}
+:{{Hörbeispiele}} {{Audio|De-Rabenaas.ogg}}
+
+{{Bedeutungen}}
+:[1] {{K|abwertend}} eine [[unangenehm]]e, [[fies]]e [[Person]]
+
+{{Herkunft}}
+:[[Determinativkompositum]] der [[Substantiv]]e ''[[Rabe]]'' und ''[[Aas]]'' mit dem [[Fugenelement]] ''[[-n]]''
+
+{{Synonyme}}
+:[1] [[Arsch]], [[Lump]], [[Satansbraten]], [[Sau]], [[Schuft]], [[Schwein]]
+
+{{Beispiele}}
+:[1] Dieses ''Rabenaas'' hat Johnny an die Polente verpfiffen!
+
+==== {{Übersetzungen}} ====
+{{Ü-Tabelle|1|G=abwertend: eine unangenehme, fiese Person|Ü-Liste=
+*{{en}}: {{Ü|en|bastard}}
+*{{fr}}: {{Ü|fr|}}
+*{{it}}: {{Ü|it|}}
+*{{es}}: {{Ü|es|}}
+}}
+
+{{Referenzen}}
+:[*] {{Wikipedia|Rabenaas}}
+:[1] {{Ref-DWDS|Rabenaas}}
+:[*] {{Ref-OWID|Rabenaas}}
+:[1] {{Ref-Duden|Rabenaas}}

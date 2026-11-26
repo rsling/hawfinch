@@ -1,0 +1,28 @@
+== Landfriede ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{m}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=m
+|Nominativ Singular=Landfriede
+|Nominativ Plural=Landfrieden
+|Genitiv Singular=Landfriedens
+|Genitiv Plural=Landfrieden
+|Dativ Singular=Landfrieden
+|Dativ Plural=Landfrieden
+|Akkusativ Singular=Landfrieden
+|Akkusativ Plural=Landfrieden
+}}
+
+{{Worttrennung}}
+:Land·frie·de, {{Pl.}} Land·frie·den
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|ˈlantˌfʁiːdə}}
+:{{Hörbeispiele}} {{Audio|De-Landfriede.ogg}}
+
+{{Beispiele}}
+:[1] „Auch der auf dem Reichstag zu Worms 1495 verkündete »Ewige ''Landfriede''« ließ sich nicht verwirklichen.“<ref>{{Literatur | Autor=Bruno Preisendörfer | Titel=Als unser Deutsch erfunden wurde |TitelErg=Reise in die Lutherzeit| Auflage= 7.| Verlag=Galiani | Ort=Berlin | Jahr=2016 | ISBN=978-3-86971-126-3}}, Seite 33.</ref>
+
+{{Lemmaverweis|Landfrieden}}
+
+{{Quellen}}

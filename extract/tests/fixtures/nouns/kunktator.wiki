@@ -1,0 +1,33 @@
+== Kunktator ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{m}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=m
+|Nominativ Singular=Kunktator
+|Nominativ Plural=Kunktatoren
+|Genitiv Singular=Kunktators
+|Genitiv Plural=Kunktatoren
+|Dativ Singular=Kunktator
+|Dativ Plural=Kunktatoren
+|Akkusativ Singular=Kunktator
+|Akkusativ Plural=Kunktatoren
+}}
+{{Alternative Schreibweisen}}
+:[[Cunctator]]
+
+{{Worttrennung}}
+:Kunk·ta·tor, {{Pl.}} Kunk·ta·to·ren
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|kʊŋkˈtaːtoːɐ̯}}
+:{{Hörbeispiele}} {{Audio|De-Kunktator.ogg}}
+:{{Reime}} {{Reim|aːtoːɐ̯|Deutsch}}
+
+{{Bedeutungen}}
+:[1] ''[[bildungssprachlich]] veraltet:'' [[Zauderer]]
+
+{{Lemmaverweis|Cunctator}}
+
+{{Referenzen}}
+:[1] {{Ref-Duden|Cunctator}}
+:[1] {{Lit-Pfeiffer: Das große Schimpfwörterbuch|J=1996}}, „Kunktator“, Seite 236.

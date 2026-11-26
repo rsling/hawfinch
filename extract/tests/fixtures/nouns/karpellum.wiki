@@ -1,0 +1,30 @@
+== Karpellum ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{n}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=n
+|Nominativ Singular=Karpellum
+|Nominativ Plural=Karpella
+|Genitiv Singular=Karpellums
+|Genitiv Plural=Karpella
+|Dativ Singular=Karpellum
+|Dativ Plural=Karpella
+|Akkusativ Singular=Karpellum
+|Akkusativ Plural=Karpella
+}}
+
+{{Worttrennung}}
+:Kar·pel·lum, {{Pl.}} Kar·pel·la
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|ˌkaʁˈpɛlʊm}}
+:{{Hörbeispiele}} {{Audio|De-Karpellum.ogg}}
+:{{Reime}} {{Reim|ɛlʊm|Deutsch}}
+
+{{Bedeutungen}}
+:[1] ''[[Botanik]]:'' das Organ der Blüte, das die Samenanlagen trägt
+
+{{Lemmaverweis|Karpell}}
+
+{{Referenzen}}
+:[1] {{Lit-Duden: Großes Fremdwörterbuch|A=4}}, Seite 696, Eintrag „Karpell“, dort auch die Nebenform „Karpellum“

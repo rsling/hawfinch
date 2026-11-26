@@ -1,0 +1,29 @@
+== Zeigewort ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{n}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=n
+|Nominativ Singular=Zeigewort
+|Nominativ Plural=Zeigewörter
+|Genitiv Singular=Zeigeworts
+|Genitiv Singular*=Zeigewortes
+|Genitiv Plural=Zeigewörter
+|Dativ Singular=Zeigewort
+|Dativ Plural=Zeigewörtern
+|Akkusativ Singular=Zeigewort
+|Akkusativ Plural=Zeigewörter
+}}
+
+{{Worttrennung}}
+:Zei·ge·wort, {{Pl.}} Zei·ge·wör·ter
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|ˈt͡saɪ̯ɡəˌvɔʁt}}
+:{{Hörbeispiele}} {{Audio|De-Zeigewort.ogg}}
+
+{{Herkunft}}
+:[[Determinativkompositum]], zusammengesetzt aus dem Stamm des Verbs ''[[zeigen]]'', [[Gleitlaut]] ''[[-e-]]'' und dem Substantiv ''[[Wort]]''
+
+{{Lemmaverweis|Zeigwort}}
+
+{{Ähnlichkeiten 1|Anagramme=[[weiterzog]]}}

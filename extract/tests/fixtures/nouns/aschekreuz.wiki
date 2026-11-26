@@ -1,0 +1,25 @@
+== Aschekreuz ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{n}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=n
+|Nominativ Singular=Aschekreuz
+|Nominativ Plural=Aschekreuze
+|Genitiv Singular=Aschekreuzes
+|Genitiv Plural=Aschekreuze
+|Dativ Singular=Aschekreuz
+|Dativ Plural=Aschekreuzen
+|Akkusativ Singular=Aschekreuz
+|Akkusativ Plural=Aschekreuze
+}}
+
+{{Worttrennung}}
+:Asche·kreuz, {{Pl.}} Asche·kreu·ze
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|ˈaʃəˌkʁɔɪ̯t͡s}}
+:{{Hörbeispiele}} {{Audio|De-Aschekreuz.ogg}}
+
+{{Lemmaverweis|Aschenkreuz}}
+
+{{Ähnlichkeiten 1|Anagramme=[[Zuckerhase]]}}

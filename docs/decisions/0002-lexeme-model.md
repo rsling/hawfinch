@@ -33,6 +33,6 @@ Without rule 3, most polysemous verbs would split by sense because transitivity 
 
 ## Known costs
 
-- A split is only possible where the difference is detectable in the data. Milch lists two plurals in one section and explains the difference in prose; it stays one lexeme with two plural variants.
+- A split is only possible where the difference is detectable in the data. Two plurals in one noun table are detectable: they are two lexemes (decided on 2026-11-26, see [plural classes](../features/plural-classes.md)). This holds for Milch as well, which lists two plurals in one section and explains the difference in prose. Which senses belong to which of the two lexemes is not detectable in the same way and is an [open question](../open-questions.md#plural-classes).
 - Lexeme identifiers can change between runs when Wiktionary editors split or merge sections. This is milder than the sense-identifier problem but needs a policy.
 - Word-formation links point at pages in Wiktionary, not at sections, so linking a complex word to the right one of several homonymous lexemes needs disambiguation.

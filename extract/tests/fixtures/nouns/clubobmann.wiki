@@ -1,0 +1,37 @@
+== Clubobmann ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{m}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=m
+|Nominativ Singular=Clubobmann
+|Nominativ Plural 1=Clubobmänner
+|Nominativ Plural 2=Clubobleute
+|Genitiv Singular=Clubobmanns
+|Genitiv Singular*=Clubobmannes
+|Genitiv Plural 1=Clubobmänner
+|Genitiv Plural 2=Clubobleute
+|Dativ Singular=Clubobmann
+|Dativ Plural 1=Clubobmännern
+|Dativ Plural 2=Clubobleute
+|Akkusativ Singular=Clubobmann
+|Akkusativ Plural 1=Clubobmänner
+|Akkusativ Plural 2=Clubobleute
+}}
+
+{{Alternative Schreibweisen}}
+:[[Klubobmann]]
+
+{{Worttrennung}}
+:Club·ob·mann, {{Pl.1}} Club·ob·män·ner, {{Pl.2}} Club·ob·leu·te
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|ˈklʊpˌɔpman}}
+:{{Hörbeispiele}} {{Audio|De-Clubobmann.ogg}}
+
+{{Bedeutungen}}
+:[1] ''[[Österreich]], [[Politik]]:'' Vorsitzender eines [[Club]]s
+
+{{Weibliche Wortformen}}
+:[[Clubobfrau]]
+
+{{Lemmaverweis|Klubobmann}}

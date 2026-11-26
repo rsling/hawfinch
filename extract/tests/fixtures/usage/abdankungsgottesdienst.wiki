@@ -1,0 +1,55 @@
+== Abdankungsgottesdienst ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{m}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=m
+|Nominativ Singular=Abdankungsgottesdienst
+|Nominativ Plural=Abdankungsgottesdienste
+|Genitiv Singular=Abdankungsgottesdienstes
+|Genitiv Singular*=Abdankungsgottesdiensts
+|Genitiv Plural=Abdankungsgottesdienste
+|Dativ Singular=Abdankungsgottesdienst
+|Dativ Plural=Abdankungsgottesdiensten
+|Akkusativ Singular=Abdankungsgottesdienst
+|Akkusativ Plural=Abdankungsgottesdienste
+}}
+
+{{Worttrennung}}
+:Ab·dan·kungs·got·tes·dienst, {{Pl.}} Ab·dan·kungs·got·tes·diens·te
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|ˈapdaŋkʊŋsˌɡɔtəsdiːnst}}
+:{{Hörbeispiele}} {{Audio|De-Abdankungsgottesdienst.ogg}}
+
+{{Bedeutungen}}
+:[1] {{K|Schweiz|evangelisch-reformierte Kirche}} [[religiös]]e [[Feier]] für einen [[Verstorbener|Verstorbenen]] oder mehrere Verstorbene, meist unmittelbar vor der [[Bestattung]]
+
+{{Herkunft}}
+:[[Determinativkompositum]] aus den Substantiven ''[[Abdankung]]'', [[Fugenelement]] ''[[-s]]'' und ''[[Gottesdienst]]''
+
+{{Synonyme}}
+:[1] [[Sterbeamt]], [[Totenamt]], [[Totenmesse]], [[Trauergottesdienst]]
+:[1] ''Bayern, Westösterreich:'' [[Sterbegottesdienst]]
+:[1] ''Österreich (Vorarlberg):'' [[Auferstehungsgottesdienst]], [[Beerdigungsgottesdienst]], [[Begräbnismesse]], [[Bestattnisgottesdienst]]/[[Bestattungsgottesdienst]]
+:[1] ''Schweiz:'' [[Abdankung]], [[Beerdigungsgottesdienst]]
+:[1] ''Luxemburg:'' [[Leichendienst]]
+
+{{Oberbegriffe}}
+:[1] [[Gottesdienst]]
+
+{{Beispiele}}
+:[1] „Den Kreuzweg zu seinen Ehren säumten Hunderte, über 2000 Gläubige sollen sich vor der Kirche versammelt haben, in der der ''Abdankungsgottesdienst'' stattfand.“<ref>{{Per-NZZ Online | Online=https://www.nzz.ch/der_mord_an_einem_orthodoxen_priester_bewegt_moskau-ld.929833 | Titel=Der Mord an einem orthodoxen Priester bewegt Moskau | Tag=24 | Monat=11 | Jahr=2009 | Zugriff=2024-06-27}}</ref>
+
+==== {{Übersetzungen}} ====
+{{Ü-Tabelle|1|G=religiöse Feier für einen Verstorbenen|Ü-Liste=
+*{{en}}: {{Ü|en|}}
+*{{fr}}: {{Ü|fr|}}
+*{{it}}: {{Ü|it|}}
+*{{es}}: {{Ü|es|}}
+}}
+
+{{Referenzen}}
+:[1] {{Ref-DWDS}}
+:[*] {{Ref-UniLeipzig}}
+
+{{Quellen}}

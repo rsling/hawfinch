@@ -1,0 +1,46 @@
+== VWL ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{f}}, {{Wortart|Abkürzung|Deutsch}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=f
+|Nominativ Singular=VWL
+|Nominativ Plural=VWL
+|Genitiv Singular=VWL
+|Genitiv Plural=VWL
+|Dativ Singular=VWL
+|Dativ Plural=VWL
+|Akkusativ Singular=VWL
+|Akkusativ Plural=VWL
+}}
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|faʊ̯veːˈʔɛl}}
+:{{Hörbeispiele}} {{Audio|De-VWL.ogg}}
+
+{{Bedeutungen}}
+:[1] {{K|ft=ohne [[Plural]], meist ohne [[Artikel]]|spr=de}} [[Volkswirtschaftslehre]]
+:[2] [[vermögenswirksame Leistung]]
+
+{{Beispiele}}
+:[1] Studierst du ''VWL?''
+:[1] „Eigentlich studiert er in Potsdam ''VWL'' und Soziologie.“<ref>{{Per-Zeit Online | Online=https://www.zeit.de/gesellschaft/zeitgeschehen/2022-03/ukraine-fluechtlinge-berlin-tegel-ankunftszentrum | Autor=Franziska Schindler | Titel=Wenn Berlin nicht seine alten Flughäfen hätte | Tag=16 | Monat=03 | Jahr=2022 | Zugriff=2022-10-09 }}</ref>
+:[2] {{Beispiele fehlen}}
+
+==== {{Übersetzungen}} ====
+{{Ü-Tabelle|1|G=ohne Plural, meist ohne Artikel: Volkswirtschaftslehre|Ü-Liste=
+*{{en}}: {{Ü|en|}}
+*{{fr}}: {{Ü|fr|}}
+}}
+
+{{Ü-Tabelle|2|G=vermögenswirksame Leistung|Ü-Liste=
+*{{en}}: {{Ü|en|}}
+*{{fr}}: {{Ü|fr|}}
+}}
+
+{{Referenzen}}
+:[1, 2] {{Wikipedia|VWL}}
+:[1, 2] {{Lit-Duden: Abkürzungen|A=6}}
+:[1] {{Ref-Duden|VWL}}
+:[1] {{Lit-PONS: Die deutsche Rechtschreibung|A=1}}, Seite 1016.
+
+{{Quellen}}

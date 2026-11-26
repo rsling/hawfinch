@@ -1,0 +1,29 @@
+== Schispringerin ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{f}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=f
+|Nominativ Singular=Schispringerin
+|Nominativ Plural=Schispringerinnen
+|Genitiv Singular=Schispringerin
+|Genitiv Plural=Schispringerinnen
+|Dativ Singular=Schispringerin
+|Dativ Plural=Schispringerinnen
+|Akkusativ Singular=Schispringerin
+|Akkusativ Plural=Schispringerinnen
+}}
+
+{{Alternative Schreibweisen}}
+:[[Skispringerin]]
+
+{{Worttrennung}}
+:Schi·sprin·ge·rin, {{Pl.}} Schi·sprin·ge·rin·nen
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|ˈʃiːˌʃpʁɪŋəʁɪn}}
+:{{Hörbeispiele}} {{Audio|De-Schispringerin.ogg}}
+
+{{Männliche Wortformen}}
+:Schispringer
+
+{{Lemmaverweis|Skispringerin}}

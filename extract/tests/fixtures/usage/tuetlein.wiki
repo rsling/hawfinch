@@ -1,0 +1,35 @@
+== Tütlein ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{n}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=n
+|Nominativ Singular=Tütlein
+|Nominativ Plural=Tütlein
+|Genitiv Singular=Tütleins
+|Genitiv Plural=Tütlein
+|Dativ Singular=Tütlein
+|Dativ Plural=Tütlein
+|Akkusativ Singular=Tütlein
+|Akkusativ Plural=Tütlein
+}}
+
+{{Worttrennung}}
+:Tüt·lein, {{Pl.}} Tüt·lein
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|ˈtyːtlaɪ̯n}}
+:{{Hörbeispiele}} {{Audio|De-Tütlein.ogg}}
+
+{{Bedeutungen}}
+:[1] {{K|selten|sonst|va.}} kleine [[Tüte]]
+
+{{Herkunft}}
+:[[Ableitung]] der Verkleinerungsform vom Stamm des Substantivs ''[[Tüte]]'' mit dem [[Derivatem]] ([[Ableitungsmorphem]]) ''[[-lein]]''
+
+{{Lemmaverweis|Tütchen}}
+
+{{Referenzen}}
+:[*] {{Ref-UniLeipzig}}
+:[1] {{Ref-Grimm}}
+
+[[Kategorie:Diminutiv (Deutsch)]]

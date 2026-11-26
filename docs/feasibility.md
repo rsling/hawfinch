@@ -260,7 +260,7 @@ The last two columns apply the rule of 0005: a lexeme is in all capitals or mixe
 
 ## Step 2: coverage
 
-Whether each item of the [profile](schema/profile.md) can be read from the dump, measured item by item. So far: verb stems.
+Whether each item of the [profile](schema/profile.md) can be read from the dump, measured item by item. So far: verb stems, plural classes and usage labels.
 
 ### Verb stems
 
@@ -358,8 +358,145 @@ Checked by the user on 2026-11-25, before the changes it led to:
 
 A rerun keeps the annotated rows (`sample.annotated.tsv`) and shows them with their current values.
 
+#### Without archaic and regional verbs
+
+Added on 2026-11-26. Verb sections whose senses are all marked as archaic, regional, Austrian or Swiss are left out ([usage labels](features/usage-labels.md)). The figures above are from before this rule; the script now applies it.
+
+| | Before | Now |
+|---|---|---|
+| Conjugations | 15,868 | 14,922 |
+| Overview tables compared | 14,772 | 13,785 |
+| All main forms generated | 14,553 (98.5 %) | 13,590 (98.6 %) |
+| At least one main form not generated | 219 | 195 |
+| Forms that differ | 404 | 337 |
+| Variant stems | 712 | 685 |
+
+- **946 conjugations are left out.** A `Flexion:` page does not say which verb section of the lemma page a conjugation belongs to, so its conjugations are left out only if all verb sections of the lemma page are.
+- **51 lemma pages have some verb sections left out and others kept.** Their overview tables are left out section by section, but all their conjugations are kept.
+- **3 of the 111 checked sample rows** are no longer in the data.
+
 #### Consequences
 
 - **The gate is passed for verb stems.** They are read directly from the arguments, and the forms generated from them agree with an independent source in 98.5 % of the tables. The remaining tables are inconsistencies between two Wiktionary pages more often than faults of the reader, and become a validation report.
 - **The generator is needed anyway:** M1 generates missing single-word forms from stems. The present version covers the eight principal forms; the full paradigm follows the same rules.
 - **Open points** are recorded in [open questions](open-questions.md#verb-stems): spelling variants of verbs written as several words, combinations with `sein`, prefixes of loan verbs.
+
+### Plural classes
+
+Can the plural class of a noun be derived from its noun table? The test reads every noun table in a German section and classifies each nominative plural against each singular of the table, following the [definition of the classes](features/plural-classes.md). Sections whose senses are all marked as archaic, regional, Austrian or Swiss are left out ([usage labels](features/usage-labels.md)). There is no second source to compare with: the test shows how the plurals are distributed over the classes, and which cases needed a decision.
+
+```sh
+uv run python extract/scripts/feasibility.py plurals --date 20261101   # 6 s
+```
+
+The reader and the classifier are in `hawfinch.features.declension`; results are in `data/interim/feasibility/plurals/`.
+
+#### Tables
+
+| | Tables |
+|---|---|
+| `Substantiv`: one singular and one plural | 98,501 |
+| `Substantiv`: no plural | 17,006 |
+| `Substantiv`: several plurals | 2,658 |
+| `Substantiv`: several genders | 1,346 |
+| `Substantiv`: plural only | 791 |
+| `adjektivisch`: with a plural | 2,247 |
+| `adjektivisch`: no plural | 777 |
+| Name tables with a plural | 7,037 |
+| Name tables without a plural | 11,590 |
+| Left out: all senses archaic or regional | 3,509 |
+| All | 145,462 |
+
+- All cells could be read. They hold plain forms; a line break separates variants in a few cells.
+- A table with several genders or plurals gives one result per combination of singular and plural, 117,569 in all. Each plural is a lexeme of its own.
+- A plural without a suffix after a full syllable is dropped if the same singular has another plural (`Keks` beside `Kekse`, `KKW` beside `KKWs`, `Pkw` beside `Pkws`): 462 combinations in 417 tables, 77 of them tables of abbreviations in capitals.
+- `Deutsch adjektivisch Übersicht` is used for two things: 1,265 nouns declined like adjectives, given as `Stamm` (`Beigeordnete`), and 982 nouns with an attributive adjective, given as full forms (`grauer Star`, `fahrlässige Tötung`).
+- The name tables are `Nachname`, `Vorname`, `Toponym`, `Eigenname` and `Name`. `Nachname` gives no forms; the template builds genitive and plural in `-s`, except after a sibilant. `Toponym` and `Eigenname` have no plural as a rule.
+- Some `Substantiv` tables give no gender (`Genus=0` or nothing). For these the gender in the heading is used; 7 combinations remain without gender, because the heading gives none either (`Radionachricht`, `Wolkenschatten`).
+
+#### Classes
+
+Combinations of one singular and one plural. Gender `nd` is that of nouns without a singular, `mf` that of surnames.
+
+| Gender | `primary` | `secondary` | `marked-n` | `marked-r` | `default` | `loan` | `irregular` | `adjectival` | None | All |
+|---|---|---|---|---|---|---|---|---|---|---|
+| m | 31,431 | 1,391 | 3,255 | 514 | 4,439 | 1,265 | 74 | 868 | 483 | 43,720 |
+| f | 40,477 | 1,364 | | 2 | 1,832 | 871 | 9 | 343 | 279 | 45,177 |
+| n | 13,091 | 506 | | 3,312 | 2,949 | 2,099 | 15 | 20 | 17 | 22,009 |
+| mf | | | | | 5,760 | | | | 1 | 5,761 |
+| nd | 613 | | | | 133 | 109 | | 34 | 6 | 895 |
+| None | | | | | | | | | 7 | 7 |
+| All | 85,612 | 3,261 | 3,255 | 3,828 | 15,113 | 4,344 | 98 | 1,265 | 793 | 117,569 |
+
+- **Without a class** (793): 759 plurals of names that are not in `-s` (`Volker`, `Annaliesen`), 27 abbreviations in capitals whose only plural has no suffix (`VWL`, `POS`, `USA`, `ÖBB`), and 7 combinations without gender.
+- **Masculine `primary`:** 10,999 `-e` with the stem of the singular, 7,360 `-e` with umlaut, and the rest without suffix (`Lehrer-`, `Väter-`).
+- **`marked-n`** holds all weak masculine nouns of Wiktionary, simplex or not (3,240 distinct nouns). Before the archaic and regional sections were left out, 1,817 of 3,376 ended in another noun of the class (`Steinzeitmensch`) and 818 in a loan suffix (`-ist` 323, `-loge` 114, `-ant` 100); 741 were left as candidates for simplex nouns, among them many names of peoples (`Hesse`, `Jakute`).
+- **`marked-r`:** 514 masculine combinations (`Männ-er`, `Wäld-er`, `Geist-er`), 3,312 neuter ones.
+- **`default`:** 5,760 surnames and 1,100 other names (`Arthur-s`).
+- **`loan`:** 562 combinations are plurals without suffix after a full syllable, where the noun has no other plural (`Kasus-`, `Hindu-`, `Volt-`, `Chassis-`, names of letters). Among the other loan plurals, the most frequent patterns are `-um` to `-en` (`Muse-en`), `-us` to `-en` (`Organism-en`), `-a` to `-en` (`Firm-en`, `Them-en`), `-um` to `-a`, `-ien` added (`Fossil-ien`), `-on` to `-a`, `-us` to `-i` and `-is` to `-iden`.
+- **`irregular`:** `Herz` with 14 compounds, and 83 plurals in `-leute`.
+
+#### Special cases
+
+| Case | Combinations | Treatment |
+|---|---|---|
+| Nouns without a singular, `Substantiv` tables | 792 | gender `nd`; 547 `primary` (371 `-en`, 136 `-e`, 40 without suffix after a reduced syllable: `Geschwister-`), 133 `default` (`Hot Pant-s`), 106 `loan` (`Mammali-a`), 6 abbreviations in capitals without a class (`USA`) |
+| Plurals in `-leute` | 83 | `irregular`: `Kaufleut-e` |
+| Genitive in `-ns` as the main form | 169 | singular taken with `-n` (`Frieden`, `Namen`, `Buchstaben`), then `primary` without suffix (165) |
+| Weak genitive only as a variant | 26 | `marked-n` (`Elb-en`, `Thermostat-en`) |
+| Native suffix on a stem the singular does not have | 121 | by suffix: `Baut-en` 97, `Jung-s` and `Final-s` 18, `Kinderchen-` 6 |
+| Several words, inflected inside | 232 | class of the first word that changes |
+| Noun with an attributive adjective | 907 | class of the head noun: `graue Star-e` |
+
+- **Variant forms.** `variants.tsv` has 175 genitives singular that do not fit the class of their noun: strong genitives of `marked-n` nouns (`des Elbs`), and weak genitives of other nouns, most of them `primary` (`des Magneten`, `die Magnet-e`).
+- **Genitive in `-s` and `-es`.** Where a table gives both, only the form in `-es` is kept.
+- **Several genders and several plurals in one table.** The table lists the singulars side by side and the plurals side by side, and does not say which plural goes with which singular. Sometimes they pair off (`Bruch`: masculine `Brüche`, neuter `Brücher`), sometimes every plural goes with every gender (`Keks`). The test therefore combines each singular with each plural, and some of these combinations are not words of German. This concerns 291 tables, with different genders or with the same gender given twice (`Hirsch`: `des Hirsches`, `des Hirschen`). It is accepted for release 1; a fix, possibly by a patch list, is left for later.
+- **Wrong or doubtful plurals in Wiktionary** are classified as they stand: `Neun` with the plural `Neuner`, `Unix` with `Unixen`, `Smoking` with `Smokinge` besides `Smokings`, `Staat` with `Stäte` and `Staate` besides `Staaten`.
+
+#### Sample for checking
+
+`sample.tsv` holds 116 combinations: six drawn at random (seed 20261126) from each of twenty strata of the first version (fewer where a stratum is smaller), one per line. The columns `correct` and `comment` are filled in by hand; the annotated rows are kept in `sample.annotated.tsv`, and a rerun shows them with their current values and, in `checked_as`, the class and form that were checked. The sizes of the strata are in `strata.tsv`.
+
+Checked by the user on 2026-11-26:
+
+- **100 of 116 combinations are correct**, 10 are wrong and 6 could not be judged.
+- **Without gender** (3 wrong): the table gave none. For `Krönungskirche` and `Ausstoßung` the heading did, and it is now used. `Radionachricht` has no gender anywhere in its entry and stays without a class.
+- **Plural without suffix as `loan`** (4 wrong): abbreviations (`VWL`, `KZ`), and nouns that also have a regular plural (`Dattelkeks`, `Bünzli`). The plural without suffix is now dropped where there is another one, and `VWL` has no class.
+- **Wrong or doubtful in Wiktionary** (3): `Neuner` as a plural of `Neun`, `Unixen`, and `Smokinge`, which Wiktionary lists besides `Smokings`.
+- **Not judged:** three dialect words (`Schängelche`, `Samschdich`, `Renftel`), which are now left out as regional, `Hmong`, the abbreviation `POS`, and `Nordleute`, which led to the rule that substitutive plurals are `irregular`.
+- **Regional forms** are listed without a mark in the table: `Wägen` besides `Wagen`.
+- **After the rules that followed from the check,** 10 of the 116 rows are no longer in the data: 3 plurals without suffix that were dropped, and 7 from sections that are left out as archaic or regional. They are marked in the column `stratum`.
+
+#### Consequences
+
+- **The class can be derived mechanically** for every noun table, apart from plurals of names that are not in `-s` and abbreviations in capitals without a suffix, which have none by decision.
+- **The noun reader is reusable** for the word-form table of M1: it reads all numbered and starred cells.
+- **Open points** are recorded in [open questions](open-questions.md#plural-classes).
+
+### Usage labels
+
+How many entries does Wiktionary mark as archaic, regional, Austrian or Swiss? The survey led to the rule that a section is left out of the database if all its senses carry such a mark ([usage labels](features/usage-labels.md)). The marks are on the lines of the block `Bedeutungen`, one line per sense, in three forms: arguments of `{{K|…}}` (`{{K|Schweiz|ugs.}}`), label templates (`{{österr.}}`), and italic text at the start of the line (`''koblenzisch:''`).
+
+```sh
+uv run python extract/scripts/feasibility.py labels --date 20261101   # 12 s
+```
+
+The labels are read by `hawfinch.features.usage`. Results are in `data/interim/feasibility/labels/`; the label values counted for each kind are in `values.tsv`.
+
+Lemma sections with at least one sense line, by whether all senses or only some carry a label:
+
+| | Sections | Archaic | Regional | Austrian | Swiss | Any of these, all senses | Any, some senses |
+|---|---|---|---|---|---|---|---|
+| Nouns | 145,615 | 1,529 | 1,101 | 970 | 444 | 3,525 (2.4 %) | 1,672 |
+| Verbs | 14,984 | 612 | 397 | 173 | 72 | 1,134 (7.6 %) | 823 |
+| Adjectives | 18,226 | 268 | 136 | 95 | 28 | 487 (2.7 %) | 237 |
+| Other | 12,051 | 235 | 155 | 144 | 45 | 531 (4.4 %) | 189 |
+| All | 190,876 | 2,644 | 1,789 | 1,382 | 589 | 5,677 (3.0 %) | 2,921 |
+
+The four columns for the kinds count sections in which all senses carry that kind of label.
+
+- **Archaic** is `veraltet`, `veraltend` and their abbreviations (`va.`, `vatd.`, `Bedva.`, `tlwva.`). `historisch` is not counted: it marks things of the past, not words of the past.
+- **Regional** is `regional`, `landschaftlich`, `mundartlich`, the names of dialects and regions (`bairisch`, `norddeutsch`, `Sachsen`), and their abbreviations. The list was compiled from the values that occur and is not complete.
+- **Qualified labels** (`{{K|besonders|Österreich}}`, `sonst veraltet`) are not counted. 608 sections have only such labels.
+- **Among the noun tables,** 3,509 are in sections that are left out, 2,945 of them `Substantiv` tables with a plural.
+- **Not covered by sense labels:** single forms that are regional. `Smokinge` and `Wägen` are plurals in the noun table of an unmarked entry; if anything, a note in prose says where they are used.

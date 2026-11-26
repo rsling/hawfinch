@@ -1,0 +1,50 @@
+== Profanbau ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{m}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=m
+|Nominativ Singular=Profanbau
+|Nominativ Plural=Profanbauten
+|Genitiv Singular=Profanbaus
+|Genitiv Singular*=Profanbaues
+|Genitiv Plural=Profanbauten
+|Dativ Singular=Profanbau
+|Dativ Plural=Profanbauten
+|Akkusativ Singular=Profanbau
+|Akkusativ Plural=Profanbauten
+}}
+
+{{Worttrennung}}
+:Pro·fan·bau, {{Pl.}} Pro·fan·bau·ten
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|pʁoˈfaːnˌbaʊ̯}}
+:{{Hörbeispiele}} {{Audio|De-Profanbau.ogg}}
+
+{{Bedeutungen}}
+:[1] {{K|Architektur}} (öffentliches) Gebäude, das nicht religiösen Zwecken dient
+
+{{Herkunft}}
+:[[Determinativkompositum]] aus dem Adjektiv ''[[profan]]'' und dem Substantiv ''[[Bau]]''
+
+{{Gegenwörter}}
+:[1] [[Sakralbau]]
+
+{{Oberbegriffe}}
+:[1] [[Bauwerk]], [[Gebäude]]
+
+{{Beispiele}}
+:[1] {{Beispiele fehlen}}
+
+==== {{Übersetzungen}} ====
+{{Ü-Tabelle|1|G=weltlicher Bau|Ü-Liste=
+*{{en}}: {{Ü|en|}}
+}}
+
+{{Referenzen}}
+:[1] {{Wikipedia}}
+:[*] {{Wikipedia-Suche}}
+:[1] {{Ref-DWDS}}
+:[*] {{Ref-DWDS-Korpus}}
+:[1] {{Ref-Duden}}
+:[*] {{Ref-UniLeipzig}}

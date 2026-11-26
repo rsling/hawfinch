@@ -1,0 +1,49 @@
+== Hauptsaal ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{m}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=m
+|Nominativ Singular=Hauptsaal
+|Nominativ Plural=Hauptsäle
+|Genitiv Singular=Hauptsaales
+|Genitiv Singular*=Hauptsaals
+|Genitiv Plural=Hauptsäle
+|Dativ Singular=Hauptsaal
+|Dativ Plural=Hauptsälen
+|Akkusativ Singular=Hauptsaal
+|Akkusativ Plural=Hauptsäle
+}}
+
+{{Worttrennung}}
+:Haupt·saal, {{Pl.}} Haupt·sä·le
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|ˈhaʊ̯ptˌzaːl}}
+:{{Hörbeispiele}} {{Audio|De-Hauptsaal.ogg}}
+
+{{Bedeutungen}}
+:[1] größter, zentral gelegener Saal
+
+{{Oberbegriffe}}
+:[1] [[Saal]]
+
+{{Unterbegriffe}}
+:[1] [[Hauptlesesaal]]
+
+{{Beispiele}}
+:[1] „Im ''Hauptsaal'' herrscht reger Unterschichtstrubel.“<ref>{{Literatur|Autor=Neal Stephenson|Titel=Snow Crash|TitelErg=Roman|Auflage=7.|Verlag=Blanvalet|Ort=München|Jahr=1995|ISBN=978-3-442-23686-2|Seiten=425}}.</ref>
+
+==== {{Übersetzungen}} ====
+{{Ü-Tabelle|1|G=größter, zentral gelegener Saal|Ü-Liste=
+*{{en}}: {{Ü|en|}}
+*{{fr}}: {{Ü|fr|}}
+*{{it}}: {{Ü|it|}}
+*{{es}}: {{Ü|es|}}
+}}
+
+{{Referenzen}}
+:[*] {{Ref-DWDS-Korpus}}
+:[*] {{Ref-OWID}}
+:[*] {{Ref-UniLeipzig}}
+
+{{Quellen}}

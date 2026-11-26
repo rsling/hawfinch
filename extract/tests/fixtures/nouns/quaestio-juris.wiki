@@ -1,0 +1,36 @@
+{{Siehe auch|[[Quaestio juris]]}}
+== Quaestio Juris ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Wortverbindung|Deutsch}}, {{Wortart|Substantiv|Deutsch}}, {{f}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=f
+|Nominativ Singular=Quaestio Juris
+|Nominativ Plural=Quaestiones Juris
+|Genitiv Singular=Quaestio Juris
+|Genitiv Plural=Quaestiones Juris
+|Dativ Singular=Quaestio Juris
+|Dativ Plural=Quaestiones Juris
+|Akkusativ Singular=Quaestio Juris
+|Akkusativ Plural=Quaestiones Juris
+}}
+
+{{Alternative Schreibweisen}}
+:[[Quaestio Iuris]]
+
+{{Nicht mehr gültige Schreibweisen}}
+:[[Quaestio iuris]], [[Quaestio juris]]
+
+{{Worttrennung}}
+:Quaes·tio Ju·ris, {{Pl.}} Quaes·ti·o·nes Ju·ris
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|ˌkvɛsti̯o ˈjuːʁɪs}}, {{Lautschrift|ˌkvɛːsti̯o ˈjuːʁɪs}}
+:{{Hörbeispiele}} {{Audio|De-Quaestio Iuris.ogg}}
+
+{{Bedeutungen}}
+:[1] {{K|bildungssprachlich}} Rechtsfrage
+
+{{Lemmaverweis|Quaestio Iuris}}
+
+{{Referenzen}}
+:[1] {{Ref-Duden|Quaestio Iuris}}

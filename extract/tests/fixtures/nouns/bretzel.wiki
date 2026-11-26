@@ -1,0 +1,36 @@
+== Bretzel ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{fn}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus 1=f
+|Genus 2=n
+|Nominativ Singular 1=Bretzel
+|Nominativ Singular 2=Bretzel
+|Nominativ Plural 1=Bretzeln
+|Nominativ Plural 2=Bretzeln
+|Genitiv Singular 1=Bretzel
+|Genitiv Singular 2=Bretzel
+|Genitiv Plural 1=Bretzeln
+|Genitiv Plural 2=Bretzeln
+|Dativ Singular 1=Bretzel
+|Dativ Singular 2=Bretzel
+|Dativ Plural 1=Bretzeln
+|Dativ Plural 2=Bretzeln
+|Akkusativ Singular 1=Bretzel
+|Akkusativ Singular 2=Bretzel
+|Akkusativ Plural 1=Bretzeln
+|Akkusativ Plural 2=Bretzeln
+}}
+
+{{Worttrennung}}
+:Bret·zel, {{Pl.}} Bret·zeln
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|ˈbʁɛt͡sl̩}}
+:{{Hörbeispiele}} {{Audio|}}
+:{{Reime}} {{Reim|ɛt͡sl̩|Deutsch}}
+
+{{Bedeutungen}}
+:[1–3] ''(besonders schweizerisch)'' [[Brezel]]
+
+{{Lemmaverweis|Brezel}}

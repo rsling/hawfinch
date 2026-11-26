@@ -1,0 +1,31 @@
+{{Siehe auch|[[Yachthäfen]]}}
+== Yachthafen ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Substantiv|Deutsch}}, {{m}} ===
+
+{{Deutsch Substantiv Übersicht
+|Genus=m
+|Nominativ Singular=Yachthafen
+|Nominativ Plural=Yachthäfen
+|Genitiv Singular=Yachthafens
+|Genitiv Plural=Yachthäfen
+|Dativ Singular=Yachthafen
+|Dativ Plural=Yachthäfen
+|Akkusativ Singular=Yachthafen
+|Akkusativ Plural=Yachthäfen
+}}
+
+{{Alternative Schreibweisen}}
+:[[Jachthafen]]
+
+{{Worttrennung}}
+:Yacht·ha·fen, {{Pl.}} Yacht·hä·fen
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|ˈjaxtˌhaːfn̩}}
+:{{Hörbeispiele}} {{Audio|De-Yachthafen.ogg}}
+:{{Reime}} {{Reim|axthaːfn̩|Deutsch}}
+
+{{Lemmaverweis|Jachthafen}}
+
+{{Referenzen}}
+:[*] {{Ref-Duden|Jachthafen}}
