@@ -20,8 +20,8 @@ from pathlib import Path
 
 import pyarrow.parquet as pq
 
-from hawfinch.features.usage import KINDS, sense_labels, sense_lines
-from hawfinch.wikitext.sections import german_sections
+from hawfinch.features.selection import lemma_sections
+from hawfinch.features.usage import KINDS
 
 
 def pos_group(labels: list[str]) -> str:
@@ -38,35 +38,31 @@ def process_row_group(args) -> tuple[list[dict], Counter, Counter]:
     for page in table.to_pylist():
         if page["redirect"] is not None or page["ns"] != 0:
             continue
-        text = page["text"]
-        for entry in german_sections(text):
-            for number, pos in enumerate(entry.pos_sections, 1):
-                senses = sense_lines(pos.section.body(text))
-                if not senses:
-                    continue
-                group = pos_group([label for label, _ in pos.wortarten])
-                totals[group] += 1
-                counts, qualified, marked = Counter(), 0, 0
-                for line in senses:
-                    found, was_qualified = sense_labels(line)
-                    qualified += was_qualified
-                    marked += bool(found)
-                    for kind, value in found.items():
-                        counts[kind] += 1
-                        values[(kind, value)] += 1
-                if not counts and not qualified:
-                    continue
-                rows.append(
-                    {
-                        "title": page["title"],
-                        "section": number,
-                        "pos": group,
-                        "senses": len(senses),
-                        **{kind: counts[kind] for kind in KINDS},
-                        "any": marked,
-                        "qualified": qualified,
-                    }
-                )
+        for section in lemma_sections(page["title"], page["text"]):
+            if not section.senses:
+                continue
+            group = pos_group(section.labels)
+            totals[group] += 1
+            counts, qualified, marked = Counter(), 0, 0
+            for found, was_qualified in section.senses:
+                qualified += was_qualified
+                marked += bool(found)
+                for kind, value in found.items():
+                    counts[kind] += 1
+                    values[(kind, value)] += 1
+            if not counts and not qualified:
+                continue
+            rows.append(
+                {
+                    "title": page["title"],
+                    "section": section.number,
+                    "pos": group,
+                    "senses": len(section.senses),
+                    **{kind: counts[kind] for kind in KINDS},
+                    "any": marked,
+                    "qualified": qualified,
+                }
+            )
     return rows, totals, values
 
 

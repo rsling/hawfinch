@@ -45,8 +45,7 @@ from hawfinch.features.declension import (
     noun_types,
     read_noun,
 )
-from hawfinch.features.usage import restricted
-from hawfinch.wikitext.sections import german_sections
+from hawfinch.features.selection import lemma_sections
 from hawfinch.wikitext.templates import scan
 
 TABLES = frozenset({NOUN_TABLE, ADJECTIVAL_TABLE}) | NAME_TABLES
@@ -132,36 +131,30 @@ def process_row_group(args) -> tuple[list[dict], Counter]:
     for page in table.to_pylist():
         if page["redirect"] is not None or page["ns"] != 0 or "Übersicht" not in page["text"]:
             continue
-        text = page["text"]
-        for entry in german_sections(text):
-            for number, pos in enumerate(entry.pos_sections, 1):
-                body = pos.section.body(text)
-                if restricted(body):
-                    sections["left out: all senses archaic or regional"] += sum(
-                        t.name in TABLES for t in scan(body).templates
+        for section in lemma_sections(page["title"], page["text"]):
+            tables = [t for t in scan(section.body).templates if t.name in TABLES]
+            if section.left_out:
+                sections["left out: all senses archaic or regional"] += len(tables)
+                continue
+            genders_given = [t.name for t in section.pos.heading_templates if t.name in GENDERS]
+            heading = genders_given[0] if len(genders_given) == 1 else ""
+            for template in tables:
+                kind, found, genders, plurals = _table_rows(template, page["title"], heading)
+                sections[kind] += 1
+                for row in found:
+                    rows.append(
+                        {
+                            "title": page["title"],
+                            "section": section.number,
+                            "labels": "+".join(section.labels),
+                            "table": template.name.removeprefix("Deutsch ").removesuffix(
+                                " Übersicht"
+                            ),
+                            **row,
+                            "genders": genders,
+                            "plurals": plurals,
+                        }
                     )
-                    continue
-                genders_given = [t.name for t in pos.heading_templates if t.name in GENDERS]
-                heading = genders_given[0] if len(genders_given) == 1 else ""
-                for template in scan(body).templates:
-                    if template.name not in TABLES:
-                        continue
-                    kind, found, genders, plurals = _table_rows(template, page["title"], heading)
-                    sections[kind] += 1
-                    for row in found:
-                        rows.append(
-                            {
-                                "title": page["title"],
-                                "section": number,
-                                "labels": "+".join(label for label, _ in pos.wortarten),
-                                "table": template.name.removeprefix("Deutsch ").removesuffix(
-                                    " Übersicht"
-                                ),
-                                **row,
-                                "genders": genders,
-                                "plurals": plurals,
-                            }
-                        )
     return rows, sections
 
 

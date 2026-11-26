@@ -1,0 +1,35 @@
+{{Siehe auch|[[Poldern]]}}
+== poldern ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Verb|Deutsch}} ===
+
+{{Deutsch Verb Übersicht
+|Präsens_ich=poldere
+|Präsens_du=polderst
+|Präsens_er, sie, es=poldert
+|Präteritum_ich=polderte
+|Konjunktiv II_ich=polderte
+|Imperativ Singular=polder
+|Imperativ Singular*=poldere
+|Imperativ Plural=poldert
+|Partizip II=gepoldert
+|Hilfsverb=haben
+}}
+
+{{Nebenformen}}
+:[[poltern]]
+
+{{Worttrennung}}
+:pol·dern, {{Prät.}} pol·der·te, {{Part.}} ge·pol·dert
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|ˈpɔldɐn}}
+:{{Hörbeispiele}} {{Audio|De-Poldern.ogg}}
+:{{Reime}} {{Reim|ɔldɐn|Deutsch}}
+
+{{Bedeutungen}}
+:[1] {{K|veraltet}} Getöse machen, aufbrausen
+
+{{Lemmaverweis|poltern}}
+
+{{Referenzen}}
+:[1] {{Ref-Grimm}}

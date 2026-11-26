@@ -35,6 +35,8 @@ The list of regional values was compiled from the values that occur in the dump 
 3. Drop the labels of a `{{K}}` or of an italic text that also holds a qualifier: `besonders`, `auch`, `meist`, `sonst`, `oft`, `häufig`, `vor allem`, `überwiegend`, `vorwiegend`, `teilweise`, `teils`, `außer`, `allgemein`.
 4. The section is left out if every sense line has at least one label left.
 
+The rule is applied in one place, `hawfinch.features.selection`, and not in the readers of the single features. It gives the part-of-speech sections of a lemma page with the labels of their senses, and every reader takes its sections from there.
+
 ## Verbs
 
 Verb stems are read from `Flexion:` pages, the senses are on the lemma page, and a `Flexion:` page does not say which verb section of the lemma page a conjugation belongs to. The conjugations of a page are therefore left out only if all verb sections of the lemma page are. Where some verb sections are left out and others stay (51 lemma pages), all conjugations are kept for now.

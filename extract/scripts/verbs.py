@@ -47,8 +47,7 @@ from hawfinch.features.inflection import (
     stem_variants,
     stems,
 )
-from hawfinch.features.usage import restricted
-from hawfinch.wikitext.sections import german_sections
+from hawfinch.features.selection import MIXED, keeps_flexion, lemma_sections, verb_selection
 from hawfinch.wikitext.templates import scan
 
 FLEXION_NS = 108
@@ -85,12 +84,12 @@ def stratum(verb: Verb) -> str:
     return "strong, separable" if verb.separable else "strong, other"
 
 
-def process_row_group(args) -> tuple[list[dict], list[dict], Counter, dict[str, list[bool]]]:
+def process_row_group(args) -> tuple[list[dict], list[dict], Counter, dict[str, str]]:
     """Conjugations, overview tables, unread templates, and for every lemma page with verb
-    sections whether each of them is left out as archaic or regional."""
+    sections whether they are kept, left out as archaic or regional, or mixed."""
     path, index = args
     table = pq.ParquetFile(path).read_row_group(index, columns=["ns", "title", "text", "redirect"])
-    conjugations, overviews, unread, left_out = [], [], Counter(), {}
+    conjugations, overviews, unread, selections = [], [], Counter(), {}
     for row in table.to_pylist():
         if row["redirect"] is not None:
             continue
@@ -106,24 +105,24 @@ def process_row_group(args) -> tuple[list[dict], list[dict], Counter, dict[str, 
                     continue
                 conjugations.append({"title": title, "verb": verb, "start": template.start})
         elif row["ns"] == 0 and OVERVIEW in text:
-            for entry in german_sections(text):
-                for number, pos in enumerate(entry.pos_sections, 1):
-                    body = pos.section.body(text)
-                    if any(label == "Verb" for label, _ in pos.wortarten):
-                        left_out.setdefault(row["title"], []).append(restricted(body))
-                    if restricted(body):
-                        continue
-                    for template in scan(body).templates:
-                        if template.name == OVERVIEW:
-                            overviews.append(
-                                {
-                                    "title": row["title"],
-                                    "section": number,
-                                    "labels": "+".join(label for label, _ in pos.wortarten),
-                                    "forms": overview_forms(template),
-                                }
-                            )
-    return conjugations, overviews, unread, left_out
+            sections = list(lemma_sections(row["title"], text))
+            selection = verb_selection(sections)
+            if selection is not None:
+                selections[row["title"]] = selection
+            for section in sections:
+                if section.left_out:
+                    continue
+                for template in scan(section.body).templates:
+                    if template.name == OVERVIEW:
+                        overviews.append(
+                            {
+                                "title": row["title"],
+                                "section": section.number,
+                                "labels": "+".join(section.labels),
+                                "forms": overview_forms(template),
+                            }
+                        )
+    return conjugations, overviews, unread, selections
 
 
 def agreement(generated: dict[str, list[str]], listed: dict[str, list[str]]) -> dict[str, str]:
@@ -230,19 +229,17 @@ def _annotated_sample(path: Path, stem_rows: list[dict]) -> list[dict] | None:
 def run(cache: Path, out: Path, workers: int) -> None:
     out.mkdir(parents=True, exist_ok=True)
     groups = pq.ParquetFile(cache).num_row_groups
-    conjugations, overviews, unread, left_out = [], [], Counter(), {}
+    conjugations, overviews, unread, selections = [], [], Counter(), {}
     with ProcessPoolExecutor(workers) as pool:
         for c, o, u, x in pool.map(process_row_group, [(cache, i) for i in range(groups)]):
             conjugations += c
             overviews += o
             unread += u
-            left_out.update(x)
-    # A Flexion page does not say which verb section of the lemma page a conjugation belongs
-    # to. Its conjugations are left out if all verb sections of the lemma page are.
+            selections.update(x)
     read = len(conjugations)
-    conjugations = [c for c in conjugations if not all(left_out.get(c["title"], [False]))]
+    conjugations = [c for c in conjugations if keeps_flexion(selections.get(c["title"]))]
     dropped = read - len(conjugations)
-    mixed = sum(any(flags) and not all(flags) for flags in left_out.values())
+    mixed = sum(selection == MIXED for selection in selections.values())
     conjugations.sort(key=lambda c: (c["title"], c["start"]))
     overviews.sort(key=lambda o: (o["title"], o["section"]))
 

@@ -10,7 +10,8 @@ counts for a sense unless it is qualified in the same place (``besonders``, ``au
 ``sonst``): a qualified label says that the sense is also in use elsewhere.
 
 :func:`sense_labels` reads one sense line, and :func:`restricted` says whether every sense
-of a section carries a label; such a section is not taken into the database.
+of a section carries a label; such a section is not taken into the database. The rule is
+applied to the pages in ``hawfinch.features.selection``.
 """
 
 from __future__ import annotations

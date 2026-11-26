@@ -1,0 +1,92 @@
+== snacken ({{Sprache|Deutsch}}) ==
+=== {{Wortart|Verb|Deutsch}} ===
+
+{{Deutsch Verb Übersicht
+|Präsens_ich=snacke
+|Präsens_du=snackst
+|Präsens_er, sie, es=snackt
+|Präteritum_ich=snackte
+|Konjunktiv II_ich=snackte
+|Imperativ Singular=snack
+|Imperativ Singular*=snacke
+|Imperativ Plural=snackt
+|Partizip II=gesnackt
+|Hilfsverb=haben
+}}
+
+{{Worttrennung}}
+:sna·cken, {{Prät.}} snack·te, {{Part.}} ge·snackt
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|ˈsnɛkn̩}}, {{Lautschrift|ˈsnɛkŋ̩}}
+:{{Hörbeispiele}} {{Audio|De-snacken.ogg}}, {{Audio|De-snacken2.ogg}}
+:{{Reime}} {{Reim|ɛkn̩|Deutsch}}
+
+{{Bedeutungen}}
+:[1] {{K|meist|Jugendsprache}} eine kleine [[Zwischenmahlzeit]] zu sich nehmen
+
+{{Herkunft}}
+:von gleichbedeutend englisch ''{{Ü|en|snack}}'' entlehnt<ref>{{Ref-Duden|snacken_naschen|snacken (naschen)}}</ref>
+
+{{Sinnverwandte Wörter}}
+:[1] [[naschen]]
+
+{{Beispiele}}
+:[1] {{Beispiele fehlen|spr=de}}
+
+==== {{Übersetzungen}} ====
+{{Ü-Tabelle|1|G=eine kleine Zwischenmahlzeit zu sich nehmen|Ü-Liste=
+*{{en}}: {{Ü|en|}}
+*{{fr}}: {{Ü|fr|}}
+*{{it}}: {{Ü|it|}}
+*{{es}}: {{Ü|es|}}
+}}
+
+{{Referenzen}}
+:[1] {{Ref-DWDS|snacken|2}}
+:[*] {{Ref-UniLeipzig}}
+:[1] {{Ref-Duden|snacken_naschen|snacken (naschen)}}
+:[1] {{Ref-wissen.de|Fremdwort}}
+
+{{Quellen}}
+
+=== {{Wortart|Verb|Deutsch}} ===
+
+{{Deutsch Verb Übersicht
+|Präsens_ich=snacke
+|Präsens_du=snackst
+|Präsens_er, sie, es=snackt
+|Präteritum_ich=snackte
+|Konjunktiv II_ich=snackte
+|Imperativ Singular=snack
+|Imperativ Singular*=snacke
+|Imperativ Plural=snackt
+|Partizip II=gesnackt
+|Hilfsverb=haben
+}}
+
+{{Nebenformen}}
+:[[schnacken]]
+
+{{Worttrennung}}
+:sna·cken, {{Prät.}} snack·te, {{Part.}} ge·snackt
+
+{{Aussprache}}
+:{{IPA}} {{Lautschrift|ˈsnakn̩}}
+:{{Hörbeispiele}} {{Audio|}}
+:{{Reime}} {{Reim|akn̩|Deutsch}}
+
+{{Bedeutungen}}
+:[1] {{K|Norddeutschland}} schwatzen, plaudern, sich unterhalten, sprechen
+
+{{Lemmaverweis|schnacken}}
+
+{{Referenzen}}
+:[1] {{Ref-DWDS|snacken|1}}
+:[*] {{Ref-UniLeipzig}}
+:[1] {{Ref-FreeDictionary}}
+:[1] {{Ref-Duden|snacken_reden|snacken (reden)}}
+
+{{Ähnlichkeiten 1|Anagramme=[[Nackens]]}}
+
+[[Kategorie:Entlehnung aus dem Englischen (Deutsch)]]
